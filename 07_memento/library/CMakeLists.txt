@@ -17,12 +17,5 @@ target_include_directories(
 
 install(
     TARGETS ${PROJECT_NAME}
-    EXPORT ${PROJECT_NAME}
     ARCHIVE DESTINATION lib
-)
-
-install(
-    EXPORT ${PROJECT_NAME}
-    FILE ${PROJECT_NAME}.cmake
-    DESTINATION lib/cmake/${PROJECT_NAME}
 )
