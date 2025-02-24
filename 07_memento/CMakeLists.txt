@@ -7,8 +7,8 @@ add_executable(
     client_main.cpp
 )
 
-target_include_directories(
+target_link_libraries(
     ${PROJECT_NAME}
     PRIVATE
-        include/
+        memento_lib # It'll look for libmemento_lib.a in /usr/local/lib
 )

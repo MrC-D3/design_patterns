@@ -15,7 +15,21 @@ target_include_directories(
         include/
 )
 
+# Ok in /usr/local/lib/libmemento_lib.a ?
 install(
-    TARGETS ${PROJECT_NAME}
-    ARCHIVE DESTINATION lib
+    TARGETS 
+        ${PROJECT_NAME}
+    DESTINATION lib/ # ARCHIVE?
+)
+
+# Ok in /usr/local/include/07_memento/ ?
+install(
+    FILES
+        include/07_memento/originator_concrete.hpp
+        include/07_memento/care_taker.hpp
+        include/07_memento/originator.hpp
+        include/07_memento/memento_interface.hpp
+        include/07_memento/memento_concrete.hpp
+    DESTINATION
+        include/07_memento/
 )
