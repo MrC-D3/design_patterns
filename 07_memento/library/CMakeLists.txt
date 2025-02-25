@@ -11,18 +11,18 @@ add_library(
 
 target_include_directories(
     ${PROJECT_NAME}
-    PUBLIC # Not PRIVATE
+    PUBLIC # Here maybe ok also PRIVATE, since the headers are installed.
         include/
 )
 
-# Ok in /usr/local/lib/libmemento_lib.a ?
+# Go in the default /usr/local/ lib/.
 install(
     TARGETS 
         ${PROJECT_NAME}
     DESTINATION lib/ # ARCHIVE?
 )
 
-# Ok in /usr/local/include/07_memento/ ?
+# Go in the default /usr/local/ include/07_memento/.
 install(
     FILES
         include/07_memento/originator_concrete.hpp
