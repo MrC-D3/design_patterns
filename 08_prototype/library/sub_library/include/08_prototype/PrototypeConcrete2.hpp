@@ -1,15 +1,15 @@
-#ifndef PROTOTYPE_CONCRETE1_HPP
-#define PROTOTYPE_CONCRETE1_HPP
+#ifndef PROTOTYPE_CONCRETE2_HPP
+#define PROTOTYPE_CONCRETE2_HPP
 
 #include <iostream>
 
 #include "08_prototype/PrototypeInterface.hpp"
 
 
-class PrototypeConcrete1 : public PrototypeInterface
+class PrototypeConcrete2 : public PrototypeInterface
 {
   public:
-    PrototypeConcrete1(int state = 1);
+    PrototypeConcrete2(int state = 2);
     
     PrototypeInterface* clone() override;
 
