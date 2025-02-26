@@ -11,7 +11,7 @@ add_library(
 
 target_include_directories(
     ${PROJECT_NAME}
-    PUBLIC # Here maybe ok also PRIVATE, since the headers are installed.
+    PRIVATE # OK, since the headers are installed.
         include/
 )
 
@@ -19,7 +19,7 @@ target_include_directories(
 install(
     TARGETS 
         ${PROJECT_NAME}
-    DESTINATION lib/ # ARCHIVE?
+    DESTINATION lib/
 )
 
 # Go in the default /usr/local/ include/07_memento/.

@@ -15,6 +15,7 @@ class MementoConcrete : public Memento
     int get_state();
 
   private:
+    // Improvement: template the state type, so you Don't Repeat Yourself (DRY).
     int m_state;
     Originator* m_originator;
 };
