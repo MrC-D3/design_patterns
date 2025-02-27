@@ -4,12 +4,17 @@
 
 
 Singleton* Singleton::unique_instance = nullptr;
+std::lock_guard Singleton::mutex;
 
-Singleton* Singleton::get_instance()
+Singleton* Singleton::get_instance(int counter)
 {
     if(unique_instance == nullptr)
     {
-        unique_instance = new Singleton();
+        unique_instance = new Singleton(counter);
+    }
+    else
+    {
+        counter += 1;
     }
 
     return unique_instance;
