@@ -4,7 +4,7 @@
 
 
 Singleton* Singleton::unique_instance = nullptr;
-std::lock_guard Singleton::mutex;
+std::mutex Singleton::mutex;
 
 Singleton* Singleton::get_instance(int counter)
 {
@@ -16,7 +16,7 @@ Singleton* Singleton::get_instance(int counter)
     }
     else
     {
-        counter += 1;
+        unique_instance->m_counter += 1;
     }
 
     return unique_instance;

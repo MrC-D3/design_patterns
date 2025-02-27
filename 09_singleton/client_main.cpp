@@ -14,7 +14,7 @@ int main()
     first.join();
     second.join();
 
-    Singleton* myPtr = Singleton::get_istance();
+    Singleton* myPtr = Singleton::get_instance(100);
 
     // Value should be 12.
     myPtr->print_counter();
@@ -24,7 +24,7 @@ int main()
 
 void zero_function()
 {
-    std::sleep(1000);
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     Singleton* myPtr = Singleton::get_instance(0);
 }
