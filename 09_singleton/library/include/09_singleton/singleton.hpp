@@ -7,10 +7,10 @@
 class Singleton
 {
   public:
-    Singleton(Singleton& s) = delete;
-    Singleton& operator=(Singleton& s) = delete;
+    Singleton(const Singleton& s) = delete;
+    Singleton& operator=(const Singleton& s) = delete;
 
-    static Singleton* get_instance();
+    static Singleton* get_instance(int counter);
 
     void print_counter();
 
@@ -18,7 +18,7 @@ class Singleton
     Singleton(int counter = 0);
 
     static Singleton* unique_instance;
-    static std::lock_guard mutex;
+    static std::mutex mutex;
     int m_counter;
 };
 
