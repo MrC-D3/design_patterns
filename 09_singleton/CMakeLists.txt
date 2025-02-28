@@ -12,5 +12,6 @@ add_executable(
 target_link_libraries(
     ${PROJECT_NAME}
     PRIVATE
+        pthread
         singleton_library
 )
