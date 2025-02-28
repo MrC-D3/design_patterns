@@ -8,7 +8,6 @@ class Originator
 {
   public:
     virtual Memento* create_memento() = 0;
-    virtual void restore_memento(Memento* memento) = 0;
 };
 
 #endif

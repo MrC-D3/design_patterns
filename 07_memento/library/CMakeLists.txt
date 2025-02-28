@@ -19,7 +19,8 @@ target_include_directories(
 install(
     TARGETS 
         ${PROJECT_NAME}
-    DESTINATION lib/
+    DESTINATION 
+        lib/07_memento
 )
 
 # Go in the default /usr/local/ include/07_memento/.

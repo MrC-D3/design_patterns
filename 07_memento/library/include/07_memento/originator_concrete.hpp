@@ -4,7 +4,6 @@
 #include <iostream>
 
 #include "07_memento/originator.hpp"
-#include "07_memento/memento_concrete.hpp"
 
 
 class OriginatorConcrete : public Originator
@@ -13,8 +12,6 @@ class OriginatorConcrete : public Originator
     OriginatorConcrete(int state = 0);
 
     Memento* create_memento() override;
-
-    void restore_memento(Memento* memento) override;
 
     void set_state(int state);
 
