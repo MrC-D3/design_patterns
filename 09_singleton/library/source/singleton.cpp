@@ -8,7 +8,7 @@ std::mutex Singleton::mutex;
 
 Singleton* Singleton::get_instance(int counter)
 {
-    std::lock_guard lock(mutex);
+    std::lock_guard<std::mutex> lock(mutex);
     
     if(unique_instance == nullptr)
     {
