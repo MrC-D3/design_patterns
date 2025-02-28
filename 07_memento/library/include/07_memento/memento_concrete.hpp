@@ -5,10 +5,12 @@
 #include "07_memento/originator.hpp"
 
 
+class OriginatorConcrete;
+
 class MementoConcrete : public Memento
 {
   public:
-    MementoConcrete(Originator* originator, int state);
+    MementoConcrete(OriginatorConcrete* originator, int state);
 
     void restore() override;
 
@@ -17,7 +19,7 @@ class MementoConcrete : public Memento
   private:
     // Improvement: template the state type, so you Don't Repeat Yourself (DRY).
     int m_state;
-    Originator* m_originator;
+    OriginatorConcrete* m_originator;
 };
 
 #endif

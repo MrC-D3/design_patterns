@@ -1,4 +1,5 @@
 #include "07_memento/originator_concrete.hpp"
+#include "07_memento/memento_concrete.hpp"
 
 
 OriginatorConcrete::OriginatorConcrete(int state)
@@ -10,11 +11,6 @@ OriginatorConcrete::OriginatorConcrete(int state)
 Memento* OriginatorConcrete::create_memento()
 {
     return new MementoConcrete(this, m_state);
-}
-
-void OriginatorConcrete::restore_memento(Memento* memento)
-{
-    m_state = ((MementoConcrete*) memento)->get_state();
 }
 
 void OriginatorConcrete::set_state(int state)
