@@ -23,13 +23,24 @@ install(
     TARGETS
         ${PROJECT_NAME}
     EXPORT
-        ${PROJECT_NAME}.cmake
+        ${PROJECT_NAME}
     DESTINATION 
         lib/
+)
+install(
+    FILES
+        include/11_iterator/iterator_interface.hpp
+        include/11_iterator/aggregate_interface.hpp
+        include/11_iterator/iterator.hpp
+        include/11_iterator/aggregate.hpp
+    DESTINATION
+        include/11_iterator/
 )
 
 install(
     EXPORT
+        ${PROJECT_NAME}
+    FILE
         ${PROJECT_NAME}.cmake
     DESTINATION
         lib/cmake/${PROJECT_NAME}/
@@ -45,17 +56,7 @@ configure_package_config_file(
 
 install(
     FILES
-        include/iterator_interface.hpp
-        include/aggregate_interface.hpp
-        include/iterator.hpp
-        include/aggregate.hpp
-    DESTINATION
-        include/${PROJECT_NAME}/
-)
-
-install(
-    FILES
-        ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     DESTINATION
         lib/cmake/${PROJECT_NAME}
 )
