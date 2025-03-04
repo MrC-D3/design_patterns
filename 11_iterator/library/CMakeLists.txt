@@ -4,13 +4,12 @@ project(iterator_lib)
 
 add_library(
     ${PROJECT_NAME}
-    source/aggregate.cpp
-    source/iterator.cpp
+    INTERFACE
 )
 
 target_include_directories(
     ${PROJECT_NAME}
-    PUBLIC
+    INTERFACE
         include
 )
 
