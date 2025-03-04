@@ -4,10 +4,11 @@
 #include "11_iterator/iterator_interface.hpp"
 
 
+template <typename Item>
 class AggregateInterface
 {
   public:
-    virtual IteratorInterface* createIterator() = 0;
+    virtual IteratorInterface<Item>* createIterator() = 0;
 };
 
 #endif
