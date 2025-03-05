@@ -11,4 +11,5 @@ target_link_libraries(
         gtest
         gtest_main
         pthread
+        ${PROJECT_NAME}
 )

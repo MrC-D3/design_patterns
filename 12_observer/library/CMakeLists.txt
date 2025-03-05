@@ -6,17 +6,19 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_library(
     ${PROJECT_NAME}
-    INTERFACE
+    source/subject_interface.cpp
+    source/subject.cpp
+    source/observer.cpp
 )
 
 target_include_directories(
     ${PROJECT_NAME}
-    INTERFACE
+    PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
         $<INSTALL_INTERFACE:include/>
 )
 
-#add_subdirectory(unit_test)
+add_subdirectory(unit_test)
 
 # Install & Pack.
 install(
