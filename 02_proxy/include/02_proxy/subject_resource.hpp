@@ -8,14 +8,15 @@
 class SubjectResource
 {
   public:
-
-    SubjectResource(std::string url)
+    // A single-parameter-c'tor is a converting c'tor by default.
+    // Use explicit to avoid it.
+    explicit SubjectResource(const std::string& url)
       : m_url(url)
     {}
 
-    virtual ~SubjectResource() {};
+    virtual ~SubjectResource() noexcept = default;
 
-    void trivial_request()
+    void trivial_request() const
     {
         std::cout << "I'm the Subject. This request doesn't need to open the \
           Resource." << std::endl;

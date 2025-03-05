@@ -5,10 +5,10 @@
 #include "subject_resource.hpp"
 
 
-class RealSubjectResource : public SubjectResource
+class RealSubjectResource final : public SubjectResource
 {
   public:
-    RealSubjectResource(std::string url)
+    explicit RealSubjectResource(const std::string& url)
       : SubjectResource(url)
     {
         // RAII principle: Resource Acquisition Is Initialization.
