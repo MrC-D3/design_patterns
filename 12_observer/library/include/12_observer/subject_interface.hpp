@@ -1,7 +1,7 @@
 #ifndef SUBJECT_INTERFACE_HPP
 #define SUBJECT_INTERFACE_HPP
 
-#include "12_observer/observer.hpp"
+#include "12_observer/observer_interface.hpp"
 
 #include <vector>
 

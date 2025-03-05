@@ -1,7 +1,7 @@
 #ifndef SUBJECT_HPP
 #define SUBJECT_HPP
 
-#include "12_observer/SubjectInterface.hpp"
+#include "12_observer/subject_interface.hpp"
 
 
 class Subject : public SubjectInterface
