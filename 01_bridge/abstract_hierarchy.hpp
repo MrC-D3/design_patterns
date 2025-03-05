@@ -3,24 +3,30 @@
 
 #include "implementation_hierarchy.hpp"
 
+#include <memory>
+
+
 class ShapeInterface
 {
   public:
-    ShapeInterface(ColorInterface* color)
-      : m_color(color)
+    ShapeInterface(std::unique_ptr<ColorInterface> color)
+      : m_color(std::move(color))
     {}
+
+    virtual ~ShapeInterface() noexcept = default; 
 
     virtual void draw() = 0;
 
   protected:
-    ColorInterface* m_color;
+    std::unique_ptr<ColorInterface> m_color;
 };
 
-class Triangle : public ShapeInterface
+
+class Triangle final : public ShapeInterface
 {
   public:
-    Triangle(ColorInterface* color)
-      : ShapeInterface(color)
+    Triangle(std::unique_ptr<ColorInterface> color)
+      : ShapeInterface(std::move(color))
     {}
 
     void draw() override
@@ -29,4 +35,4 @@ class Triangle : public ShapeInterface
     }
 };
 
-#endif
+#endif // ABSTRACT_HIERARCHY_HPP

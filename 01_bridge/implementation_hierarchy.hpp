@@ -7,16 +7,19 @@
 class ColorInterface
 {
   public:
-    virtual void draw() = 0;
+    virtual ~ColorInterface() noexcept = default;
+
+    virtual void draw() const = 0;
 };
 
-class Color1 : public ColorInterface
+class Color1 final : public ColorInterface
 {
   public:
-    void draw() override
+    // Keyword "override" must be at the end.
+    void draw() const override
     {
         std::cout << "This is a shape drawn in Color1." << std::endl;
     }
 };
 
-#endif
+#endif // IMPLEMENTATION_HIERARCHY_HPP
