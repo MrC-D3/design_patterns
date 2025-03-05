@@ -1,14 +1,17 @@
 #ifndef PROXY_RESOURCE_HPP
 #define PROXY_RESOURCE_HPP
 
-#include <iostream>
 #include "subject_resource.hpp"
 #include "real_subject_resource.hpp"
 
-class ProxyResource : public SubjectResource
+#include <iostream>
+#include <memory>
+
+
+class ProxyResource final : public SubjectResource
 {
   public:
-    ProxyResource(std::string url)
+    explicit ProxyResource(const std::string& url)
       : SubjectResource(url)
     {
         // No need to initialize the object in the Proxy.
@@ -21,10 +24,7 @@ class ProxyResource : public SubjectResource
         std::cout << "I'm the Proxy. I'm gonna delete the RealSubject if any." <<
           std::endl;
 
-        if(m_real_subject_resource != nullptr)
-        {
-            delete m_real_subject_resource;
-        }
+        // RealSubjectResource freed by the unique_ptr d'tor.
     }
 
     void access() override
@@ -33,17 +33,18 @@ class ProxyResource : public SubjectResource
           RealSubject." << std::endl;
 
         // Now you actually need to load the Resource, if not already.
-
-        if(m_real_subject_resource == nullptr)
+        // Exploit the operator overload of unique_ptr.
+        if(!m_real_subject_resource)
         {
-            m_real_subject_resource = new RealSubjectResource(m_url);
+            m_real_subject_resource = 
+              std::make_unique<RealSubjectResource>(m_url);
         }
 
         m_real_subject_resource->access();
     }
 
   private:
-    RealSubjectResource* m_real_subject_resource = nullptr;
+    std::unique_ptr<RealSubjectResource> m_real_subject_resource;
 };
 
-#endif
+#endif // PROXY_RESOURCE_HPP
