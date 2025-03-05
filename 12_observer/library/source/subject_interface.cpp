@@ -12,7 +12,7 @@ void SubjectInterface::detach(ObserverInterface* observer)
     {
         if(observer == *it)
         {
-            m_observers.remove(it);
+            m_observers.erase(it);
             break;
         }
     }
@@ -22,6 +22,6 @@ void SubjectInterface::notify()
 {
     for(auto it = m_observers.begin(); it != m_observers.end(); it++)
     {
-        it->update();
+        (*it)->update();
     }
 }
