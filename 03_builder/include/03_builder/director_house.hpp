@@ -14,8 +14,8 @@ namespace Builder
 class DirectorHouse
 {
   public:
-    DirectorHouse(std::unique_ptr<BuilderBasic> builder)
-      : m_builder(std::move(builder))
+    DirectorHouse(std::shared_ptr<BuilderBasic> builder)
+      : m_builder(builder)
     {}
 
     void build_house()
@@ -27,7 +27,7 @@ class DirectorHouse
     }
 
   private:
-    std::unique_ptr<BuilderBasic> m_builder;
+    std::shared_ptr<BuilderBasic> m_builder;
 };
 
 } // namespace Builder
