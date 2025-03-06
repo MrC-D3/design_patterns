@@ -12,11 +12,17 @@ int main()
     
     // CASE 01: small house.
     {
-        std::unique_ptr<BuilderSmall> builder_small = std::make_unique<BuilderSmall>();
-        DirectorHouse director(std::move(builder_small));
+        auto builder_small = std::make_unique<BuilderSmall>();
+
+        // Curly brackets for c'tor to:
+        //  - avoid most-vexing-parse, i.d. ambiguity between function & object;
+        //  - avoid narrowing-conversion, i.d. int x{1.5} fails;
+        //  - be coherent with aggregate objects initialization.
+        DirectorHouse director{std::move(builder_small)};
+
         director.build_house();
 
-        std::unique_ptr<ProductHouse> house = builder_small->get_house();
+        auto house = builder_small->get_house();
         house->show();
 
         // Memory freed by the d'tor-s.
@@ -24,11 +30,11 @@ int main()
 
     // CASE 02: big house.
     {
-        std::unique_ptr<BuilderBig> builder_big = std::make_unique<BuilderBig>();
-        DirectorHouse director(std::move(builder_big));
+        auto builder_big = std::make_unique<BuilderBig>();
+        DirectorHouse director{std::move(builder_big)};
         director.build_house();
 
-        std::unique_ptr<ProductHouse> house = builder_big->get_house();
+        auto house = builder_big->get_house();
         house->show();
     }
 
