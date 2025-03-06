@@ -1,17 +1,21 @@
 #ifndef DIRECTOR_TOTAL_HPP
 #define DIRECTOR_TOTAL_HPP
 
-#include <string>
-
 #include "03_builder/builder_basic.hpp"
 #include "03_builder/product_house.hpp"
 
+#include <string>
+#include <memory>
+
+
+namespace Builder
+{
 
 class DirectorHouse
 {
   public:
-    DirectorHouse(BuilderBasic* builder)
-      : m_builder(builder)
+    DirectorHouse(std::unique_ptr<BuilderBasic> builder)
+      : m_builder(std::move(builder))
     {}
 
     void build_house()
@@ -23,7 +27,9 @@ class DirectorHouse
     }
 
   private:
-    BuilderBasic* m_builder;
+    std::unique_ptr<BuilderBasic> m_builder;
 };
 
-#endif
+} // namespace Builder
+
+#endif // DIRECTOR_TOTAL_HPP
