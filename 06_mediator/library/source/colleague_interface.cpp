@@ -1,10 +1,16 @@
-#include "06_moderator/colleague_interface.hpp"
+#include "06_mediator/colleague_interface.hpp"
 
 
-void ColleagueInterface::set_moderator(ModeratorInterface* moderator)
+namespace Mediator
 {
-    std::cout << "I'm a Colleague. Setting the moderator after the c'tor."
+
+void ColleagueInterface::set_mediator(
+  const std::shared_ptr<MediatorInterface>& mediator)
+{
+    std::cout << "I'm a Colleague. Setting the mediator after the c'tor."
         << std::endl;
 
-    m_moderator = moderator;
+    m_mediator = mediator;
 }
+
+} // namespace Mediator
