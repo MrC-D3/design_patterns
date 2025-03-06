@@ -8,8 +8,10 @@
 
 
 int main()
-{
-    ConcreteCreator myCreator;
+{    
+    Factory::ConcreteCreator myCreator;
 
     myCreator.do_the_logic();
+
+    return 0;
 }
