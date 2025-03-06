@@ -3,28 +3,33 @@
 #include "03_builder/builder_big.hpp"
 #include "03_builder/product_house.hpp"
 
+#include <memory>
+
+
 int main()
 {
+    using namespace Builder;
+    
     // CASE 01: small house.
     {
-        BuilderSmall* builder_small = new BuilderSmall();
-        DirectorHouse director(builder_small);
+        std::unique_ptr<BuilderSmall> builder_small = std::make_unique<BuilderSmall>();
+        DirectorHouse director(std::move(builder_small));
         director.build_house();
-        ProductHouse* house = builder_small->get_house();
 
+        std::unique_ptr<ProductHouse> house = builder_small->get_house();
         house->show();
-        delete house;
+
+        // Memory freed by the d'tor-s.
     }
 
     // CASE 02: big house.
     {
-        BuilderBig* builder_big = new BuilderBig();
-        DirectorHouse director(builder_big);
+        std::unique_ptr<BuilderBig> builder_big = std::make_unique<BuilderBig>();
+        DirectorHouse director(std::move(builder_big));
         director.build_house();
-        ProductHouse* house = builder_big->get_house();
 
+        std::unique_ptr<ProductHouse> house = builder_big->get_house();
         house->show();
-        delete house;
     }
 
     return 0;
