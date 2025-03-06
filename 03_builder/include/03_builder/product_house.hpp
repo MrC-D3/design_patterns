@@ -4,6 +4,9 @@
 #include <iostream>
 
 
+namespace Builder
+{
+
 class ProductHouse
 {
   public:
@@ -22,16 +25,18 @@ class ProductHouse
         m_doors = doors;
     }
 
-    void show()
+    void show() const noexcept
     {
       std::cout << "I'm a house with " << m_walls << " walls, " << m_doors <<
         " doors, " << m_windows << " windows." << std::endl;
     }
 
   private:
-    int m_walls;
-    int m_windows;
-    int m_doors;
+    int m_walls{0};
+    int m_windows{0};
+    int m_doors{0};
 };
 
-#endif
+} // namespace Builder
+
+#endif // PRODUCT_HOUSE_HPP

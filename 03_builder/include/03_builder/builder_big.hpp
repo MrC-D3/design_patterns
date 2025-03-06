@@ -4,13 +4,21 @@
 #include "03_builder/builder_basic.hpp"
 #include "03_builder/product_house.hpp"
 
+#include <memory>
 
-class BuilderBig : public BuilderBasic
+
+namespace Builder
+{
+
+class BuilderBig final : public BuilderBasic
 {
   public:
+    ~BuilderBig() = default;
+
+
     void build_foundations() override
     {
-        m_house = new ProductHouse();
+        m_house = std::make_unique<ProductHouse>();
     }
 
     void build_walls() override
@@ -28,13 +36,16 @@ class BuilderBig : public BuilderBasic
         m_house->set_windows(16);
     }
 
-    ProductHouse* get_house()
+
+    std::unique_ptr<ProductHouse> get_house()
     {
-        return m_house;
+        return std::move(m_house);
     }
 
   private:
-    ProductHouse* m_house;
+    std::unique_ptr<ProductHouse> m_house;
 };
 
-#endif
+}
+
+#endif // BUILDER_BIG_HPP
