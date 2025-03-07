@@ -2,10 +2,15 @@
 #define MEMENTO_INTERFACE_HPP
 
 
-class Memento
+namespace Memento
+{
+
+class MementoInterface
 {
   public:
-    virtual void restore() = 0;
+    virtual void restore() const = 0;
 };
 
-#endif
+} // namespace Memento
+
+#endif // MEMENTO_INTERFACE_HPP
