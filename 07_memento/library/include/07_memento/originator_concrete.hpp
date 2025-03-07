@@ -9,7 +9,9 @@
 namespace Memento
 {
 
-class OriginatorConcrete : public OriginatorInterface
+class OriginatorConcrete : 
+  public OriginatorInterface, 
+  public std::enable_shared_from_this<OriginatorConcrete>
 {
   public:
     OriginatorConcrete(const std::int64_t& state = 0);

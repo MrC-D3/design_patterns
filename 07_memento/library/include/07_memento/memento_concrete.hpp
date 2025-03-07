@@ -14,7 +14,7 @@ class MementoConcrete : public MementoInterface
 {
   public:
     MementoConcrete(
-      const std::unique_ptr<OriginatorConcrete>& originator, 
+      const std::shared_ptr<OriginatorConcrete>& originator, 
       const std::int64_t& state
     );
 
@@ -25,7 +25,7 @@ class MementoConcrete : public MementoInterface
   private:
     // Improvement: template the state type, so you Don't Repeat Yourself (DRY).
     std::int64_t m_state;
-    std::unique_ptr<OriginatorConcrete> m_originator;
+    std::shared_ptr<OriginatorConcrete> m_originator;
 };
 
 } // namespace Memento
