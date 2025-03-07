@@ -4,7 +4,6 @@
 #include "06_mediator/mediator_interface.hpp"
 #include "06_mediator/colleague_concrete.hpp"
 
-#include <iostream>
 #include <memory>
 
 
