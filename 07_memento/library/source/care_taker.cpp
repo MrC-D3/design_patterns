@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-namespace Mememnto
+namespace Memento
 {
     
 CareTaker::CareTaker(const std::shared_ptr<OriginatorInterface>& originator)
@@ -18,7 +18,7 @@ void CareTaker::backup()
         std::endl;
 
     auto new_memento = m_originator->create_memento();
-    m_past_states.push(new_memento);
+    m_past_states.push( std::move(new_memento) );
 }
 
 void CareTaker::undo()
@@ -26,7 +26,7 @@ void CareTaker::undo()
     std::cout << "I'm the Caretaker. Undoing change on Originator's state."
         << std::endl;
 
-    auto old_memento = m_past_states.top();
+    auto old_memento = std::move( m_past_states.top() );
     old_memento->restore();
 }
 

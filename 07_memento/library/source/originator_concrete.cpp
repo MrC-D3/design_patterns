@@ -16,7 +16,10 @@ OriginatorConcrete::OriginatorConcrete(const std::int64_t& state)
 
 std::unique_ptr<MementoInterface> OriginatorConcrete::create_memento() const
 {
-    return std::make_unique<MementoConcrete>(this, m_state);
+    return std::make_unique<MementoConcrete>(
+      std::const_pointer_cast<OriginatorConcrete>(shared_from_this()), 
+      m_state
+      );
 }
 
 void OriginatorConcrete::set_state(const std::int64_t& state)

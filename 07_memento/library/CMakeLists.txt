@@ -4,9 +4,9 @@ project(memento_lib)
 
 add_library(
     ${PROJECT_NAME}
-    source/care_taker.cpp
     source/memento_concrete.cpp
     source/originator_concrete.cpp
+    source/care_taker.cpp
 )
 
 target_include_directories(
@@ -15,22 +15,23 @@ target_include_directories(
         include/
 )
 
-# Go in the default /usr/local/ lib/.
+# Go in the default prefix /usr/local/, under lib/.
 install(
     TARGETS 
         ${PROJECT_NAME}
     DESTINATION 
-        lib/07_memento
+    # Putting in lib/<subDir> forces Client to know what <subDir>.
+        lib/
 )
 
 # Go in the default /usr/local/ include/07_memento/.
 install(
     FILES
+        include/07_memento/originator_interface.hpp
         include/07_memento/originator_concrete.hpp
-        include/07_memento/care_taker.hpp
-        include/07_memento/originator.hpp
         include/07_memento/memento_interface.hpp
         include/07_memento/memento_concrete.hpp
+        include/07_memento/care_taker.hpp
     DESTINATION
         include/07_memento/
 )
