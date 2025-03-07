@@ -6,15 +6,24 @@
 #include "08_prototype/PrototypeInterface.hpp"
 
 
+namespace PrototypeClient
+{
+
+using namespace Prototype;
+
 class PrototypeClient
 {
   public:
     PrototypeClient();
 
-    std::array<PrototypeInterface*, 2>& get_prototypes();
+    // I don't think it can work consistently: once called, you can't recall it.
+    std::array<std::unique_ptr<PrototypeInterface>, 2>& get_prototypes();
 
   private:
-    std::array<PrototypeInterface*, 2> m_prototypes;
+    std::array<std::unique_ptr<PrototypeInterface>, 2> m_prototypes;
 };
 
-#endif
+} // namespace PrototypeClient
+
+
+#endif // PROTOTYPE_CLIENT_HPP
