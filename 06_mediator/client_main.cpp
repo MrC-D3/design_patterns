@@ -8,7 +8,7 @@ int main()
 {
     using namespace Mediator;
 
-    // *** This part... ***
+    // *** To avoid having Colleague-s without a Mediator, this part... ***
     auto colleagueA = std::make_shared<ColleagueConcreteA>();
     auto colleagueB = std::make_shared<ColleagueConcreteB>();
 
