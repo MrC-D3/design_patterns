@@ -5,7 +5,7 @@ namespace Memento
 {
 
 MementoConcrete::MementoConcrete(
-  const std::unique_ptr<OriginatorConcrete>& originator, 
+  const std::shared_ptr<OriginatorConcrete>& originator, 
   const std::int64_t& state)
   : m_state(state),
     m_originator(originator)
