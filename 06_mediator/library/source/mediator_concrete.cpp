@@ -11,11 +11,21 @@ MediatorConcrete::MediatorConcrete(
   : m_colleagueA(colleagueA),
     m_colleagueB(colleagueB)
 {
-    auto this_shared = shared_from_this();
-        return ;
+}
 
-    colleagueA->set_mediator( this_shared );
-    colleagueB->set_mediator( this_shared );
+std::shared_ptr<MediatorConcrete> MediatorConcrete::constructor(
+    const std::shared_ptr<ColleagueConcreteA>& colleagueA,
+    const std::shared_ptr<ColleagueConcreteB>& colleagueB
+  )
+{
+    std::shared_ptr<MediatorConcrete> instance{
+        new MediatorConcrete(colleagueA, colleagueB)
+    };
+
+    instance->m_colleagueA->set_mediator( instance );
+    instance->m_colleagueB->set_mediator( instance );
+
+    return instance;
 }
 
 void MediatorConcrete::notify(const std::string& notification) const

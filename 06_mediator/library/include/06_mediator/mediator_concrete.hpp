@@ -11,18 +11,20 @@
 namespace Mediator
 {
 
-class MediatorConcrete final : 
-  public MediatorInterface, 
-  // Parent class needed to create a shared_ptr from "this" pointer.
-  public std::enable_shared_from_this<MediatorConcrete>
+class MediatorConcrete final : public MediatorInterface
 {
   public:
+    void notify(const std::string& notification) const override;
+
+    static std::shared_ptr<MediatorConcrete> constructor(
+      const std::shared_ptr<ColleagueConcreteA>& colleagueA,
+      const std::shared_ptr<ColleagueConcreteB>& colleagueB
+    );
+
+  private:
     MediatorConcrete(const std::shared_ptr<ColleagueConcreteA>& colleagueA,
       const std::shared_ptr<ColleagueConcreteB>& colleagueB);
 
-    void notify(const std::string& notification) const override;
-
-  private:
     std::shared_ptr<ColleagueConcreteA> m_colleagueA;
     std::shared_ptr<ColleagueConcreteB> m_colleagueB;
 };
