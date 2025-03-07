@@ -12,6 +12,8 @@ namespace Memento
 class OriginatorInterface
 {
   public:
+    virtual ~OriginatorInterface() = default;
+    
     virtual std::unique_ptr<MementoInterface> create_memento() const = 0;
 };
 
