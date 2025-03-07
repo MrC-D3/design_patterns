@@ -12,10 +12,8 @@ int main()
     auto colleagueA = std::make_shared<ColleagueConcreteA>();
     auto colleagueB = std::make_shared<ColleagueConcreteB>();
 
-    MediatorConcrete mediator(colleagueA, colleagueB);
-    // *** ... can be managed together with the Builder pattern. ***
-
-    return 0 ;
+    auto mediator = MediatorConcrete::constructor(colleagueA, colleagueB);
+    // *** ... can be all managed using the Builder pattern. ***
     
     colleagueA->operationA1();
 
