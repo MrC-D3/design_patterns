@@ -26,8 +26,11 @@ void CareTaker::undo()
     std::cout << "I'm the Caretaker. Undoing change on Originator's state."
         << std::endl;
 
-    auto old_memento = std::move( m_past_states.top() );
-    old_memento->restore();
+    if (!m_past_states.empty())
+    {
+        m_past_states.top()->restore();
+        m_past_states.pop();
+    }
 }
 
 } // namespace Memento

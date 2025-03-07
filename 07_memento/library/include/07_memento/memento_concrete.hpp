@@ -5,12 +5,13 @@
 #include "07_memento/originator_concrete.hpp"
 
 #include <memory>
+#include <cstdint>
 
 
 namespace Memento
 {
 
-class MementoConcrete : public MementoInterface
+class MementoConcrete final : public MementoInterface
 {
   public:
     MementoConcrete(
