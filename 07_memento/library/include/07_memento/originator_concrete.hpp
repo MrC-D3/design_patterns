@@ -4,17 +4,18 @@
 #include "07_memento/originator_interface.hpp"
 
 #include <memory>
+#include <cstdint>
 
 
 namespace Memento
 {
 
-class OriginatorConcrete : 
+class OriginatorConcrete final : 
   public OriginatorInterface, 
   public std::enable_shared_from_this<OriginatorConcrete>
 {
   public:
-    OriginatorConcrete(const std::int64_t& state = 0);
+    explicit OriginatorConcrete(const std::int64_t& state = 0);
 
     std::unique_ptr<MementoInterface> create_memento() const override;
 

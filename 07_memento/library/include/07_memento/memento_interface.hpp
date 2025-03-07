@@ -8,6 +8,8 @@ namespace Memento
 class MementoInterface
 {
   public:
+    virtual ~MementoInterface() = default;
+    
     virtual void restore() const = 0;
 };
 
