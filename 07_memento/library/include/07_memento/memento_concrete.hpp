@@ -2,24 +2,32 @@
 #define MEMENTO_CONCRETE_HPP
 
 #include "07_memento/memento_interface.hpp"
-#include "07_memento/originator.hpp"
+#include "07_memento/originator_concrete.hpp"
+
+#include <memory>
 
 
-class OriginatorConcrete;
+namespace Memento
+{
 
-class MementoConcrete : public Memento
+class MementoConcrete : public MementoInterface
 {
   public:
-    MementoConcrete(OriginatorConcrete* originator, int state);
+    MementoConcrete(
+      const std::unique_ptr<OriginatorConcrete>& originator, 
+      const std::int64_t& state
+    );
 
-    void restore() override;
+    void restore() const override;
 
-    int get_state();
+    std::int64_t get_state() const;
 
   private:
     // Improvement: template the state type, so you Don't Repeat Yourself (DRY).
-    int m_state;
-    OriginatorConcrete* m_originator;
+    std::int64_t m_state;
+    std::unique_ptr<OriginatorConcrete> m_originator;
 };
 
-#endif
+} // namespace Memento
+
+#endif // MEMENTO_CONCRETE_HPP
