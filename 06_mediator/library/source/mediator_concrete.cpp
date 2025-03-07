@@ -1,5 +1,7 @@
 #include "06_mediator/mediator_concrete.hpp"
 
+#include <iostream>
+
 
 namespace Mediator
 {
@@ -18,6 +20,7 @@ std::shared_ptr<MediatorConcrete> MediatorConcrete::constructor(
     const std::shared_ptr<ColleagueConcreteB>& colleagueB
   )
 {
+    // make_shared<> won't work because the MediatorConcrete's c'tor is private.
     std::shared_ptr<MediatorConcrete> instance{
         new MediatorConcrete(colleagueA, colleagueB)
     };

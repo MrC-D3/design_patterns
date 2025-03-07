@@ -3,8 +3,6 @@
 
 #include "06_mediator/colleague_interface.hpp"
 
-#include <iostream>
-
 
 namespace Mediator
 {

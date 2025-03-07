@@ -1,5 +1,7 @@
 #include "06_mediator/colleague_concrete.hpp"
 
+#include <iostream>
+
 
 namespace Mediator
 {
