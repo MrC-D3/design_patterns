@@ -2,12 +2,12 @@
 
 
 int main()
-{
-    PrototypeClient client;
-    auto prototypes = client.get_prototypes();
+{    
+    PrototypeClient::PrototypeClient client;
 
-    PrototypeInterface* copy1 = prototypes[0]->clone();
-    PrototypeInterface* copy2 = prototypes[0]->clone();
+    auto prototypes = std::move( client.get_prototypes() );
+    auto copy1 = std::move( prototypes[0]->clone() );
+    auto copy2 = std::move( prototypes[1]->clone() );
 
     copy1->to_string();
     copy2->to_string();

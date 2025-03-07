@@ -1,22 +1,26 @@
 #ifndef PROTOTYPE_CONCRETE2_HPP
 #define PROTOTYPE_CONCRETE2_HPP
 
-#include <iostream>
-
 #include "08_prototype/PrototypeInterface.hpp"
 
 
-class PrototypeConcrete2 : public PrototypeInterface
+namespace Prototype
+{
+  
+class PrototypeConcrete2 final : public PrototypeInterface
 {
   public:
-    PrototypeConcrete2(int state = 2);
+    explicit PrototypeConcrete2(const std::int64_t& state = 2);
     
-    PrototypeInterface* clone() override;
+    std::unique_ptr<PrototypeInterface> clone() const override;
 
-    void to_string() override;
+    void to_string() const override;
 
   private:
-    int m_state;
+    std::int64_t m_state;
 };
+
+} // namespace Prototype
+
 
 #endif
