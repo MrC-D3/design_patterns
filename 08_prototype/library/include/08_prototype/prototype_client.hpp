@@ -17,10 +17,18 @@ class PrototypeClient
     PrototypeClient();
 
     // I don't think it can work consistently: once called, you can't recall it.
-    std::array<std::unique_ptr<PrototypeInterface>, 2>& get_prototypes();
+    const std::shared_ptr<
+      std::array<std::unique_ptr<
+        PrototypeInterface>, 2
+      >
+    >& get_prototypes();
 
   private:
-    std::array<std::unique_ptr<PrototypeInterface>, 2> m_prototypes;
+    std::shared_ptr<
+      std::array<
+        std::unique_ptr<PrototypeInterface>, 2
+      >
+    > m_prototypes;
 };
 
 } // namespace PrototypeClient
