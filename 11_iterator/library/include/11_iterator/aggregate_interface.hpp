@@ -3,12 +3,22 @@
 
 #include "11_iterator/iterator_interface.hpp"
 
+#include <memory>
 
+
+namespace IteratorNS
+{
+  
 template <typename Item>
 class AggregateInterface
 {
   public:
-    virtual IteratorInterface<Item>* createIterator() = 0;
+    virtual ~AggregateInterface() = 0;
+    
+    virtual std::unique_ptr<IteratorInterface<Item>> createIterator() = 0;
 };
 
-#endif
+} // namespace IteratorNS
+
+
+#endif // AGGREGATE_INTERFACE_HPP
