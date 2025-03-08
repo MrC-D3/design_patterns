@@ -1,25 +1,31 @@
 #ifndef SINGLETON_HPP
 #define SINGLETON_HPP
 
+#include <memory>
 #include <mutex>
 
 
+namespace SingletonNS
+{
+  
 class Singleton
 {
   public:
     Singleton(const Singleton& s) = delete;
     Singleton& operator=(const Singleton& s) = delete;
 
-    static Singleton* get_instance(int counter);
+    static Singleton& get_instance(const std::int64_t& counter);
 
-    void print_counter();
+    void print_counter() const;
 
-  protected:
-    Singleton(int counter = 0);
+  // Singleton is not meant to be subclassed, so private not protected.
+  private:
+    explicit Singleton(const std::int64_t counter = 0);
 
-    static Singleton* unique_instance;
-    static std::mutex mutex;
-    int m_counter;
+    std::int64_t m_counter;
 };
 
-#endif
+} // namespace SingletonNS
+
+
+#endif // SINGLETON_HPP
