@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
+# Even if unuseful for a header-only library.
 find_package(iterator_lib)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -13,6 +14,4 @@ add_executable(
 
 target_link_libraries(
     ${PROJECT_NAME}
-    PRIVATE
-        iterator_lib
 )

@@ -3,6 +3,8 @@
 
 #include "11_iterator/iterator_interface.hpp"
 
+#include <cstdint>
+
 
 namespace IteratorNS
 {
@@ -14,7 +16,7 @@ template <typename Item>
 class Iterator final : public IteratorInterface<Item>
 {
   public:
-    Iterator(std::unique_ptr<Aggregate<Item>> aggregate);
+    Iterator(const std::shared_ptr<Aggregate<Item>>& aggregate);
 
     void first() override;
     void next() override;
@@ -22,18 +24,16 @@ class Iterator final : public IteratorInterface<Item>
     Item currentItem() const override;
 
   private:
-    std::unique_ptr<Aggregate<Item>> m_aggregate;
+    std::shared_ptr<Aggregate<Item>> m_aggregate;
     std::int64_t m_index;
 };
 
 
 template <typename Item>
-Iterator<Item>::Iterator(std::unique_ptr<Aggregate<Item>> aggregate)
+Iterator<Item>::Iterator(const std::shared_ptr<Aggregate<Item>>& aggregate)
   : m_aggregate(aggregate),
     m_index(0)
-{
-    
-}
+{}
 
 template <typename Item>
 void Iterator<Item>::first()
