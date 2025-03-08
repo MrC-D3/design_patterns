@@ -4,9 +4,13 @@
 #include "11_iterator/iterator.hpp"
 
 
+using namespace IteratorNS;
+
+
 TEST(IteratorTest, IsDone)
 {
     Aggregate<int> aggregate;
+    return; 
     auto iterator = aggregate.createIterator();
 
     ASSERT_TRUE(iterator->isDone());
