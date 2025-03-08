@@ -9,9 +9,8 @@ using namespace IteratorNS;
 
 TEST(IteratorTest, IsDone)
 {
-    Aggregate<int> aggregate;
-    return; 
-    auto iterator = aggregate.createIterator();
+    auto aggregate = std::make_shared<Aggregate<int>>();
+    auto iterator = aggregate->createIterator();
 
     ASSERT_TRUE(iterator->isDone());
 }
