@@ -16,7 +16,6 @@ class PrototypeClient
   public:
     PrototypeClient();
 
-    // I don't think it can work consistently: once called, you can't recall it.
     const std::shared_ptr<
       std::array<std::unique_ptr<
         PrototypeInterface>, 2
