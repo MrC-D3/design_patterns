@@ -13,7 +13,7 @@ template <typename Item>
 class AggregateInterface
 {
   public:
-    virtual ~AggregateInterface() = 0;
+    virtual ~AggregateInterface() = default;
     
     virtual std::unique_ptr<IteratorInterface<Item>> createIterator() = 0;
 };

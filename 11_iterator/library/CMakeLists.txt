@@ -18,7 +18,7 @@ target_include_directories(
 
 add_subdirectory(unit_tests)
 
-# Install and Pack.
+# Install and ...
 install(
     TARGETS
         ${PROJECT_NAME}
@@ -37,6 +37,7 @@ install(
         include/11_iterator/
 )
 
+# ... Pack (even if unuseful for a header-only library).
 install(
     EXPORT
         ${PROJECT_NAME}

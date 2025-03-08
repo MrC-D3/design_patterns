@@ -11,14 +11,17 @@ namespace IteratorNS
 {
     
 template <typename Item>
-class Aggregate final : public AggregateInterface<Item>
+class Aggregate final : 
+  public AggregateInterface<Item>,
+  // This requires the class to be instantiated in the heap, so private c'tors.
+  public std::enable_shared_from_this<Aggregate<Item>>
 {
   public:
     std::unique_ptr<IteratorInterface<Item>> createIterator() override;
     // Other possible Iterator-s can be created, as other Aggregate-s.
 
     void addItem(const Item& newItem);
-    std::int64_t size() const;
+    std::size_t size() const;
     Item getItem(const std::int64_t& index) const;
 
   private:
@@ -29,11 +32,12 @@ class Aggregate final : public AggregateInterface<Item>
 template<typename Item>
 std::unique_ptr<IteratorInterface<Item>> Aggregate<Item>::createIterator()
 {
-    return std::make_unique<Iterator<Item>>(this);
+    // Since the class is templated, compiler requires the form this->.
+    return std::make_unique<Iterator<Item>>(this->shared_from_this());
 }
 
 template<typename Item>
-std::int64_t Aggregate<Item>::size() const
+std::size_t Aggregate<Item>::size() const
 {
     return m_elements.size();
 }
@@ -41,6 +45,7 @@ std::int64_t Aggregate<Item>::size() const
 template<typename Item>
 Item Aggregate<Item>::getItem(const std::int64_t& index) const
 {
+    // TODO: make it more robust checking index and using optional<T>.
     return m_elements[index];
 }
 
