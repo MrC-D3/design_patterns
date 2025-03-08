@@ -2,10 +2,16 @@
 #define FACADE_HPP
 
 
+namespace Facade
+{
+  
 class Facade
 {
   public:
-    void do_everything();
+    void do_everything() const;
 };
 
-#endif
+} // namespace Facade
+
+
+#endif // FACADE_HPP

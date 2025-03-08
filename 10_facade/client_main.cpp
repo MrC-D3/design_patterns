@@ -1,8 +1,9 @@
 #include "10_facade/facade.hpp"
 
+
 int main()
 {
-    Facade myFacade;
+    Facade::Facade myFacade;
 
     myFacade.do_everything();
 
