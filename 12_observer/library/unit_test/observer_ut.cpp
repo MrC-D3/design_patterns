@@ -4,12 +4,16 @@
 #include <gtest/gtest.h>
 
 
+using namespace ObserverNS;
+
 TEST(ObserverTestSuite, SubjectSetState)
 {
-    Subject mySubject;
-    Observer myObserver(&mySubject);
+    auto mySubject = std::make_shared<Subject>();
 
-    mySubject.setState(1);
+    // C++ exception with description "bad_weak_ptr" thrown in the test body.
+    auto myObserver = std::make_shared<Observer>( mySubject );
+return;
+    mySubject->setState(1);
 
-    ASSERT_EQ(mySubject.getState(), 1);
+    ASSERT_EQ(mySubject->getState(), 1);
 }

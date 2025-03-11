@@ -1,13 +1,18 @@
 #include "12_observer/subject.hpp"
 
 
-void Subject::setState(int state)
+namespace ObserverNS
+{
+    
+void Subject::setState(const std::int64_t& state)
 {
     m_state = state;
     notify();
 }
 
-int Subject::getState()
+std::int64_t Subject::getState() const
 {
     return m_state;
 }
+
+} // namespace ObserverNS

@@ -2,10 +2,18 @@
 #define OBSERVER_INTERFACE_HPP
 
 
+namespace ObserverNS
+{
+  
 class ObserverInterface
 {
   public:
+    virtual ~ObserverInterface() = default;
+    
     virtual void update() = 0;
 };
 
-#endif
+} // namespace Observer
+
+
+#endif // OBSERVER_INTERFACE_HPP

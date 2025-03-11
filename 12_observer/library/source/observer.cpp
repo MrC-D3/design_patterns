@@ -3,15 +3,18 @@
 #include <iostream>
 
 
-Observer::Observer(Subject* subject)
+namespace ObserverNS
+{
+    
+Observer::Observer(const std::shared_ptr<Subject>& subject)
   : m_subject(subject)
 {
-    subject->attach(this);
+    subject->attach( this->shared_from_this() );
 }
 
 Observer::~Observer()
 {
-    m_subject->detach(this);
+    m_subject->detach( this->shared_from_this() );
 }
 
 void Observer::update()
@@ -20,3 +23,5 @@ void Observer::update()
 
     std::cout << "I'm the Observer. The new state is: " << m_state << std::endl;
 }
+
+} // namespace ObserverNS
