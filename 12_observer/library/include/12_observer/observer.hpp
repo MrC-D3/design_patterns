@@ -15,13 +15,15 @@ class Observer final :
   public std::enable_shared_from_this<Observer>
 {
   public:
-    Observer(const std::shared_ptr<Subject>& subject);
+    explicit Observer(const std::shared_ptr<Subject>& subject);
     ~Observer();
     
+    void attach() override;
     void update() override;
 
   private:
-    std::shared_ptr<Subject> m_subject;
+    // Avoid cyclic shared_ptr Observer->Subject->Observer.
+    std::weak_ptr<Subject> m_subject;
     std::int64_t m_state;
 };
 
