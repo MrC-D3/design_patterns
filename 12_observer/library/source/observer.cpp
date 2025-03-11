@@ -9,17 +9,31 @@ namespace ObserverNS
 Observer::Observer(const std::shared_ptr<Subject>& subject)
   : m_subject(subject)
 {
-    subject->attach( this->shared_from_this() );
+    // Can't call shared_from_this() in the c'tor.
 }
 
 Observer::~Observer()
 {
-    m_subject->detach( this->shared_from_this() );
+    if( auto subject = m_subject.lock() )
+    {
+        subject->detach( this->shared_from_this() );
+    }
+}
+
+void Observer::attach()
+{
+    if( auto subject = m_subject.lock() )
+    {
+        subject->attach( this->shared_from_this() );
+    }
 }
 
 void Observer::update()
 {
-    m_state = m_subject->getState();
+    if( auto subject = m_subject.lock() )
+    {
+        m_state = subject->getState();
+    }
 
     std::cout << "I'm the Observer. The new state is: " << m_state << std::endl;
 }
