@@ -17,7 +17,7 @@ class StateInterface
     virtual void do_something() = 0;
     virtual void do_something_else() = 0;
 
-  private:
+  protected:
     Context* m_context;
 };
 

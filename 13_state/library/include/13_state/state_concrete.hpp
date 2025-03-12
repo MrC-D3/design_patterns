@@ -10,6 +10,8 @@ namespace State
 class StateConcrete1 : public StateInterface
 {
   public:
+    StateConcrete1(Context* context);
+
     void do_something() override;
     void do_something_else() override;
 };
@@ -17,6 +19,8 @@ class StateConcrete1 : public StateInterface
 class StateConcrete2 : public StateInterface
 {
   public:
+    StateConcrete2(Context* context);
+
     void do_something() override;
     void do_something_else() override;
 };
