@@ -27,13 +27,15 @@ install(
     EXPORT
         ${PROJECT_NAME}
     DESTINATION
-        lib/${PROJECT_NAME}/
+        lib/
 )
 
 install(
     FILES
         include/12_observer/subject_interface.hpp
         include/12_observer/observer_interface.hpp
+        include/12_observer/subject.hpp
+        include/12_observer/observer.hpp
     DESTINATION
         include/12_observer/
 )
