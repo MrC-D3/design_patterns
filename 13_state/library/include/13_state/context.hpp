@@ -10,7 +10,7 @@ namespace State
 class Context
 {
   public:
-    Context(StateInterface* state);
+    Context(StateInterface* state = nullptr);
 
     // Both Context and StateConcrete can change state.
     void set_state(StateInterface* state);

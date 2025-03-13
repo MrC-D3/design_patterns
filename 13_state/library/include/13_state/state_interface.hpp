@@ -13,7 +13,7 @@ class StateInterface
     virtual ~StateInterface() = default;
     StateInterface(Context* context);
     
-    // Calling methods as in Context is not mandatory.
+    // Methods names as in Context is not mandatory.
     virtual void do_something() = 0;
     virtual void do_something_else() = 0;
 
