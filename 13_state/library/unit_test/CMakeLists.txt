@@ -1,4 +1,4 @@
-find_package(GTest)
+find_package(GTest REQUIRED)
 
 add_executable(
     ${PROJECT_NAME}_ut
@@ -7,9 +7,10 @@ add_executable(
 
 target_link_libraries(
     ${PROJECT_NAME}_ut
-    PRIVATE
+    PUBLIC
         ${PROJECT_NAME}
-        gtest
-        gtest_main
+        GTest::gtest
+        GTest::gtest_main
+        GTest::gmock
         pthread
 )

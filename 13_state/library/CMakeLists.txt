@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_library(
     ${PROJECT_NAME}
+    source/state_interface.cpp
     source/context.cpp
     source/state_concrete.cpp
 )
