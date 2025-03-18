@@ -12,11 +12,7 @@ namespace Decorator
 class ComponentConcrete final : public ComponentInterface
 {
   public:
-    void behavior() override
-    {
-        std::cout << "I'm the ComponentConcrete. This is my basic behavior." <<
-          std::endl;
-    }
+    void behavior() override;
 };
 
 } // namespace Decorator

@@ -12,14 +12,9 @@ class DecoratorInterface : public ComponentInterface
   public:
     virtual ~DecoratorInterface() = default;
 
-    DecoratorInterface(ComponentInterface* component)
-      : m_component(component)
-    {}
+    DecoratorInterface(ComponentInterface* component);
 
-    virtual void behavior() override
-    {
-        m_component->behavior();
-    }
+    virtual void behavior() override;
 
   protected:
     ComponentInterface* m_component;
