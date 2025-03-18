@@ -3,13 +3,29 @@
 #include "08_prototype/PrototypeConcrete2.hpp"
 
 
+namespace PrototypeClient
+{
+    
 PrototypeClient::PrototypeClient()
 {
-    m_prototypes[0] = new PrototypeConcrete1();
-    m_prototypes[1] = new PrototypeConcrete2();
+    m_prototypes = std::make_shared<
+      std::array<
+        std::unique_ptr<PrototypeInterface>, 2
+      >
+    >();
+
+    (*m_prototypes)[0] = std::make_unique<PrototypeConcrete1>();
+    (*m_prototypes)[1] = std::make_unique<PrototypeConcrete2>();
 }
 
-std::array<PrototypeInterface*, 2>& PrototypeClient::get_prototypes()
+const std::shared_ptr<
+  std::array<std::unique_ptr<
+    PrototypeInterface>, 2
+  >
+>& 
+  PrototypeClient::get_prototypes()
 {
     return m_prototypes;
 }
+
+} // namespace PrototypeClient

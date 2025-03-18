@@ -6,6 +6,7 @@ What I did on a fresh ubuntu:22.04 docker container:
         python-is-python3
         python3-pip
         gcc-9
+        vim
     pip install
         cmake==3.25.2
     Install GTest 

@@ -2,15 +2,18 @@
 
 
 int main()
-{
-    PrototypeClient client;
+{    
+    PrototypeClient::PrototypeClient client;
     auto prototypes = client.get_prototypes();
-
-    PrototypeInterface* copy1 = prototypes[0]->clone();
-    PrototypeInterface* copy2 = prototypes[0]->clone();
+    auto copy1 = std::move( (*prototypes)[0]->clone() );
+    auto copy2 = std::move( (*prototypes)[1]->clone() );
 
     copy1->to_string();
     copy2->to_string();
+
+    // Show get_prototypes can be recalled thanks to shared_ptr.
+    auto prototypes2 = client.get_prototypes();
+    (*prototypes2)[0]->to_string();
 
     return 0;
 }

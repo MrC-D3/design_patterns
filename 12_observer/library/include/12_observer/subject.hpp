@@ -3,15 +3,23 @@
 
 #include "12_observer/subject_interface.hpp"
 
+#include <cstdint>
 
-class Subject : public SubjectInterface
+
+namespace ObserverNS
+{
+  
+class Subject final : public SubjectInterface
 {
   public:    
-    void setState(int state);
-    int getState();
+    void setState(const std::int64_t& state);
+    std::int64_t getState() const;
 
   private:
-    int m_state;
+    std::int64_t m_state;
 };
 
-#endif
+} // namesapce ObserverNS
+
+
+#endif // SUBJECT_HPP
