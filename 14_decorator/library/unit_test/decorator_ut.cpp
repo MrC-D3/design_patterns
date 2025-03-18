@@ -17,17 +17,24 @@ class ComponentMock : public ComponentInterface
 class DecoratorConcreteTest : public ::testing::Test
 {
   protected:
-    DecoratorConcreteTest() = default;
-    ~DecoratorConcreteTest() = default;
+    DecoratorConcreteTest()
+    {
+        // Prefer c'tor/d'tor when you want to init const member variables and
+        //  in case of sub-classing to be sure these operations are called.
+        m_decorator = new DecoratorConcrete(&m_component);
+    }
+    ~DecoratorConcreteTest()
+    {
+        delete m_decorator;
+    }
 
     void SetUp() override
     {
-        m_decorator = new DecoratorConcrete(&m_component);
+        // Prefer SetUp/TearDown when calling virtual methods, throwing
+        //  exceptions or using ASSERT_.
     }
-
     void TearDown() override
     {
-        delete m_decorator;
     }
 
     // Class members.
