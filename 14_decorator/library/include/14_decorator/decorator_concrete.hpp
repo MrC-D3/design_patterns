@@ -12,17 +12,9 @@ namespace Decorator
 class DecoratorConcrete final : public DecoratorInterface
 {
   public:
-    DecoratorConcrete(ComponentInterface* component)
-      : DecoratorInterface(component)
-    {}
+    DecoratorConcrete(ComponentInterface* component);
 
-    void behavior() override
-    {
-        DecoratorInterface::behavior();
-
-        std::cout << "I'm the DecoratorConcrete. I'm enriching the Component's \
-          behavior with something after." << std::endl;
-    }
+    void behavior() override;
 };
 
 } // namespace Decorator
