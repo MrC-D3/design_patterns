@@ -1,6 +1,8 @@
 #ifndef STRATEGY_INTERFACE_HPP
 #define STRATEGY_INTERFACE_HPP
 
+#include <cstdint>
+
 
 namespace Strategy
 {
