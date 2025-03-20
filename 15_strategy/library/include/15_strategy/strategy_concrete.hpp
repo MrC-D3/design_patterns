@@ -10,11 +10,7 @@ namespace Strategy
 class StrategyConcrete final : public StrategyInterface
 {
   public:
-    void do_something(std::int64_t data) override
-    {
-        std::cout << "I'm the StrategyConcrete. I'll do in my way using: " << 
-          data << std::endl;
-    }
+    void do_something(std::int64_t data) override;
 };
 
 } // namespace Strategy
