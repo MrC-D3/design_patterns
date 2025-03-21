@@ -1,3 +1,5 @@
+enable_testing()
+
 find_package(GTest)
 
 add_executable(
@@ -13,16 +15,10 @@ target_link_libraries(
         GTest::gmock
 )
 
+# CTest.
 add_test(
     NAME 
         ${PROJECT_NAME}_ut
     COMMAND 
-        ${PROJECT_NAME}_ut --gtest_output=xml:${CMAKE_BINARY_DIR}/Testing/qualification/${PROJECT_NAME}_ut.xml
+        ${PROJECT_NAME}_ut
 )
-set_tests_properties(
-    ${PROJECT_NAME}_ut # Test name
-    PROPERTIES 
-        LABELS unit_test
-)
-# ctest --output-on-failure -T test --no-compress-output -L "^unit_test$" --output-junit test_results/results.xml'
-
