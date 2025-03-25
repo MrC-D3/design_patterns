@@ -12,16 +12,9 @@ namespace Visitor
 class ObjectStructure
 {
   public:
-    ObjectStructure()
-    {
-        m_elements.emplace_back(ElementConcreteA());
-        m_elements.emplace_back(ElementConcreteB());
-    }
+    ObjectStructure();
 
-    std::list<ElementInterface*> get_elements()
-    {
-        return m_elements;
-    }
+    std::list<ElementInterface*> get_elements();
 
   private:
     std::list<ElementInterface*> m_elements;
