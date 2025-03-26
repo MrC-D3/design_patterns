@@ -15,8 +15,8 @@ class VisitorInterface
   public:
     virtual ~VisitorInterface() = default;
 
-    // TODO: give the methods the same name (i.e. apply Method Overloading) for
-    //  an example of Double Dispatch:
+    // TODO: give methods the same name (i.e. apply Method Overloading) for an
+    //  example of Double Dispatch: result depends on the type of 2 variables.
     //  1. an ElementConcreteX must Override the virtual method access(), so a
     //   call like element_ptr->access() is resolved by Late/Dynamic Binding;
     //  2. in the Override of access(), the ElementConcreteX passes itself to
