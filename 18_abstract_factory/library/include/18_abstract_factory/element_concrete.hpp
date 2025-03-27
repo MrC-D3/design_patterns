@@ -7,7 +7,7 @@
 namespace AbstractFactoryNS
 {
 
-class ElementConcrete : public ElementInterface
+class ElementConcreteA1 : public ElementInterfaceA
 {
 
 };
