@@ -5,7 +5,7 @@
 namespace AbstractFactoryNS
 {
 
-class ElementInterface
+class ElementInterfaceA
 {
 
 };
