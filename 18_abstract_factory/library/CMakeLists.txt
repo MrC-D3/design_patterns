@@ -4,6 +4,7 @@ project(abstract_factory_lib)
 
 add_library(
     ${PROJECT_NAME}
+    source/element_concrete.cpp
     source/concrete_factory.cpp
 )
 
@@ -11,10 +12,11 @@ target_include_directories(
     ${PROJECT_NAME}
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/>
-        $<INSTALL_INTERACE:include/>
+        $<INSTALL_INTERFACE:include/>
 )
 
 # Test.
+enable_testing()
 add_subdirectory(unit_test)
 
 # Install.
@@ -45,8 +47,8 @@ install(
     DESTINATION
         lib/cmake/18_abstract_factory
 )
-include(CMakePackageConfigHelper)
-config_package_configure_file(
+include(CMakePackageConfigHelpers)
+configure_package_config_file(
     Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     INSTALL_DESTINATION
