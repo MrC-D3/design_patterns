@@ -7,8 +7,13 @@ namespace AbstractFactoryNS
 
 class ElementInterfaceA
 {
+  public:
+    virtual ~ElementInterfaceA() = default;
 
+    virtual void doA() = 0;
 };
+
+// Potentially ElementInterfaceB and other Product interfaces.
 
 } // namesapce AbstractFactoryNS
 
