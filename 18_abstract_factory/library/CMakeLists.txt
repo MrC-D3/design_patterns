@@ -45,14 +45,14 @@ install(
     FILE
         ${PROJECT_NAME}.cmake
     DESTINATION
-        lib/cmake/18_abstract_factory
+        lib/cmake/${PROJECT_NAME}/
 )
 include(CMakePackageConfigHelpers)
 configure_package_config_file(
     Config.cmake.in
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
     INSTALL_DESTINATION
-        lib/cmake/${PROJECT_NAME}
+        lib/cmake/${PROJECT_NAME}/
 )
 install(
     FILES
