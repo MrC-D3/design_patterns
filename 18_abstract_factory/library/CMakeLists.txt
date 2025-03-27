@@ -15,3 +15,46 @@ target_include_directories(
 )
 
 # Test.
+add_subdirectory(unit_test)
+
+# Install.
+install(
+    FILES
+        include/18_abstract_factory/abstract_factory.hpp
+        include/18_abstract_factory/concrete_factory.hpp
+        include/18_abstract_factory/element_interface.hpp
+        include/18_abstract_factory/element_concrete.hpp
+    DESTINATION
+        include/18_abstract_factory/
+)
+install(
+    TARGETS
+        ${PROJECT_NAME}
+    EXPORT
+        ${PROJECT_NAME}
+    DESTINATION
+        lib/
+)
+
+# Pack.
+install(
+    EXPORT
+        ${PROJECT_NAME}
+    FILE
+        ${PROJECT_NAME}.cmake
+    DESTINATION
+        lib/cmake/18_abstract_factory
+)
+include(CMakePackageConfigHelper)
+config_package_configure_file(
+    Config.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    INSTALL_DESTINATION
+        lib/cmake/${PROJECT_NAME}
+)
+install(
+    FILES
+        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake
+    DESTINATION
+        lib/cmake/${PROJECT_NAME}/
+)
