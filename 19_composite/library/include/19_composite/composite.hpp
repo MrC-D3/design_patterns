@@ -12,7 +12,7 @@ class Composite : public Component
   public:
     void act() override;
 
-    void add(Component* child);
+    void add(Component* child) override;
 
   private:
     std::list<Component*> m_children;
