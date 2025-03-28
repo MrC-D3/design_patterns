@@ -4,6 +4,7 @@
 
 namespace CompositeNS
 {
+
 class Component
 {
   public:

@@ -6,6 +6,7 @@
 
 namespace CompositeNS
 {
+  
 class Leaf : public Component
 {
   public:

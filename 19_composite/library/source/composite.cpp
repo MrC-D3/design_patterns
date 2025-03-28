@@ -12,7 +12,7 @@ void Composite::act()
         i->act();
     }
 
-    std::cout << "I'm the Composite. I'm acting." << std::endl;
+    std::cout << "I'm a Composite. I'm acting." << std::endl;
 }
 
 void Composite::add(Component* child)
