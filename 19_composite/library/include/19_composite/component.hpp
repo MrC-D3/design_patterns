@@ -10,6 +10,8 @@ class Component
     ~Component() = default;
 
     virtual void act() = 0;
+
+    virtual void add(Component* child);
 };
 
 } // namespace CompositeNS
