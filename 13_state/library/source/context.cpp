@@ -4,15 +4,17 @@
 namespace State
 {
 
-Context::Context(StateInterface* state)
-  : m_state(state)
-{
+Context::Context(std::unique_ptr<StateInterface>&& state)
+  : m_state( std::move(state) )
+{}
 
-}
+Context::Context(Context&& origin)
+  : m_state( std::move(origin.m_state) )
+{}
 
-void Context::set_state(StateInterface* state)
+void Context::set_state(std::unique_ptr<StateInterface>&& state)
 {
-    m_state = state;
+    m_state = std::move(state);
 }
 
 void Context::do_something()

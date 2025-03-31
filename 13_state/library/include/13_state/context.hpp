@@ -10,16 +10,18 @@ namespace State
 class Context
 {
   public:
-    Context(StateInterface* state = nullptr);
+    Context(std::unique_ptr<StateInterface>&& state = nullptr);
+    Context(const Context& origin) = delete;
+    Context(Context&& origin);
 
     // Both Context and StateConcrete can change state.
-    void set_state(StateInterface* state);
+    void set_state(std::unique_ptr<StateInterface>&& state);
 
     void do_something();
     void do_something_else();
 
   private:
-    StateInterface* m_state;
+    std::unique_ptr<StateInterface> m_state;
 };
 
 } // namespace State
