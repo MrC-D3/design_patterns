@@ -4,7 +4,9 @@
 
 int main()
 {
-    OriginatorConcrete* myOriginator = new OriginatorConcrete();
+    using namespace Memento;
+
+    auto myOriginator = std::make_shared<OriginatorConcrete>();
     CareTaker myCareTaker(myOriginator);
 
     // First set.

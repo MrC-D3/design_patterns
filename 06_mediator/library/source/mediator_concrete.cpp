@@ -1,16 +1,37 @@
-#include "06_moderator/moderator_concrete.hpp"
+#include "06_mediator/mediator_concrete.hpp"
+
+#include <iostream>
 
 
-ModeratorConcrete::ModeratorConcrete(ColleagueConcreteA* colleagueA,
-    ColleagueConcreteB* colleagueB)
-    : m_colleagueA(colleagueA),
-      m_colleagueB(colleagueB)
+namespace Mediator
 {
-    colleagueA->set_moderator(this);
-    colleagueB->set_moderator(this);
+    
+MediatorConcrete::MediatorConcrete(
+  const std::shared_ptr<ColleagueConcreteA>& colleagueA,
+  const std::shared_ptr<ColleagueConcreteB>& colleagueB
+)
+  : m_colleagueA(colleagueA),
+    m_colleagueB(colleagueB)
+{
 }
 
-void ModeratorConcrete::notify(std::string notification)
+std::shared_ptr<MediatorConcrete> MediatorConcrete::constructor(
+    const std::shared_ptr<ColleagueConcreteA>& colleagueA,
+    const std::shared_ptr<ColleagueConcreteB>& colleagueB
+  )
+{
+    // make_shared<> won't work because the MediatorConcrete's c'tor is private.
+    std::shared_ptr<MediatorConcrete> instance{
+        new MediatorConcrete(colleagueA, colleagueB)
+    };
+
+    instance->m_colleagueA->set_mediator( instance );
+    instance->m_colleagueB->set_mediator( instance );
+
+    return instance;
+}
+
+void MediatorConcrete::notify(const std::string& notification) const
 {
     if(notification == "A1")
     {
@@ -21,3 +42,5 @@ void ModeratorConcrete::notify(std::string notification)
         m_colleagueA->operationA2();
     }
 }
+
+} // namespace Mediator
