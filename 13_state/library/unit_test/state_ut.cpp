@@ -22,16 +22,15 @@ TEST(StateTestSuite, GeneralTest)
 {
     // Init.
     Context context;
-    State1Mock* state1 = new State1Mock();
+    auto state1 = std::make_unique<State1Mock>();
 
     // Prepare EXPECT_s.
     EXPECT_CALL(*state1, do_something)
       .Times(AtLeast(1));
 
     // Call.
-    context.set_state(state1);
+    context.set_state( std::move(state1) );
     context.do_something();
 
-    // Free (or warning from Gmock).
-    delete state1;
+    // Memory freed by unique_ptr (otherwise, warning from Gmock).
 }
