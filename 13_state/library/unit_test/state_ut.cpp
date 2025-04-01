@@ -21,16 +21,17 @@ class State1Mock : public StateInterface
 TEST(StateTestSuite, GeneralTest)
 {
     // Init.
-    Context context;
+    auto context = std::make_shared<Context>();
     auto state1 = std::make_unique<State1Mock>();
 
     // Prepare EXPECT_s.
-    EXPECT_CALL(*state1, do_something)
+    auto ptr = state1.get();
+    EXPECT_CALL(*ptr, do_something)
       .Times(AtLeast(1));
 
     // Call.
-    context.set_state( std::move(state1) );
-    context.do_something();
+    context->set_state( std::move(state1) );
+    context->do_something();
 
-    // Memory freed by unique_ptr (otherwise, warning from Gmock).
+    delete ptr;
 }

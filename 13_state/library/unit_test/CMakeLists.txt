@@ -9,8 +9,6 @@ target_link_libraries(
     ${PROJECT_NAME}_ut
     PUBLIC
         ${PROJECT_NAME}
-        GTest::gtest
-        GTest::gtest_main
+        GTest::gtest_main # Include GTest::gtest and pthread.
         GTest::gmock
-        pthread
 )

@@ -7,11 +7,10 @@ using namespace State;
 int main()
 {
     // Init.
-    Context context;
-    StateConcrete1 state1(&context);
+    auto context = std::make_shared<Context>();
+    context->set_state( std::make_unique<StateConcrete1>() );
 
     // Call.
-    context.set_state(&state1);
     context.do_something();
     context.do_something();
 
