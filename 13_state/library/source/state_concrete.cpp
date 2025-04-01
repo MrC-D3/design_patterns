@@ -26,11 +26,7 @@ void StateConcrete1::do_something_else()
     std::cout << "I'm State1. This will change the state to State2." << 
       std::endl;
 
-    m_context->set_state(
-      std::make_unique<StateConcrete2>(
-        std::make_unique<Context>(m_context)
-      )
-    );
+    m_context->set_next_state( std::make_unique<StateConcrete2>() );
 }
 
 
@@ -48,11 +44,7 @@ void StateConcrete2::do_something()
 {
     std::cout << "I'm State2. This will change the state to State2." << std::endl;
 
-    m_context->set_state(
-      std::make_unique<StateConcrete1>(
-        std::make_unique<Context>(m_context)
-      )
-    );
+    m_context->set_next_state( std::make_unique<StateConcrete1>() );
 }
 
 void StateConcrete2::do_something_else()

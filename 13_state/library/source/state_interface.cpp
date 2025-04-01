@@ -7,8 +7,7 @@ namespace State
     
 StateInterface::StateInterface(std::unique_ptr<Context>&& context)
   : m_context(std::move(context))
-{
-}
+{}
 
 StateInterface::StateInterface(StateInterface&& origin)
   : m_context(std::move(origin.m_context))
@@ -22,6 +21,11 @@ StateInterface& StateInterface::operator=(StateInterface&& origin)
     m_context = std::move(origin.m_context);
     // Returning the calling instance itself.
     return *this;
+}
+
+void StateInterface::set_context(std::shared_ptr<Context> context)
+{
+    m_context = context;
 }
 
 } // namespace State
