@@ -14,7 +14,11 @@ class State1Mock : public StateInterface
     // Base class doesn't have a default c'tor, so Derived class must call it.
     State1Mock() : StateInterface(nullptr) {};
 
-    MOCK_METHOD(void, do_something, (), (override));
+    void do_something() override
+    {
+        std::cout << "I'm State1Mock. Do something." << std::endl;
+    }
+
     MOCK_METHOD(void, do_something_else, (), (override));
 };
 
@@ -24,14 +28,19 @@ TEST(StateTestSuite, GeneralTest)
     auto context = std::make_shared<Context>();
     auto state1 = std::make_unique<State1Mock>();
 
-    // Prepare EXPECT_s.
-    auto ptr = state1.get();
-    EXPECT_CALL(*ptr, do_something)
-      .Times(AtLeast(1));
+    // EXPECT_CALL(*state1, do_something) causes a memory leak warning because 
+    //  of unique_ptr. Required AllowLeak() to kill it.
+    auto origin = std::cout.rdbuf();
+    std::stringstream output; // std::streambuf of type std::string.
+    std::cout.rdbuf(output.rdbuf());
 
     // Call.
     context->set_state( std::move(state1) );
     context->do_something();
 
-    delete ptr;
+    // Checks.
+    EXPECT_NE( output.str().find("I'm State1Mock."), std::string::npos );
+
+    // Restore.
+    std::cout.rdbuf(origin);
 }
