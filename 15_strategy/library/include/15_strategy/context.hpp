@@ -2,6 +2,7 @@
 #define CONTEXT_HPP
 
 #include "15_strategy/strategy_interface.hpp"
+#include <memory>
 
 
 namespace Strategy
@@ -10,14 +11,23 @@ namespace Strategy
 class Context
 {
   public:
-    Context(StrategyInterface* strategy = nullptr, std::int64_t data = 0);
+    ~Context() = default;
+    Context(
+      std::unique_ptr<StrategyInterface>&& strategy = nullptr, 
+      const std::int64_t& data = 0);
 
-    void set_strategy(StrategyInterface* strategy);
+    Context(const Context& origin) = delete;
+    Context& operator=(const Context& origin) = delete;
+
+    Context(Context&& origin) = default;
+    Context& operator=(Context&& origin) = default;
+
+    void set_strategy(std::unique_ptr<StrategyInterface>&& strategy);
 
     void apply_strategy();
 
   protected:
-    StrategyInterface* m_strategy;
+    std::unique_ptr<StrategyInterface> m_strategy;
     std::int64_t m_data;
 };
 

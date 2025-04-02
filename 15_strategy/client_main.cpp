@@ -8,8 +8,7 @@ using namespace Strategy;
 
 int main()
 {
-    StrategyConcrete strategy;
-    Context context(&strategy);
+    Context context( std::make_unique<StrategyConcrete>(), 10);
 
     context.apply_strategy();
 

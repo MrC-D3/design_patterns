@@ -11,8 +11,15 @@ class StrategyInterface
 {
   public:
     virtual ~StrategyInterface() = default;
+    StrategyInterface() = default;
 
-    virtual void do_something(std::int64_t data) = 0;
+    StrategyInterface(const StrategyInterface& origin) = default;
+    StrategyInterface& operator=(StrategyInterface& origin) = default;
+
+    StrategyInterface(StrategyInterface&& origin) = default;
+    StrategyInterface& operator=(StrategyInterface&& origin) = default;
+
+    virtual void do_something(const std::int64_t& data) = 0;
 };
 
 } // namespace Strategy
