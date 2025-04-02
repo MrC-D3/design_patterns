@@ -42,7 +42,7 @@ StateConcrete2& StateConcrete2::operator=(StateConcrete2&& origin)
 
 void StateConcrete2::do_something()
 {
-    std::cout << "I'm State2. This will change the state to State2." << std::endl;
+    std::cout << "I'm State2. This will change the state to State1." << std::endl;
 
     m_context->set_next_state( std::make_unique<StateConcrete1>() );
 }

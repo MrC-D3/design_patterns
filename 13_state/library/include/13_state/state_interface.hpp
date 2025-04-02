@@ -13,19 +13,18 @@ class StateInterface
 {
   public:
     virtual ~StateInterface() = default;
-    StateInterface() = default;
-    StateInterface(std::unique_ptr<Context>&& context);
-    // Copy c'tor can't exist, since unique_ptr<T> can't be copied.
-    StateInterface(const StateInterface& origin) = delete;
-    // Move c'tor.
-    StateInterface(StateInterface&& origin);
+
+    StateInterface(const std::shared_ptr<Context>& context = nullptr);
+
+    StateInterface(const StateInterface& origin) = default;
+    StateInterface(StateInterface&& origin) = default;
 
     // Assign operations.
-    StateInterface& operator=(const StateInterface& origin) = delete;
-    StateInterface& operator=(StateInterface&& origin);
+    StateInterface& operator=(const StateInterface& origin) = default;
+    StateInterface& operator=(StateInterface&& origin) = default;
 
     // Setters.
-    void set_context(std::shared_ptr<Context> context);
+    void set_context(const std::shared_ptr<Context>& context);
     
     // Methods' names as in Context is not mandatory.
     virtual void do_something() = 0;
