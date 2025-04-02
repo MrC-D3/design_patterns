@@ -13,7 +13,7 @@ class DecoratorConcrete final : public DecoratorInterface
 {
   public:
     ~DecoratorConcrete() = default;
-    DecoratorConcrete(std::unique_ptr<ComponentInterface>&& component);
+    explicit DecoratorConcrete(std::unique_ptr<ComponentInterface>&& component);
 
     // Delete copy methods because of unique_ptr.
     DecoratorConcrete(const DecoratorConcrete& origin) = delete;
