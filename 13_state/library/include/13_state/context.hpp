@@ -25,7 +25,7 @@ class Context : public std::enable_shared_from_this<Context>
   private:
     std::unique_ptr<StateInterface> m_state;
     // Need m_next_state when using smart pointers or the calling StateConcreteX
-    //  would delete itself when change state.
+    //  would delete itself when change state. Implement with std::optional<T>?
     std::unique_ptr<StateInterface> m_next_state;
 
     void update_state();

@@ -11,15 +11,15 @@ int main()
     context->set_state( std::make_unique<StateConcrete1>() );
 
     // Call.
-    context.do_something();
-    context.do_something();
+    context->do_something();
+    context->do_something();
 
-    context.do_something_else();
-    context.do_something_else();
-    context.do_something_else();
+    context->do_something_else();
+    context->do_something_else();
+    context->do_something_else();
 
-    context.do_something();
-    context.do_something();
+    context->do_something();
+    context->do_something();
     
     return 0;
 }
