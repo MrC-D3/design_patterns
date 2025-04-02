@@ -19,6 +19,6 @@ class ComponentInterface
     virtual void behavior() = 0;
 };
 
-} // namespace DecoratorInterace
+} // namespace Decorator
 
 #endif // COMPONENT_INTERFACE_HPP

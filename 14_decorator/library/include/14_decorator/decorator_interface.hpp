@@ -12,7 +12,7 @@ class DecoratorInterface : public ComponentInterface
 {
   public:
     virtual ~DecoratorInterface() = default;
-    DecoratorInterface(std::unique_ptr<ComponentInterface>&& component);
+    explicit DecoratorInterface(std::unique_ptr<ComponentInterface>&& component);
 
     // Delete copy methods because of unique_ptr.
     DecoratorInterface(const DecoratorInterface& originator) = delete;
