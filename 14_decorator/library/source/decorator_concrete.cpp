@@ -1,11 +1,12 @@
 #include "14_decorator/decorator_concrete.hpp"
+#include <iostream>
 
 
 namespace Decorator
 {
 
-DecoratorConcrete::DecoratorConcrete(ComponentInterface* component)
-  : DecoratorInterface(component)
+DecoratorConcrete::DecoratorConcrete(std::unique_ptr<ComponentInterface>&& component)
+  : DecoratorInterface( std::move(component) )
 {}
 
 void DecoratorConcrete::behavior()

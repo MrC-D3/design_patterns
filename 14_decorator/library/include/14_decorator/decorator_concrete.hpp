@@ -3,7 +3,7 @@
 
 #include "14_decorator/decorator_interface.hpp"
 
-#include <iostream>
+#include <memory>
 
 
 namespace Decorator
@@ -12,7 +12,15 @@ namespace Decorator
 class DecoratorConcrete final : public DecoratorInterface
 {
   public:
-    DecoratorConcrete(ComponentInterface* component);
+    ~DecoratorConcrete() = default;
+    DecoratorConcrete(std::unique_ptr<ComponentInterface>&& component);
+
+    // Delete copy methods because of unique_ptr.
+    DecoratorConcrete(const DecoratorConcrete& origin) = delete;
+    DecoratorConcrete& operator=(const DecoratorConcrete& origin) = delete;
+
+    DecoratorConcrete(DecoratorConcrete&& origin) = default;
+    DecoratorConcrete& operator=(DecoratorConcrete&& origin) = default;
 
     void behavior() override;
 };

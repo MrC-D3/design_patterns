@@ -4,8 +4,8 @@
 namespace Decorator
 {
 
-DecoratorInterface::DecoratorInterface(ComponentInterface* component)
-    : m_component(component)
+DecoratorInterface::DecoratorInterface(std::unique_ptr<ComponentInterface>&& component)
+  : m_component(std::move(component))
 {}
 
 void DecoratorInterface::behavior()
