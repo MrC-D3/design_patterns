@@ -12,7 +12,7 @@ class Context
 {
   public:
     ~Context() = default;
-    Context(
+    explicit Context(
       std::unique_ptr<StrategyInterface>&& strategy = nullptr, 
       const std::int64_t& data = 0);
 
