@@ -6,13 +6,13 @@
 namespace Visitor
 {
 
-void VisitorConcrete1::visitA(ElementConcreteA* elementA)
+void VisitorConcrete1::visit(const std::shared_ptr<ElementConcreteA>& elementA)
 {
     std::cout << "I'm the VisitorConcrete1 visiting ElementConcreteA." << 
         std::endl;
 }
 
-void VisitorConcrete1::visitB(ElementConcreteB* elementB)
+void VisitorConcrete1::visit(const std::shared_ptr<ElementConcreteB>& elementB)
 {
     std::cout << "I'm the VisitorConcrete1 visiting ElementConcreteB." << 
         std::endl;

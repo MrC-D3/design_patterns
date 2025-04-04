@@ -12,8 +12,8 @@ using ::testing::AtLeast;
 class VisitorMock : public VisitorInterface
 {
   public:
-    MOCK_METHOD( void, visitA, (ElementConcreteA*), (override) );
-    MOCK_METHOD( void, visitB, (ElementConcreteB*), (override) );
+    MOCK_METHOD( void, visit, (const std::shared_ptr<ElementConcreteA>&), (override) );
+    MOCK_METHOD( void, visit, (const std::shared_ptr<ElementConcreteB>&), (override) );
 };
 
 class VisitorTestFixture : public ::testing::Test
@@ -32,16 +32,23 @@ class VisitorTestFixture : public ::testing::Test
     {}
 
     ObjectStructure m_object_structure;
-    VisitorMock m_visitor;
 };
 
 TEST_F(VisitorTestFixture, TestName)
 {
-    EXPECT_CALL(m_visitor, visitA).Times(AtLeast(1));
-    EXPECT_CALL(m_visitor, visitB).Times(AtLeast(1));
+    using ::testing::An;
 
-    for(auto i : m_object_structure.get_elements())
+    auto m_visitor = std::make_shared<VisitorMock>();
+    EXPECT_CALL(*m_visitor, 
+      visit( An<const std::shared_ptr<ElementConcreteA>&>() )
+    ).Times(AtLeast(1));
+    EXPECT_CALL(*m_visitor, 
+      visit( An<const std::shared_ptr<ElementConcreteB>&>() )
+    ).Times(AtLeast(1));
+
+    // Range-based-for automatically calls begin().
+    for(auto& i : m_object_structure.get_elements() )
     {
-        i->access(&m_visitor);
+        i->access( m_visitor );
     }
 }
