@@ -8,15 +8,24 @@
 namespace CompositeNS
 {
 
-class Composite : public Component
+class Composite final : public Component
 {
   public:
+    ~Composite() = default;
+    Composite() = default;
+
+    Composite(const Composite& origin) = default;
+    Composite& operator=(const Composite& origin) = default;
+
+    Composite(Composite&& origin) = default;
+    Composite& operator=(Composite&& origin) = default;
+
     void act() override;
 
-    void add(Component* child) override;
+    void add(std::unique_ptr<Component>&& child) override;
 
   private:
-    std::list<Component*> m_children;
+    std::list<std::unique_ptr<Component>> m_children;
 };
 
 } // namespace CompositeNS
