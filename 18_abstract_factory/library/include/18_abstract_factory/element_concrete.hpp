@@ -7,9 +7,18 @@
 namespace AbstractFactoryNS
 {
 
-class ElementConcreteA1 : public ElementInterfaceA
+class ElementConcreteA1 final : public ElementInterfaceA
 {
   public:
+    ~ElementConcreteA1() = default;
+    ElementConcreteA1() = default;
+
+    ElementConcreteA1(const ElementConcreteA1& origin) = default;
+    ElementConcreteA1& operator=(const ElementConcreteA1& origin) = default;
+
+    ElementConcreteA1(ElementConcreteA1&& origin) = default;
+    ElementConcreteA1& operator=(ElementConcreteA1&& origin) = default;
+    
     void doA() override;
 };
 
