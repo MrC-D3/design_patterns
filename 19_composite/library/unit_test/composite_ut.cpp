@@ -46,6 +46,8 @@ class CompositeTestSuite : public ::testing::Test
 TEST_F(CompositeTestSuite, CompositeTest)
 {
     EXPECT_CALL(*m_mock_leaf, act).Times(AtLeast(1));
+
+    testing::Mock::AllowLeak(m_mock_leaf);
     
     m_composite.act();
 }
