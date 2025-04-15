@@ -16,7 +16,10 @@ class CommandTestFixture : public ::testing::Test
 {
   protected:
     CommandTestFixture()
-    {}
+      : m_command(),
+        m_invoker(&m_command)
+    {
+    }
     
     ~CommandTestFixture()
     {}
@@ -28,12 +31,14 @@ class CommandTestFixture : public ::testing::Test
     {}
 
     MockCommand m_command;
-    Invoker* m_invoker= new Invoker(&m_command);
+    // Writing here m_invoker(&m_command) doesn't work because not enough order
+    //  context for the compiler: use c'tor initializer list.
+    Invoker m_invoker;
 };
 
 TEST_F(CommandTestFixture, call_command)
 {
     EXPECT_CALL(m_command, execute).Times(::testing::AtLeast(1));
 
-    m_invoker->call_command();
+    m_invoker.call_command();
 }
