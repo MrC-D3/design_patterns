@@ -11,7 +11,7 @@ NonterminalExpression0::NonterminalExpression0(
 
 bool NonterminalExpression0::interpret()
 {
-    return (m_operand1 && m_operand2);
+    return ( m_operand1->interpret() && m_operand2->interpret() );
 }
 
 } // namespace Interpreter
