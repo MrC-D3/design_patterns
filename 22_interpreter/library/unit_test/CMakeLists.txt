@@ -17,7 +17,7 @@ add_test(
     NAME
         ${PROJECT_NAME}_ut
     COMMAND
-        ${PROJECT_NAME}_ut --gtest_output:xml=${CMAKE_CURRENT_BINARY_DIR}/gtest_output.xml
+        ${PROJECT_NAME}_ut --gtest_output=xml:${CMAKE_BINARY_DIR}/gtest_output.xml
 )
 
 set_tests_properties(
