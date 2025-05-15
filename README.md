@@ -8,4 +8,5 @@ What I did on a fresh ubuntu:22.04 docker container:
         gcc-9
     pip install
         cmake==3.25.2
+        conan==1.59.0
     Install GTest 
