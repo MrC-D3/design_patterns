@@ -7,11 +7,9 @@ namespace CoR
 
 HandlerConcrete::HandlerConcrete(std::unique_ptr<HandlerInterface>&& next, 
   const std::int32_t request)
-  : HandlerInterface{std::move(next)}
+  : HandlerInterface(std::move(next), request)
   // m_request declared in the base class, so can't be initialized here. 
-{
-    m_request = request;
-}
+{}
 
 void HandlerConcrete::handleRequest(const std::int32_t request) 
 {

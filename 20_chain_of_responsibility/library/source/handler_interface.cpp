@@ -4,8 +4,10 @@
 namespace CoR
 {
 
-HandlerInterface::HandlerInterface(std::unique_ptr<HandlerInterface>&& next)
-  : m_next(std::move(next))
+HandlerInterface::HandlerInterface(std::unique_ptr<HandlerInterface>&& next,
+  const std::int32_t request)
+  : m_next(std::move(next)),
+    m_request(request)
 {}
 
 // Defaul behavior: pass the request.

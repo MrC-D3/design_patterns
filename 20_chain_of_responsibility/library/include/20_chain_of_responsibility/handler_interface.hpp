@@ -11,10 +11,11 @@ class HandlerInterface
 {
   public:
     virtual ~HandlerInterface() = default;
-    explicit HandlerInterface(std::unique_ptr<HandlerInterface>&& next);
+    explicit HandlerInterface(std::unique_ptr<HandlerInterface>&& next,
+      const std::int32_t request);
 
-    HandlerInterface(const HandlerInterface& origin) = default;
-    HandlerInterface& operator=(const HandlerInterface& origin) = default;
+    HandlerInterface(const HandlerInterface& origin) = delete;
+    HandlerInterface& operator=(const HandlerInterface& origin) = delete;
 
     HandlerInterface(HandlerInterface&& origin) = default;
     HandlerInterface& operator=(HandlerInterface&& origin) = default;
@@ -24,7 +25,7 @@ class HandlerInterface
 
   protected:
     std::unique_ptr<HandlerInterface> m_next;
-    std::int32_t m_request{-1};
+    std::int32_t m_request;
 };
 
 } // namespace CoR

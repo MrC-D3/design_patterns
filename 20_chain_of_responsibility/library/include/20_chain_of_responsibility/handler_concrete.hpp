@@ -9,15 +9,15 @@
 namespace CoR
 {
 
-class HandlerConcrete : public HandlerInterface
+class HandlerConcrete final : public HandlerInterface
 {
   public:
     ~HandlerConcrete() = default;
     HandlerConcrete(std::unique_ptr<HandlerInterface>&& next, 
       const std::int32_t request);
 
-    HandlerConcrete(const HandlerConcrete& origin) = default;
-    HandlerConcrete& operator=(const HandlerConcrete& origin) = default;
+    HandlerConcrete(const HandlerConcrete& origin) = delete;
+    HandlerConcrete& operator=(const HandlerConcrete& origin) = delete;
 
     HandlerConcrete(HandlerConcrete&& origin) = default;
     HandlerConcrete& operator=(HandlerConcrete&& origin) = default;
