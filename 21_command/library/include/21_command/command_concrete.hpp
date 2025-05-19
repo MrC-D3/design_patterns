@@ -12,7 +12,7 @@ class CommandConcrete : public CommandInterface
 {
   public:
     ~CommandConcrete() = default;
-    CommandConcrete(const Receiver& receiver);
+    explicit CommandConcrete(const Receiver& receiver);
 
     CommandConcrete(const CommandConcrete& origin) = default;
     CommandConcrete& operator=(const CommandConcrete& origin) = default;

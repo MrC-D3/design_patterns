@@ -16,9 +16,10 @@ class CommandTestFixture : public ::testing::Test
 {
   protected:
     CommandTestFixture()
-      : m_command(),
-        m_invoker(&m_command)
     {
+        auto command = std::make_unique<MockCommand>();
+        m_raw_command = command.get();
+        m_invoker = std::make_unique<Invoker>(std::move(command));
     }
     
     ~CommandTestFixture()
@@ -30,15 +31,15 @@ class CommandTestFixture : public ::testing::Test
     void TearDown()
     {}
 
-    MockCommand m_command;
+    MockCommand* m_raw_command;
     // Writing here m_invoker(&m_command) doesn't work because not enough order
     //  context for the compiler: use c'tor initializer list.
-    Invoker m_invoker;
+    std::unique_ptr<Invoker> m_invoker;
 };
 
 TEST_F(CommandTestFixture, call_command)
 {
-    EXPECT_CALL(m_command, execute).Times(::testing::AtLeast(1));
+    EXPECT_CALL(*m_raw_command, execute).Times(::testing::AtLeast(1));
 
-    m_invoker.call_command();
+    m_invoker->call_command();
 }
