@@ -4,10 +4,13 @@
 #include "11_iterator/iterator_interface.hpp"
 
 
+using namespace IteratorNS;
+
+
 TEST(IteratorTest, IsDone)
 {
-    Aggregate<int> aggregate;
-    auto iterator = aggregate.createIterator();
+    auto aggregate = std::make_shared<Aggregate<int>>();
+    auto iterator = aggregate->createIterator();
 
     ASSERT_TRUE(iterator->isDone());
 }

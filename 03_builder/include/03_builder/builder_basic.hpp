@@ -8,16 +8,20 @@
 //  virtual methods, so each children Builders che override only the methods it
 //  wants; so, define a default behavior.
 
+namespace Builder
+{
+
 class BuilderBasic
 {
   public:
+    virtual ~BuilderBasic() = default;
+
     virtual void build_foundations() {};
-
     virtual void build_walls() {};
-
     virtual void build_doors() {};
-
     virtual void build_windows() {};
 };
+
+} // namespace Builder
 
 #endif

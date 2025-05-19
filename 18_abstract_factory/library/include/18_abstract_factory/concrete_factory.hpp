@@ -3,15 +3,25 @@
 
 #include "18_abstract_factory/abstract_factory.hpp"
 #include "18_abstract_factory/element_concrete.hpp"
+#include <memory>
 
 
 namespace AbstractFactoryNS
 {
 
-class ConcreteFactory : public AbstractFactory
+class ConcreteFactory final : public AbstractFactory
 {
   public:
-    ElementInterfaceA* factoryElementA() override;
+    ~ConcreteFactory() = default;
+    ConcreteFactory() = default;
+
+    ConcreteFactory(const ConcreteFactory& origin) = default;
+    ConcreteFactory& operator=(const ConcreteFactory& origin) = default;
+
+    ConcreteFactory(ConcreteFactory&& origin) = default;
+    ConcreteFactory& operator=(ConcreteFactory&& origin) = default;
+
+    std::unique_ptr<ElementInterfaceA> factoryElementA() override;
 };
 
 } // namespace AbstractFactoryNS

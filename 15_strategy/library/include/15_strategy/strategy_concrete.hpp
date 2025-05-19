@@ -10,7 +10,16 @@ namespace Strategy
 class StrategyConcrete final : public StrategyInterface
 {
   public:
-    void do_something(std::int64_t data) override;
+    ~StrategyConcrete() = default;
+    StrategyConcrete() = default;
+
+    StrategyConcrete(const StrategyConcrete& origin) = default;
+    StrategyConcrete& operator=(const StrategyConcrete& origin) = default;
+
+    StrategyConcrete(StrategyConcrete&& origin) = default;
+    StrategyConcrete& operator=(StrategyConcrete&& origin) = default;
+
+    void do_something(const std::int64_t& data) override;
 };
 
 } // namespace Strategy

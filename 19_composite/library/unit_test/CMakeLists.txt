@@ -23,6 +23,6 @@ add_test(
 set_tests_properties(
     ${PROJECT_NAME}_ut
     PROPERTIES
-        LABELS
+        LABELS 
             unit_test
 )

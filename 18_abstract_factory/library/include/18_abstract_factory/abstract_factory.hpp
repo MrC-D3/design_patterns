@@ -2,6 +2,7 @@
 #define ABSTRACT_FACTORY_HPP
 
 #include "18_abstract_factory/element_interface.hpp"
+#include <memory>
 
 
 namespace AbstractFactoryNS
@@ -11,8 +12,15 @@ class AbstractFactory
 {
   public:
     virtual ~AbstractFactory() = default;
+    AbstractFactory() = default;
 
-    virtual ElementInterfaceA* factoryElementA() = 0;
+    AbstractFactory(const AbstractFactory& origin) = default;
+    AbstractFactory& operator=(const AbstractFactory& origin) = default;
+
+    AbstractFactory(AbstractFactory&& origin) = default;
+    AbstractFactory& operator=(AbstractFactory&& origin) = default;
+
+    virtual std::unique_ptr<ElementInterfaceA> factoryElementA() = 0;
     // Potentially factoryElementB() and other factory methods.
 };
 

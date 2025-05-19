@@ -6,11 +6,11 @@ namespace Visitor
 
 ObjectStructure::ObjectStructure()
 {
-    m_elements.emplace_back(new ElementConcreteA());
-    m_elements.emplace_back(new ElementConcreteB());
+    m_elements.emplace_back( std::make_shared<ElementConcreteA>() );
+    m_elements.emplace_back( std::make_shared<ElementConcreteB>() );
 }
 
-std::list<ElementInterface*> ObjectStructure::get_elements()
+std::list<std::shared_ptr<ElementInterface>>& ObjectStructure::get_elements()
 {
     return m_elements;
 }

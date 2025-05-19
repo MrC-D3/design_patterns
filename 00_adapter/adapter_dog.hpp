@@ -7,7 +7,7 @@
 class Dog_Compliant : public Animal
 {
   public:
-    void speak() override
+    void speak() const override
     {
         m_dog.tell();
     }

@@ -1,23 +1,34 @@
-#ifndef MODERATOR_CONCRETE_HPP
-#define MODERATOR_CONCRETE_HPP
+#ifndef MEDIATOR_CONCRETE_HPP
+#define MEDIATOR_CONCRETE_HPP
 
-#include <iostream>
+#include "06_mediator/mediator_interface.hpp"
+#include "06_mediator/colleague_concrete.hpp"
 
-#include "06_moderator/moderator_interface.hpp"
-#include "06_moderator/colleague_concrete.hpp"
+#include <memory>
 
 
-class ModeratorConcrete : public ModeratorInterface
+namespace Mediator
+{
+
+class MediatorConcrete final : public MediatorInterface
 {
   public:
-    ModeratorConcrete(ColleagueConcreteA* colleagueA = nullptr,
-      ColleagueConcreteB* colleagueB = nullptr);
+    void notify(const std::string& notification) const override;
 
-    void notify(std::string notification) override;
+    static std::shared_ptr<MediatorConcrete> constructor(
+      const std::shared_ptr<ColleagueConcreteA>& colleagueA,
+      const std::shared_ptr<ColleagueConcreteB>& colleagueB
+    );
 
   private:
-    ColleagueConcreteA* m_colleagueA = nullptr;
-    ColleagueConcreteB* m_colleagueB = nullptr;
+    MediatorConcrete(const std::shared_ptr<ColleagueConcreteA>& colleagueA,
+      const std::shared_ptr<ColleagueConcreteB>& colleagueB);
+
+    std::shared_ptr<ColleagueConcreteA> m_colleagueA;
+    std::shared_ptr<ColleagueConcreteB> m_colleagueB;
 };
 
-#endif
+} // namespace Mediator
+
+
+#endif // MEDIATOR_CONCRETE_HPP

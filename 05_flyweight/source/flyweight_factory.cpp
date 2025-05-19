@@ -3,32 +3,35 @@
 #include "05_flyweight/flyweight_factory.hpp"
 
 
-FlyweightUnshared* FlyweightFactory::create_flyweight(uint8_t code, uint64_t position)
+namespace Flyweight
 {
-    FlyweightShared* shared_data = get_flyweight_shared(code);
 
-    return new FlyweightUnshared(position, shared_data);
+std::unique_ptr<FlyweightUnshared> FlyweightFactory::create_flyweight(
+  const std::uint8_t& code, const std::uint64_t& position)
+{
+    auto shared_data = get_flyweight_shared(code);
+
+    return std::make_unique<FlyweightUnshared>(position, shared_data);
 }
 
-FlyweightShared* FlyweightFactory::get_flyweight_shared(uint8_t key)
+std::shared_ptr<FlyweightShared> FlyweightFactory::get_flyweight_shared(
+  const uint8_t& key)
 {
     std::cout << "I'm the Flyweight Factory. Do I have the element in the pool?"
         << std::endl;
 
-    FlyweightShared* return_value = nullptr;
-
     auto iterator = m_flyweights_shared_pool.find(key);
     if(iterator == m_flyweights_shared_pool.end())
     {
-        return_value = new FlyweightShared(key);
-        m_flyweights_shared_pool.insert(
-            std::pair<int, FlyweightShared*>(key, return_value)
-            );
-    }
-    else
-    {
-        return_value = m_flyweights_shared_pool[key];
+        auto return_value = std::make_shared<FlyweightShared>(key);
+        // Emplace more efficient than Insert: avoid creation of a temp object.
+        m_flyweights_shared_pool.emplace(key, return_value);
+
+        return return_value;
     }
 
-    return return_value;
+    // Avoid calling again the expensive lookup function on the map.
+    return iterator->second;
 }
+
+} // namespace Flyweight

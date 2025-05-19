@@ -1,18 +1,23 @@
-#include "06_moderator/colleague_concrete.hpp"
+#include "06_mediator/colleague_concrete.hpp"
+
+#include <iostream>
 
 
-void ColleagueConcreteA::operationA1()
+namespace Mediator
 {
-    m_moderator->notify("A1");
+
+void ColleagueConcreteA::operationA1() const
+{
+    m_mediator->notify("A1");
 }
 
-void ColleagueConcreteA::operationA2()
+void ColleagueConcreteA::operationA2() const
 {
     std::cout << "I'm ColleagueA. Just got ack from B." << std::endl;
 }
 
 
-void ColleagueConcreteB::operationB1()
+void ColleagueConcreteB::operationB1() const
 {
     std::cout << "I'm ColleagueB. Just got notification from A." <<
         std::endl;
@@ -20,7 +25,9 @@ void ColleagueConcreteB::operationB1()
     operationB2();
 }
 
-void ColleagueConcreteB::operationB2()
+void ColleagueConcreteB::operationB2() const
 {
-    m_moderator->notify("B2");
+    m_mediator->notify("B2");
 }
+
+} // namespace Mediator

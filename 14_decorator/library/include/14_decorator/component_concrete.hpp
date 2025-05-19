@@ -3,8 +3,6 @@
 
 #include "14_decorator/component_interface.hpp"
 
-#include "iostream"
-
 
 namespace Decorator
 {
@@ -12,7 +10,16 @@ namespace Decorator
 class ComponentConcrete final : public ComponentInterface
 {
   public:
+    ~ComponentConcrete() = default;
+    ComponentConcrete() = default;
+
+    ComponentConcrete(const ComponentConcrete& origin) = default;
+    ComponentConcrete(ComponentConcrete&& origin) = default;
+    ComponentConcrete& operator=(ComponentConcrete& origin) = default;
+    ComponentConcrete& operator=(ComponentConcrete&& origin) = default;
+
     void behavior() override;
+    
 };
 
 } // namespace Decorator

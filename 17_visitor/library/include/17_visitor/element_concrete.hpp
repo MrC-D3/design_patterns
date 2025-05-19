@@ -2,6 +2,7 @@
 #define ELEMENT_CONCRETE_HPP
 
 #include "17_visitor/element_interface.hpp"
+#include <memory>
 
 
 namespace Visitor
@@ -9,16 +10,38 @@ namespace Visitor
 
 class VisitorInterface;
 
-class ElementConcreteA : public ElementInterface
+class ElementConcreteA final 
+  : public ElementInterface, 
+    public std::enable_shared_from_this<ElementConcreteA>
 {
   public:
-    void access(VisitorInterface* visitor) override;
+    ~ElementConcreteA() = default;
+    ElementConcreteA() = default;
+
+    ElementConcreteA(const ElementConcreteA& origin) = default;
+    ElementConcreteA& operator=(const ElementConcreteA& origin) = default;
+
+    ElementConcreteA(ElementConcreteA&& origin) = default;
+    ElementConcreteA& operator=(ElementConcreteA&& origin) = default;
+
+    void access(const std::shared_ptr<VisitorInterface>& visitor) override;
 };
 
-class ElementConcreteB : public ElementInterface
+class ElementConcreteB final
+  : public ElementInterface, 
+    public std::enable_shared_from_this<ElementConcreteB>
 {
   public:
-    void access(VisitorInterface* visitor) override;
+    ~ElementConcreteB() = default;
+    ElementConcreteB() = default;
+
+    ElementConcreteB(const ElementConcreteB& origin) = default;
+    ElementConcreteB& operator=(const ElementConcreteB& origin) = default;
+
+    ElementConcreteB(ElementConcreteB&& origin) = default;
+    ElementConcreteB& operator=(ElementConcreteB&& origin) = default;
+
+    void access(const std::shared_ptr<VisitorInterface>& visitor) override;
 };
 
 } // namespace Visitor

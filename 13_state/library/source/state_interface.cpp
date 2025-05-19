@@ -5,10 +5,14 @@
 namespace State
 {
     
-StateInterface::StateInterface(Context* context)
+StateInterface::StateInterface(const std::shared_ptr<Context>& context)
   : m_context(context)
+{}
+
+
+void StateInterface::set_context(const std::shared_ptr<Context>& context)
 {
-    
+    m_context = context;
 }
 
 } // namespace State

@@ -7,9 +7,9 @@ using namespace Visitor;
 int main()
 {
     ObjectStructure objectStructure;
-    auto visitor = new VisitorConcrete1();
+    auto visitor = std::make_shared<VisitorConcrete1>();
 
-    for(auto i : objectStructure.get_elements())
+    for(auto& i : objectStructure.get_elements())
     {
         i->access(visitor);
     }

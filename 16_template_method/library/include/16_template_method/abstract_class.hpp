@@ -9,6 +9,13 @@ class AbstractClass
 {
   public:
     virtual ~AbstractClass() = default;
+    AbstractClass() = default;
+
+    AbstractClass(const AbstractClass& origin) = default;
+    AbstractClass& operator=(const AbstractClass& origin) = default;
+
+    AbstractClass(AbstractClass&& origin) = default;
+    AbstractClass& operator=(AbstractClass&& origin) = default;
 
     void template_method();
 

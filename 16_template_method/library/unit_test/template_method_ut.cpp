@@ -46,7 +46,7 @@ class TemplateMethodFixture : public ::testing::Test
 
     MockClass m_object;
     std::stringstream buffer;
-    std::streambuf* oldBuffer = nullptr;
+    std::streambuf* oldBuffer{nullptr};
 };
 
 // Test-s.

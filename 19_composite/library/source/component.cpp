@@ -4,7 +4,9 @@
 namespace CompositeNS
 {
 
-void Component::add(Component* child)
-{}
+void Component::add(std::unique_ptr<Component>&& child)
+{
+    (void) child;
+}
 
 } // namespace CompositeNS

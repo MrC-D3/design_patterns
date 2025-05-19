@@ -7,12 +7,20 @@
 namespace Visitor
 {
 
-class VisitorConcrete1 : public VisitorInterface
+class VisitorConcrete1 final : public VisitorInterface
 {
   public:
-    void visitA(ElementConcreteA* elementA) override;
+    ~VisitorConcrete1() = default;
+    VisitorConcrete1() = default;
 
-    void visitB(ElementConcreteB* elementB) override;
+    VisitorConcrete1(const VisitorConcrete1& origin) = default;
+    VisitorConcrete1& operator=(const VisitorConcrete1& origin) = default;
+
+    VisitorConcrete1(VisitorConcrete1&& origin) = default;
+    VisitorConcrete1& operator=(VisitorConcrete1&& origin) = default;
+
+    void visit(const std::shared_ptr<ElementConcreteA>& elementA) override;
+    void visit(const std::shared_ptr<ElementConcreteB>& elementB) override;
 };
 
 } // namespace Visitor

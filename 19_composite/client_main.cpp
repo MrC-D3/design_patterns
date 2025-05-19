@@ -8,15 +8,12 @@ using namespace CompositeNS;
 int main()
 {
     Composite composite;
-    Leaf leaf1;
-    Composite sub_composite;
-    Leaf leaf21;
-    Leaf leaf22;
+    auto sub_composite = std::make_unique<Composite>(); 
 
-    composite.add(&leaf1);
-    composite.add(&sub_composite);
-    sub_composite.add(&leaf21);
-    sub_composite.add(&leaf22);
+    sub_composite->add( std::make_unique<Leaf>() );
+    sub_composite->add( std::make_unique<Leaf>() );
+    composite.add( std::make_unique<Leaf>() );
+    composite.add( std::move(sub_composite) );
 
     composite.act();
 

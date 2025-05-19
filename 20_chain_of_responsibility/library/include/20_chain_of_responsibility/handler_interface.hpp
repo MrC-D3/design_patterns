@@ -1,6 +1,8 @@
 #ifndef HANDLER_INTERFACE_HPP
 #define HANDLER_INTERFACE_HPP
 
+#include <memory>
+
 
 namespace CoR
 {
@@ -9,7 +11,7 @@ class HandlerInterface
 {
   public:
     virtual ~HandlerInterface() = default;
-    explicit HandlerInterface(HandlerInterface* next);
+    explicit HandlerInterface(std::unique_ptr<HandlerInterface>&& next);
 
     HandlerInterface(const HandlerInterface& origin) = default;
     HandlerInterface& operator=(const HandlerInterface& origin) = default;
@@ -17,12 +19,12 @@ class HandlerInterface
     HandlerInterface(HandlerInterface&& origin) = default;
     HandlerInterface& operator=(HandlerInterface&& origin) = default;
 
-    virtual void handleRequest(int request);
-    virtual bool canHandle(int request) = 0;
+    virtual void handleRequest(const std::int32_t request);
+    virtual bool canHandle(const std::int32_t request) = 0;
 
   protected:
-    HandlerInterface* m_next;
-    int m_request{-1};
+    std::unique_ptr<HandlerInterface> m_next;
+    std::int32_t m_request{-1};
 };
 
 } // namespace CoR

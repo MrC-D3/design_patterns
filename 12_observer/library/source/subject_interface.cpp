@@ -1,27 +1,47 @@
 #include "12_observer/subject_interface.hpp"
 
+#include <algorithm> // For std::remove_if().
 
-void SubjectInterface::attach(ObserverInterface* observer)
+
+namespace ObserverNS
+{
+    
+void SubjectInterface::attach(const std::shared_ptr<ObserverInterface>& observer)
 {
     m_observers.push_back(observer);
 }
 
-void SubjectInterface::detach(ObserverInterface* observer)
+void SubjectInterface::detach(const std::shared_ptr<ObserverInterface>& observer)
 {
-    for(auto it = m_observers.begin(); it != m_observers.end(); it++)
+    // Cons of not using a loop: it goes over the whole container.
+    // Pros: 
+    //  - more readable, you know directly what's going to happen;
+    //  - more generic, you can change the condition of erase();
+    //  - delete any possible duplicates of observer. 
+    m_observers.erase(
+      std::remove_if(
+        m_observers.begin(), m_observers.end(), 
+        [&observer] (const std::shared_ptr<ObserverInterface>& o) 
+        { return o == observer; }
+      ),
+      m_observers.end()
+    );
+
+    // To stop at 1st match:
+    //  auto it = std::find(m_observers.begin(), m_observers.end(), observer);
+    //  if (it != m_observers.end()) m_observers.erase(it);
+    // In case of C++20:
+    //  std::erase_if(m_observers, [&observer](const auto& o) { return o == observer; });
+
+}
+
+void SubjectInterface::notify() const 
+{
+    for (const auto& observer : m_observers)
     {
-        if(observer == *it)
-        {
-            m_observers.erase(it);
-            break;
-        }
+        observer->update();
     }
 }
 
-void SubjectInterface::notify()
-{
-    for(auto it = m_observers.begin(); it != m_observers.end(); it++)
-    {
-        (*it)->update();
-    }
-}
+
+} // namespace ObserverNS
