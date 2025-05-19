@@ -6,13 +6,13 @@
 namespace Command
 {
 
-Invoker::Invoker(CommandInterface* command)
-  : m_command(command)
+Invoker::Invoker(std::unique_ptr<CommandInterface>&& command)
+  : m_command(std::move(command))
 {}
 
 void Invoker::call_command()
 {
-    std::cout << "I'm the Invoker. I'm sending the request." << std::endl;
+    std::cout << "I'm the Invoker. I'm sending the request.\n";
     m_command->execute();
 }
 
