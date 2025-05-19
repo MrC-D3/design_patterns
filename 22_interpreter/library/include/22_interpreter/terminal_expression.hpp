@@ -2,6 +2,7 @@
 #define TERMINAL_EXPRESSION_HPP
 
 #include "22_interpreter/abstract_expression.hpp"
+#include <string>
 
 
 namespace Interpreter
@@ -11,12 +12,12 @@ class TerminalExpression final : public AbstractExpression
 {
   public:
     ~TerminalExpression() = default;
-    TerminalExpression(bool value);
+    TerminalExpression(const std::string& name);
 
-    bool interpret() override;
+    bool interpret(Context& context) override;
 
   private:
-    bool m_value;
+    std::string m_name;
 };
 
 } // namespace Interpreter

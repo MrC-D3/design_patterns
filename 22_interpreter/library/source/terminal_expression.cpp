@@ -1,16 +1,17 @@
 #include "22_interpreter/terminal_expression.hpp"
+#include "22_interpreter/context.hpp"
 
 
 namespace Interpreter
 {
 
-TerminalExpression::TerminalExpression(bool value)
-  : m_value(value)
+TerminalExpression::TerminalExpression(const std::string& name)
+  : m_name(name)
 {}
 
-bool TerminalExpression::interpret()
+bool TerminalExpression::interpret(Context& context)
 {
-    return m_value;
+    return context.lookup(this);
 }
 
 } // namespace Interpreter

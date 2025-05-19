@@ -1,6 +1,7 @@
 #include "22_interpreter/abstract_expression.hpp"
 #include "22_interpreter/terminal_expression.hpp"
 #include "22_interpreter/nonterminal_expression.hpp"
+#include "22_interpreter/context.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -12,7 +13,7 @@ using namespace Interpreter;
 class MockExpression : public AbstractExpression
 {
   public:
-    MOCK_METHOD(bool, interpret, (), (override));
+    MOCK_METHOD(bool, interpret, (Context&), (override));
 };
 
 class InterpreterFixture : public ::testing::Test
@@ -34,10 +35,12 @@ class InterpreterFixture : public ::testing::Test
 TEST_F(InterpreterFixture, test_name)
 {
     MockExpression expression1;
-    TerminalExpression expression2(true);
+    TerminalExpression expression2("X");
     NonterminalExpression0 sentence(&expression1, &expression2);
+    Context context;
+    context.assign(&expression2, "true");
 
     EXPECT_CALL(expression1, interpret).Times( ::testing::AtLeast(1) );
 
-    auto result = sentence.interpret();
+    auto result = sentence.interpret(context);
 }
