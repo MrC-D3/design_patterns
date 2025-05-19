@@ -13,7 +13,7 @@ class NonterminalExpression0 final : public AbstractExpression
     ~NonterminalExpression0() = default;
     NonterminalExpression0(AbstractExpression* operand1, AbstractExpression* operand2);
 
-    bool interpret() override;
+    bool interpret(Context& context) override;
 
   private:
     AbstractExpression* m_operand1;

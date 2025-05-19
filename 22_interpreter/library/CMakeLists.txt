@@ -6,6 +6,7 @@ add_library(
     ${PROJECT_NAME}
     source/terminal_expression.cpp
     source/nonterminal_expression.cpp
+    source/context.cpp
 )
 
 target_include_directories(
@@ -25,6 +26,7 @@ install(
         include/22_interpreter/abstract_expression.hpp
         include/22_interpreter/terminal_expression.hpp
         include/22_interpreter/nonterminal_expression.hpp
+        include/22_interpreter/context.hpp
     DESTINATION
         include/22_interpreter/
 )

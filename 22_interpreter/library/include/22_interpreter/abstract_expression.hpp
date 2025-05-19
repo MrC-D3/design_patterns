@@ -5,12 +5,14 @@
 namespace Interpreter
 {
 
+class Context;
+
 class AbstractExpression
 {
   public:
     virtual ~AbstractExpression() = default;
 
-    virtual bool interpret() = 0;
+    virtual bool interpret(Context& context) = 0;
 };
 
 } // namespace Interpreter
