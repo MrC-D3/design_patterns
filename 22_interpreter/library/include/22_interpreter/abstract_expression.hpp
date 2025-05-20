@@ -12,7 +12,7 @@ class AbstractExpression
   public:
     virtual ~AbstractExpression() = default;
 
-    virtual bool interpret(Context& context) = 0;
+    virtual bool interpret(const Context& context) const = 0;
 };
 
 } // namespace Interpreter
