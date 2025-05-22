@@ -6,9 +6,9 @@
 
 int main()
 {
-    std::unique_ptr<ColorInterface> color1 = std::make_unique<Color1>();
-    std::unique_ptr<ShapeInterface> triangle = 
-      std::make_unique<Triangle>(std::move(color1));
+    auto triangle =  std::make_unique<Triangle>(
+      std::make_unique<Blue>()
+    );
 
     triangle->draw();
 }
