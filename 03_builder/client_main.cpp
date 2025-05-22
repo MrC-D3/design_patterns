@@ -23,7 +23,7 @@ int main()
         director.build_house();
 
         auto house = builder_small->get_house();
-        house->show();
+        house.show();
 
         // Memory freed by the d'tor-s.
     }
@@ -35,7 +35,7 @@ int main()
         director.build_house();
 
         auto house = builder_big->get_house();
-        house->show();
+        house.show();
     }
 
     return 0;
