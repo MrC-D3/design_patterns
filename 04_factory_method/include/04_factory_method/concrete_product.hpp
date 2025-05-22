@@ -12,6 +12,8 @@ class ConcreteProduct final : public Product
   public:
     ConcreteProduct();
 
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
     void operationX() const override;
 };
 

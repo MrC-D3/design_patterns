@@ -9,7 +9,7 @@ namespace Factory
 
 ConcreteCreator::ConcreteCreator()
 {
-    std::cout << "I'm the Concrete Creator." << std::endl;
+    std::cout << "I'm the Concrete Creator.\n";
 }
 
 std::unique_ptr<Product> ConcreteCreator::createProduct() const
