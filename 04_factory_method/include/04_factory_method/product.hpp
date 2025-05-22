@@ -12,9 +12,12 @@ class Product
   public:
     virtual ~Product() = default;
 
+    // Default c'tors and operator= overloads, both copy and move.
+
     virtual void operationX() const = 0;
 };
 
 } // namespace Factory
+
 
 #endif // PRODUCT_HPP
