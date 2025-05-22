@@ -12,17 +12,16 @@ class ProxyResource final : public SubjectResource
 {
   public:
     explicit ProxyResource(const std::string& url)
-      : SubjectResource(url)
+      : SubjectResource{url}
     {
         // No need to initialize the object in the Proxy.
-        std::cout << "I'm the Proxy. I don't need to open the Resource here." <<
-          std::endl;
+        std::cout << "I'm the Proxy. I don't need to open the Resource here.\n";
     }
 
     ~ProxyResource()
     {
-        std::cout << "I'm the Proxy. I'm gonna delete the RealSubject if any." <<
-          std::endl;
+        std::cout << "I'm the Proxy. I'm gonna delete the RealSubject if any.\n"
+          ;
 
         // RealSubjectResource freed by the unique_ptr d'tor.
     }
@@ -30,7 +29,7 @@ class ProxyResource final : public SubjectResource
     void access() override
     {
         std::cout << "I'm the Proxy. I'm forwarding the request to the \
-          RealSubject." << std::endl;
+          RealSubject.\n";
 
         // Now you actually need to load the Resource, if not already.
         // Exploit the operator overload of unique_ptr.
