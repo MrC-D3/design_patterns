@@ -5,7 +5,7 @@
 #include "adaptee_dog.hpp"
 
 
-class Dog_Compliant : public Animal
+class Dog_Compliant final : public Animal
 {
   public:
     // Default d'tor, c'tors and operator= overloads (both copy and move).

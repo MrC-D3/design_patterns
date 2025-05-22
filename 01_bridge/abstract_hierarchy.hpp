@@ -12,7 +12,7 @@ class ShapeInterface
     virtual ~ShapeInterface() noexcept = default; 
 
     ShapeInterface(std::unique_ptr<ColorInterface>&& color)
-      : m_color(std::move(color))
+      : m_color{std::move(color)}
     {}
 
     // No copy.
@@ -32,7 +32,7 @@ class Triangle final : public ShapeInterface
 {
   public:
     Triangle(std::unique_ptr<ColorInterface>&& color)
-      : ShapeInterface(std::move(color))
+      : ShapeInterface{std::move(color)}
     {}
 
     // Default d'tor, c'tor and operator= overload for the move.
