@@ -1,8 +1,8 @@
-// Usually, the behavior of the original object remains in the flyweight class.
-// In this case, whoever calls a flyweight’s method must also pass appropriate
-// bits of the extrinsic state into the method’s parameters. On the other hand,
-// the behavior can be moved to the context class, which would use the linked
-// flyweight merely as a data object.
+// In this example, the logic (i.d. draw) is part of Unshared that also has a
+//  pointer to Shared; so, the Client just work with Unshared
+// Alternatives are:
+//  - the logic is in Shared and receives Unshared as parameter;
+//  - the logic is in the client and reiceves both Shared and Unshared.
 
 #ifndef FLYWEIGHT_FACTORY_HPP
 #define FLYWEIGHT_FACTORY_HPP
@@ -22,12 +22,12 @@ class FlyweightFactory
 {
   public:
     std::unique_ptr<FlyweightUnshared> create_flyweight(
-      const std::uint8_t& code, 
-      const std::uint64_t& position);
+      const std::uint8_t code, 
+      const std::uint64_t position);
 
   private:
     std::shared_ptr<FlyweightShared> get_flyweight_shared(
-      const std::uint8_t& key);
+      const std::uint8_t key);
     
     // Once a key is inserted, it's inheritly const, so don't specify.
     // Once a value's linked to a key, it can change, so better not const.

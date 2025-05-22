@@ -7,7 +7,7 @@ namespace Flyweight
 {
 
 std::unique_ptr<FlyweightUnshared> FlyweightFactory::create_flyweight(
-  const std::uint8_t& code, const std::uint64_t& position)
+  const std::uint8_t code, const std::uint64_t position)
 {
     auto shared_data = get_flyweight_shared(code);
 
@@ -15,10 +15,9 @@ std::unique_ptr<FlyweightUnshared> FlyweightFactory::create_flyweight(
 }
 
 std::shared_ptr<FlyweightShared> FlyweightFactory::get_flyweight_shared(
-  const uint8_t& key)
+  const uint8_t key)
 {
-    std::cout << "I'm the Flyweight Factory. Do I have the element in the pool?"
-        << std::endl;
+    std::cout << "I'm the FlyweightFactory. I have the shared in the pool?\n";
 
     auto iterator = m_flyweights_shared_pool.find(key);
     if(iterator == m_flyweights_shared_pool.end())
