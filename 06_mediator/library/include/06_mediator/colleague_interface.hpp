@@ -13,7 +13,10 @@ namespace Mediator
 class ColleagueInterface
 {
   public:
-    ~ColleagueInterface() = default;
+    // The Base class requires at least one virtual method.
+    virtual ~ColleagueInterface() = default;
+
+    // Default c'tors and operator= overloads, both copy and move.
     
     void set_mediator(const std::shared_ptr<MediatorInterface>& mediator);
 

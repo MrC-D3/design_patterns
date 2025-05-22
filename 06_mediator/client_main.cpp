@@ -9,10 +9,13 @@ int main()
     using namespace Mediator;
 
     // *** To avoid having Colleague-s without a Mediator, this part... ***
+    auto mediator = std::make_shared<MediatorConcrete>();
+
     auto colleagueA = std::make_shared<ColleagueConcreteA>();
     auto colleagueB = std::make_shared<ColleagueConcreteB>();
 
-    auto mediator = MediatorConcrete::constructor(colleagueA, colleagueB);
+    mediator->join(colleagueA);
+    mediator->join(colleagueB);
     // *** ... can be all managed using the Builder pattern. ***
     
     colleagueA->operationA1();

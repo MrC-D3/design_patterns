@@ -13,17 +13,14 @@ namespace Mediator
 class MediatorConcrete final : public MediatorInterface
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    // No custom c'tors, so the link Mediator->Colleague is done in join().
+    void join(const std::shared_ptr<ColleagueInterface>& colleague);
+
     void notify(const std::string& notification) const override;
 
-    static std::shared_ptr<MediatorConcrete> constructor(
-      const std::shared_ptr<ColleagueConcreteA>& colleagueA,
-      const std::shared_ptr<ColleagueConcreteB>& colleagueB
-    );
-
   private:
-    MediatorConcrete(const std::shared_ptr<ColleagueConcreteA>& colleagueA,
-      const std::shared_ptr<ColleagueConcreteB>& colleagueB);
-
     std::shared_ptr<ColleagueConcreteA> m_colleagueA;
     std::shared_ptr<ColleagueConcreteB> m_colleagueB;
 };
