@@ -1,6 +1,7 @@
 #ifndef TARGET_ANIMAL_HPP
 #define TARGET_ANIMAL_HPP
 
+
 class Animal
 {
   public:
@@ -9,7 +10,10 @@ class Animal
     //  derived-class' d'tor, then the base-class' d'tor.
     virtual ~Animal() noexcept = default;
 
+    // Default c'tors and operator= overloads (both copy and move).
+
     virtual void speak() const = 0;
 };
+
 
 #endif
