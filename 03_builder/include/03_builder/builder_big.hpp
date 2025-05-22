@@ -14,38 +14,38 @@ class BuilderBig final : public BuilderBasic
 {
   public:
     ~BuilderBig() = default;
-
+    // Default c'tors and operator= overloads, both copy and move.
 
     void build_foundations() override
     {
-        m_house = std::make_unique<ProductHouse>();
+        // Any init or reset operations.
     }
 
     void build_walls() override
     {
-        m_house->set_walls(8);
+        m_house.set_walls(8);
     }
 
     void build_doors() override
     {
-        m_house->set_doors(2);
+        m_house.set_doors(2);
     }
 
     void build_windows() override
     {
-        m_house->set_windows(16);
+        m_house.set_windows(16);
     }
 
-
-    std::unique_ptr<ProductHouse> get_house()
+    ProductHouse get_house()
     {
-        return std::move(m_house);
+        return m_house;
     }
 
   private:
-    std::unique_ptr<ProductHouse> m_house;
+    ProductHouse m_house;
 };
 
-}
+} // namespace Builder
+
 
 #endif // BUILDER_BIG_HPP

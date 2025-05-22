@@ -5,7 +5,7 @@
 
 
 // The rule is that the root class of the Builder Hierarchy shouldn't have pure
-//  virtual methods, so each children Builders che override only the methods it
+//  virtual methods, so each child Builder can override only the methods it
 //  wants; so, define a default behavior.
 
 namespace Builder
@@ -15,6 +15,8 @@ class BuilderBasic
 {
   public:
     virtual ~BuilderBasic() = default;
+
+    // Default c'tors and operator= overloads, both copy and move.
 
     virtual void build_foundations() {};
     virtual void build_walls() {};
