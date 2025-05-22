@@ -10,7 +10,10 @@ namespace Flyweight
 class FlyweightShared
 {
   public:
-    explicit FlyweightShared(const std::uint8_t& code);
+    // The input parameter is a basic type, so pass it by value.
+    explicit FlyweightShared(const std::uint8_t code);
+
+    // Default d'tor, c'tors and operator= overloads, for both value and move. 
 
     // Returning a const means the returned valued cannot be modified.
     // It has sense for references/pointers, but not for values.

@@ -6,11 +6,10 @@
 namespace Flyweight
 {
 
-FlyweightShared::FlyweightShared(const std::uint8_t& code)
-    : m_character(static_cast<char>(code))
+FlyweightShared::FlyweightShared(const std::uint8_t code)
+  : m_character{static_cast<char>(code)}
 {
-    std::cout << "I'm the FlyweightShared. Here the constructor." <<
-        std::endl;
+    std::cout << "I'm the FlyweightShared. Here the constructor.\n";
 }
 
 char FlyweightShared::get_shared_data() const

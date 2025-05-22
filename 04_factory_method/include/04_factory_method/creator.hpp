@@ -25,6 +25,8 @@ class Creator
     virtual std::unique_ptr<Product> createProduct() const = 0;
 
   private:
+    // Rule of 0: 
+    //  manage the memory with STL and don't write any d/c'tor or operator=.
     std::unique_ptr<Product> m_product;
 };
 

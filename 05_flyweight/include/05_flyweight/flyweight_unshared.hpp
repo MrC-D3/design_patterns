@@ -14,8 +14,9 @@ namespace Flyweight
 class FlyweightUnshared
 {
   public:
-    FlyweightUnshared(const uint64_t& position, 
-      const std::shared_ptr<FlyweightShared>& shared_data);
+    FlyweightUnshared(
+      const uint64_t position, 
+      const std::shared_ptr<FlyweightShared> shared_data);
 
     void draw(std::string& canvas) const;
 
