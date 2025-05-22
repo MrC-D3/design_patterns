@@ -10,6 +10,8 @@ namespace Mediator
 class ColleagueConcreteA final : public ColleagueInterface
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
     void operationA1() const;
 
     void operationA2() const;
@@ -18,6 +20,8 @@ class ColleagueConcreteA final : public ColleagueInterface
 class ColleagueConcreteB final : public ColleagueInterface
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
     void operationB1() const;
 
     void operationB2() const;

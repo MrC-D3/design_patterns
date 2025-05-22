@@ -5,30 +5,31 @@
 
 namespace Mediator
 {
-    
-MediatorConcrete::MediatorConcrete(
-  const std::shared_ptr<ColleagueConcreteA>& colleagueA,
-  const std::shared_ptr<ColleagueConcreteB>& colleagueB
-)
-  : m_colleagueA(colleagueA),
-    m_colleagueB(colleagueB)
+
+void MediatorConcrete::join(
+  const std::shared_ptr<ColleagueInterface>& colleague)
 {
-}
+    auto colleagueA = std::dynamic_pointer_cast<ColleagueConcreteA>(
+      colleague);
+    if(colleagueA)
+    {
+        m_colleagueA = colleagueA;
+    }
+    else
+    {
+        auto colleagueB = std::dynamic_pointer_cast<ColleagueConcreteB>(
+        colleague);
+        if(colleagueB)
+        {
+            m_colleagueB = colleagueB;
+        }
+        else
+        {
+            return;
+        }
+    }
 
-std::shared_ptr<MediatorConcrete> MediatorConcrete::constructor(
-    const std::shared_ptr<ColleagueConcreteA>& colleagueA,
-    const std::shared_ptr<ColleagueConcreteB>& colleagueB
-  )
-{
-    // make_shared<> won't work because the MediatorConcrete's c'tor is private.
-    std::shared_ptr<MediatorConcrete> instance{
-        new MediatorConcrete(colleagueA, colleagueB)
-    };
-
-    instance->m_colleagueA->set_mediator( instance );
-    instance->m_colleagueB->set_mediator( instance );
-
-    return instance;
+    colleague->set_mediator(shared_from_this());
 }
 
 void MediatorConcrete::notify(const std::string& notification) const

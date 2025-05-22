@@ -13,14 +13,13 @@ void ColleagueConcreteA::operationA1() const
 
 void ColleagueConcreteA::operationA2() const
 {
-    std::cout << "I'm ColleagueA. Just got ack from B." << std::endl;
+    std::cout << "I'm ColleagueA. Just got ack from B.\n";
 }
 
 
 void ColleagueConcreteB::operationB1() const
 {
-    std::cout << "I'm ColleagueB. Just got notification from A." <<
-        std::endl;
+    std::cout << "I'm ColleagueB. Just got notification from A.\n";
 
     operationB2();
 }
