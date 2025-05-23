@@ -11,10 +11,12 @@ namespace SingletonNS
 class Singleton
 {
   public:
+    // Equivalent to "Singleton const&".
     Singleton(const Singleton& s) = delete;
     Singleton& operator=(const Singleton& s) = delete;
+    // Default d'tor, c'tors and operator= overload, for move.
 
-    static Singleton& get_instance(const std::int64_t& counter);
+    static Singleton& get_instance(const std::int64_t counter);
 
     void print_counter() const;
 
