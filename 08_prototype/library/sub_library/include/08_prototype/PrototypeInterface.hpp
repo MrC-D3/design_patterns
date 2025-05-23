@@ -11,6 +11,7 @@ class PrototypeInterface
 {
   public:
     virtual ~PrototypeInterface() = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     virtual std::unique_ptr<PrototypeInterface> clone() const = 0;
 

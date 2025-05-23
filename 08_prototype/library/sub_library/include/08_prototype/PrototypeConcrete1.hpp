@@ -12,14 +12,11 @@ namespace Prototype
 class PrototypeConcrete1 final : public PrototypeInterface
 {
   public:
-    explicit PrototypeConcrete1(const std::int64_t& state = 1);
+    // Default d'tor, c'tors and operator= overload, both copy and move.
     
     std::unique_ptr<PrototypeInterface> clone() const override;
 
     void to_string() const override;
-
-  private:
-    std::int64_t m_state;
 };
 
 } // namespace Prototype

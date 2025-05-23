@@ -15,19 +15,12 @@ class PrototypeClient
 {
   public:
     PrototypeClient();
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    const std::shared_ptr<
-      std::array<std::unique_ptr<
-        PrototypeInterface>, 2
-      >
-    >& get_prototypes();
+    const std::array<std::unique_ptr<PrototypeInterface>, 2>& get_prototypes();
 
   private:
-    std::shared_ptr<
-      std::array<
-        std::unique_ptr<PrototypeInterface>, 2
-      >
-    > m_prototypes;
+    std::array<std::unique_ptr<PrototypeInterface>, 2> m_prototypes;
 };
 
 } // namespace PrototypeClient

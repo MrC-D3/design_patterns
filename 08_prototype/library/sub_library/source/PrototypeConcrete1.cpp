@@ -5,19 +5,15 @@
 
 namespace Prototype
 {
-  
-PrototypeConcrete1::PrototypeConcrete1(const std::int64_t& state)
-  : m_state(state)
-{}
 
 std::unique_ptr<PrototypeInterface> PrototypeConcrete1::clone() const
 {
-    return std::make_unique<PrototypeConcrete1>(m_state);
+    return std::make_unique<PrototypeConcrete1>();
 }
 
 void PrototypeConcrete1::to_string() const
 {
-    std::cout << "I'm a PrototypeConcrete" << m_state << std::endl;
+    std::cout << "I'm a PrototypeConcrete1. State: 1.\n";
 }
 
 } // namespace Prototype
