@@ -6,7 +6,7 @@
 namespace SingletonNS
 {
 
-Singleton& Singleton::get_instance(const std::int64_t& counter) 
+Singleton& Singleton::get_instance(const std::int64_t counter) 
 {
     // Local static variable: thread-safe, lazy initialization.
     static Singleton instance{counter};
@@ -16,13 +16,13 @@ Singleton& Singleton::get_instance(const std::int64_t& counter)
     return instance;
 }
 
-Singleton::Singleton(std::int64_t counter)
-  : m_counter(counter)
+Singleton::Singleton(const std::int64_t counter)
+: m_counter{counter}
 {}
 
 void Singleton::print_counter() const
 {
-    std::cout << "Counter value: " << m_counter << std::endl;
+    std::cout << "Counter value: " << m_counter << ".\n";
 }
 
 } // namespace SingletonNS
