@@ -14,6 +14,7 @@ class CareTaker
 {
   public:
     explicit CareTaker(const std::shared_ptr<OriginatorInterface>& originator);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void backup();
 
@@ -26,5 +27,6 @@ class CareTaker
 };
 
 } // namespace Memento
+
 
 #endif // CARE_TAKER_HPP

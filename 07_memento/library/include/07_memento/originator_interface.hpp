@@ -13,10 +13,13 @@ class OriginatorInterface
 {
   public:
     virtual ~OriginatorInterface() = default;
+
+    // Default c'tors and operator= overloads, both copy and move.
     
     virtual std::unique_ptr<MementoInterface> create_memento() const = 0;
 };
 
 } // namespace Mememnto
+
 
 #endif // ORIGINATOR_INTERFACE_HPP

@@ -16,8 +16,9 @@ class MementoConcrete final : public MementoInterface
   public:
     MementoConcrete(
       const std::shared_ptr<OriginatorConcrete>& originator, 
-      const std::int64_t& state
+      const std::int64_t state
     );
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void restore() const override;
 
@@ -30,5 +31,6 @@ class MementoConcrete final : public MementoInterface
 };
 
 } // namespace Memento
+
 
 #endif // MEMENTO_CONCRETE_HPP
