@@ -16,7 +16,8 @@ template <typename Item>
 class Iterator final : public IteratorInterface<Item>
 {
   public:
-    Iterator(const std::shared_ptr<Aggregate<Item>>& aggregate);
+    explicit Iterator(const std::shared_ptr<Aggregate<Item>>& aggregate);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void first() override;
     void next() override;
@@ -25,14 +26,13 @@ class Iterator final : public IteratorInterface<Item>
 
   private:
     std::shared_ptr<Aggregate<Item>> m_aggregate;
-    std::int64_t m_index;
+    std::int64_t m_index{0};
 };
 
 
 template <typename Item>
 Iterator<Item>::Iterator(const std::shared_ptr<Aggregate<Item>>& aggregate)
-  : m_aggregate(aggregate),
-    m_index(0)
+: m_aggregate{aggregate}
 {}
 
 template <typename Item>

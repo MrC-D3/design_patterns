@@ -18,7 +18,7 @@ int main()
         auto iterator = myAggregate->createIterator();
         while( !(iterator->isDone()) )
         {
-            std::cout << "Value: " << iterator->currentItem() << std::endl;
+            std::cout << "Value: " << iterator->currentItem() <<".\n";
             iterator->next();
         }
     }
@@ -32,7 +32,7 @@ int main()
         for(auto iterator = myAggregate->createIterator(); 
           !(iterator->isDone()); iterator->next())
         {
-            std::cout << "Value: " << iterator->currentItem() << std::endl;
+            std::cout << "Value: " << iterator->currentItem() << ".\n";
         }
     }    
 
