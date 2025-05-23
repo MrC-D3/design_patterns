@@ -8,6 +8,8 @@ namespace Facade
 class Facade
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
     void do_everything() const;
 };
 
