@@ -11,12 +11,11 @@ using ::testing::AtLeast;
 class State1Mock : public StateInterface
 {
   public:
-    // Base class doesn't have a default c'tor, so Derived class must call it.
-    State1Mock() : StateInterface(nullptr) {};
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void do_something() override
     {
-        std::cout << "I'm State1Mock. Do something." << std::endl;
+        std::cout << "I'm State1Mock. Do something.\n";
     }
 
     MOCK_METHOD(void, do_something_else, (), (override));

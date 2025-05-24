@@ -4,14 +4,6 @@
 namespace State
 {
 
-Context::Context(std::unique_ptr<StateInterface>&& state)
-  : m_state( std::move(state) )
-{}
-
-Context::Context(Context&& origin)
-  : m_state( std::move(origin.m_state) )
-{}
-
 void Context::set_state(std::unique_ptr<StateInterface>&& state)
 {
     m_state = std::move(state);
@@ -41,7 +33,7 @@ void Context::update_state()
 {
     if(m_next_state)
     {
-        m_state = std::move(m_next_state);
+        m_state = std::move(m_next_state); // Makes m_next_state nullptr.
         m_state->set_context( shared_from_this() );
     }
 }
