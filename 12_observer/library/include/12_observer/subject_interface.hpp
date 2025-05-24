@@ -25,7 +25,7 @@ class SubjectInterface
 
   private:
     // Classes vector<> and list<> let you remove while iterating, not set<>. 
-    std::vector<std::shared_ptr<ObserverInterface>> m_observers;
+    std::vector<std::weak_ptr<ObserverInterface>> m_observers;
 };
 
 } // namespace ObserverNS

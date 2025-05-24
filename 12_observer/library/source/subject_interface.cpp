@@ -1,6 +1,7 @@
 #include "12_observer/subject_interface.hpp"
 
 #include <algorithm> // For std::remove_if().
+#include <iostream>
 
 
 namespace ObserverNS
@@ -8,12 +9,16 @@ namespace ObserverNS
     
 void SubjectInterface::attach(const std::shared_ptr<ObserverInterface>& observer)
 {
+    std::cout << "I'm the Subject. Attaching a new Observer.\n";
+
     m_observers.push_back(observer);
     observer->store_subject( shared_from_this() );
 }
 
 void SubjectInterface::detach(const std::shared_ptr<ObserverInterface>& observer)
 {
+    std::cout << "I'm the Subject. Detaching the dying Observer.\n";
+
     // Cons of not using a loop: it goes over the whole container.
     // Pros: 
     //  - more readable, you know directly what's going to happen;
@@ -22,8 +27,14 @@ void SubjectInterface::detach(const std::shared_ptr<ObserverInterface>& observer
     m_observers.erase(
       std::remove_if(
         m_observers.begin(), m_observers.end(), 
-        [&observer] (const std::shared_ptr<ObserverInterface>& o) 
-        { return o == observer; }
+        [&observer] (const std::weak_ptr<ObserverInterface>& o) 
+        {
+            if (auto obs = o.lock()) // std::shared_ptr<ObserverInterface>
+            {
+                return observer == obs;;
+            }
+            return false;
+        }
       ),
       m_observers.end()
     );
@@ -38,9 +49,14 @@ void SubjectInterface::detach(const std::shared_ptr<ObserverInterface>& observer
 
 void SubjectInterface::notify() const 
 {
+    std::cout << "I'm the Subject. Notifying the Observers about my change.\n";
+
     for (const auto& observer : m_observers)
     {
-        observer->update();
+        if (auto obs = observer.lock()) // std::shared_ptr<ObserverInterface>
+        {
+            obs->update();
+        }
     }
 }
 
