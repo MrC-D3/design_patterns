@@ -13,15 +13,7 @@ class StateInterface
 {
   public:
     virtual ~StateInterface() = default;
-
-    StateInterface(const std::shared_ptr<Context>& context = nullptr);
-
-    StateInterface(const StateInterface& origin) = default;
-    StateInterface(StateInterface&& origin) = default;
-
-    // Assign operations.
-    StateInterface& operator=(const StateInterface& origin) = default;
-    StateInterface& operator=(StateInterface&& origin) = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     // Setters.
     void set_context(const std::shared_ptr<Context>& context);

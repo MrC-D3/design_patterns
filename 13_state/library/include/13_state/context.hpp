@@ -11,9 +11,7 @@ namespace State
 class Context : public std::enable_shared_from_this<Context>
 {
   public:
-    Context(std::unique_ptr<StateInterface>&& state = nullptr);
-    Context(const Context& origin) = delete;
-    Context(Context&& origin);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     // Both Context and StateConcrete can change state.
     void set_state(std::unique_ptr<StateInterface>&& state);
@@ -26,7 +24,7 @@ class Context : public std::enable_shared_from_this<Context>
     std::unique_ptr<StateInterface> m_state;
     // Need m_next_state when using smart pointers or the calling StateConcreteX
     //  would delete itself when change state. Implement with std::optional<T>?
-    std::unique_ptr<StateInterface> m_next_state;
+    std::unique_ptr<StateInterface> m_next_state{nullptr};
 
     void update_state();
 };
