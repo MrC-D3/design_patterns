@@ -9,9 +9,9 @@ using namespace ObserverNS;
 TEST(ObserverTestSuite, SubjectSetState)
 {  
     auto mySubject = std::make_shared<Subject>();
-    auto myObserver = std::make_shared<Observer>( mySubject );
-    
-    myObserver->attach();
+    auto myObserver = std::make_shared<Observer>();
+
+    mySubject->attach(myObserver);
     mySubject->setState(1);
 
     ASSERT_EQ(mySubject->getState(), 1);

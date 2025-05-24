@@ -10,21 +10,12 @@
 namespace ObserverNS
 {
   
-class Observer final : 
-  public ObserverInterface,
-  public std::enable_shared_from_this<Observer>
+class Observer final : public ObserverInterface
 {
   public:
-    explicit Observer(const std::shared_ptr<Subject>& subject);
-    ~Observer();
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
     
-    void attach() override;
     void update() override;
-
-  private:
-    // Avoid cyclic shared_ptr Observer->Subject->Observer.
-    std::weak_ptr<Subject> m_subject;
-    std::int64_t m_state;
 };
 
 } // namespace ObserverNS

@@ -5,37 +5,16 @@
 
 namespace ObserverNS
 {
-    
-Observer::Observer(const std::shared_ptr<Subject>& subject)
-  : m_subject(subject)
-{
-    // Can't call shared_from_this() in the c'tor.
-}
-
-Observer::~Observer()
-{
-    if( auto subject = m_subject.lock() )
-    {
-        subject->detach( this->shared_from_this() );
-    }
-}
-
-void Observer::attach()
-{
-    if( auto subject = m_subject.lock() )
-    {
-        subject->attach( this->shared_from_this() );
-    }
-}
 
 void Observer::update()
 {
-    if( auto subject = m_subject.lock() )
-    {
-        m_state = subject->getState();
-    }
+    std::cout << "I'm the Observer. Got an update from the Subject.\n";
 
-    std::cout << "I'm the Observer. The new state is: " << m_state << std::endl;
+    // Dynamic cast of m_subject, from SubjectInterface to Subject to eventually
+    //   get specific info on the update.
+    auto subject = std::dynamic_pointer_cast<Subject>(m_subject);
+    std::cout << "I'm the Observer. That's the update: " << subject->getState()
+      << ".\n";
 }
 
 } // namespace ObserverNS

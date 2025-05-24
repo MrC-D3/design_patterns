@@ -9,6 +9,7 @@ namespace ObserverNS
 void SubjectInterface::attach(const std::shared_ptr<ObserverInterface>& observer)
 {
     m_observers.push_back(observer);
+    observer->store_subject( shared_from_this() );
 }
 
 void SubjectInterface::detach(const std::shared_ptr<ObserverInterface>& observer)

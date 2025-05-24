@@ -11,9 +11,11 @@ namespace ObserverNS
   
 class Subject final : public SubjectInterface
 {
-  public:    
-    void setState(const std::int64_t& state);
-    std::int64_t getState() const;
+  public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    void setState(const std::int64_t state);
+    const std::int64_t& getState() const;
 
   private:
     std::int64_t m_state;
