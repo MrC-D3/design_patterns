@@ -1,20 +1,28 @@
 #ifndef OBSERVER_INTERFACE_HPP
 #define OBSERVER_INTERFACE_HPP
 
+#include <memory>
+
 
 namespace ObserverNS
 {
   
+class SubjectInterface;
+
 class ObserverInterface
+: public std::enable_shared_from_this<ObserverInterface>
 {
   public:
-    virtual ~ObserverInterface() = default;
-    
-    // Method needed because you can't call shared_from_this() in the d'tor.
-    // Not const or shared_from_this<>() returns a shared_ptr<const Observer>.
-    virtual void attach() = 0;
+    virtual ~ObserverInterface();
+    // Default c'tors and operator= overloads, both copy and move.
+
+    virtual void store_subject(
+      const std::shared_ptr<SubjectInterface>& subject);
 
     virtual void update() = 0;
+
+  protected:
+    std::shared_ptr<SubjectInterface> m_subject;
 };
 
 } // namespace Observer
