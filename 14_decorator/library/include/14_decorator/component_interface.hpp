@@ -9,16 +9,12 @@ class ComponentInterface
 {
   public:
     virtual ~ComponentInterface() = default;
-    ComponentInterface() = default;
-
-    ComponentInterface(const ComponentInterface& origin) = default;
-    ComponentInterface(ComponentInterface&& origin) = default;
-    ComponentInterface& operator=(ComponentInterface& origin) = default;
-    ComponentInterface& operator=(ComponentInterface&& origin) = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     virtual void behavior() = 0;
 };
 
 } // namespace Decorator
+
 
 #endif // COMPONENT_INTERFACE_HPP

@@ -7,11 +7,19 @@ using namespace Decorator;
 
 int main()
 {
-    ComponentConcrete component;
-    auto decorator = std::make_unique<DecoratorConcrete>( 
-      std::make_unique<ComponentConcrete>() );
+    // Solution with inheritance.
+    {
+      DecoratorConcrete decorator{ std::make_unique<ComponentConcrete>() };
 
-    decorator->behavior();
+      decorator.behavior();
+    }
+
+    // Solution with inheritance and template.
+    {
+        DecoratorAdvanced<ComponentConcrete> decorator('A');
+
+        decorator.behavior();
+    }
 
     return 0;
 }

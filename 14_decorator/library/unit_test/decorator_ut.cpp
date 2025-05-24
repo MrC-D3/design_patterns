@@ -12,10 +12,9 @@ using ::testing::AtLeast;
 class ComponentMock : public ComponentInterface
 {
   public:
-    void behavior() override
-    {
-        std::cout << "I'm ComponentMock." << std::endl;
-    }
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    MOCK_METHOD(void, behavior, (), (override));
 };
 
 class DecoratorConcreteTest : public ::testing::Test
@@ -25,7 +24,11 @@ class DecoratorConcreteTest : public ::testing::Test
     {
         // Prefer c'tor/d'tor when you want to init const member variables and
         //  in case of sub-classing to be sure these operations are called.
-        m_decorator = std::make_unique<DecoratorConcrete>( std::make_unique<ComponentMock>() );
+        m_component = std::make_unique<ComponentMock>();
+        m_component_ptr = m_component.get();
+        m_decorator = std::make_unique<DecoratorConcrete>( 
+          std::move(m_component)
+        );
     }
     ~DecoratorConcreteTest()
     {}
@@ -39,20 +42,14 @@ class DecoratorConcreteTest : public ::testing::Test
     {}
 
     // Class members.
-    //std::unique_ptr<ComponentMock> m_component;
+    std::unique_ptr<ComponentMock> m_component;
+    ComponentMock* m_component_ptr;
     std::unique_ptr<DecoratorConcrete> m_decorator;
 };
 
 TEST_F(DecoratorConcreteTest, test1)
 {
-    //EXPECT_CALL(*m_component, behavior).Times(AtLeast(1));
-    auto original = std::cout.rdbuf();
-    std::stringstream capture;
-    std::cout.rdbuf(capture.rdbuf());
+    EXPECT_CALL(*m_component_ptr, behavior).Times(AtLeast(1));
 
     m_decorator->behavior();
-
-    EXPECT_NE( capture.str().find("ComponentMock"), std::string::npos );
-
-    std::cout.rdbuf(original);
 }

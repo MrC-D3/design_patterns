@@ -7,8 +7,7 @@ namespace Decorator
 
 void ComponentConcrete::behavior()
 {
-    std::cout << "I'm the ComponentConcrete. This is my basic behavior." <<
-        std::endl;
+    std::cout << "I'm the ComponentConcrete. This is my basic behavior.\n";
 }
 
 } // namespace Decorator
