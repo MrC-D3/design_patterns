@@ -12,15 +12,8 @@ namespace Decorator
 class DecoratorConcrete final : public DecoratorInterface
 {
   public:
-    ~DecoratorConcrete() = default;
     explicit DecoratorConcrete(std::unique_ptr<ComponentInterface>&& component);
-
-    // Delete copy methods because of unique_ptr.
-    DecoratorConcrete(const DecoratorConcrete& origin) = delete;
-    DecoratorConcrete& operator=(const DecoratorConcrete& origin) = delete;
-
-    DecoratorConcrete(DecoratorConcrete&& origin) = default;
-    DecoratorConcrete& operator=(DecoratorConcrete&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void behavior() override;
 };

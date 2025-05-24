@@ -14,7 +14,7 @@ void DecoratorConcrete::behavior()
     DecoratorInterface::behavior();
 
     std::cout << "I'm the DecoratorConcrete. I'm enriching the Component's \
-        behavior with something after." << std::endl;
+        behavior with something after.\n";
 }
 
 } // namespace Decorator

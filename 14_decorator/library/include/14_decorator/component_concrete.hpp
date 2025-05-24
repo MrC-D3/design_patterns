@@ -7,19 +7,13 @@
 namespace Decorator
 {
 
-class ComponentConcrete final : public ComponentInterface
+// Can't be final because DecoratorAdvanced inherits from it.
+class ComponentConcrete : public ComponentInterface
 {
   public:
-    ~ComponentConcrete() = default;
-    ComponentConcrete() = default;
-
-    ComponentConcrete(const ComponentConcrete& origin) = default;
-    ComponentConcrete(ComponentConcrete&& origin) = default;
-    ComponentConcrete& operator=(ComponentConcrete& origin) = default;
-    ComponentConcrete& operator=(ComponentConcrete&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void behavior() override;
-    
 };
 
 } // namespace Decorator
