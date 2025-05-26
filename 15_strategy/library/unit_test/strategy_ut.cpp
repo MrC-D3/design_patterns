@@ -15,17 +15,19 @@ using ::testing::AtLeast;
 class StrategyMock : public StrategyInterface
 {
   public:
-    void do_something(const std::int64_t&) override
-    {
-        std::cout << "I'm StrategyMock." << std::endl;
-    }
+    MOCK_METHOD( void, do_something, (const std::int64_t), (override) );
 };
 
 class StrategyFixture : public ::testing::Test
 {
   protected:
     StrategyFixture()
-    {}
+    {
+        m_strategy = std::make_unique<StrategyMock>();
+        m_strategy_ptr = m_strategy.get();
+        m_context = std::make_unique<Context>( std::move(m_strategy) );
+    }
+
     ~StrategyFixture()
     {}
 
@@ -34,19 +36,14 @@ class StrategyFixture : public ::testing::Test
     void TearDown()
     {}
 
-    Context m_context{ std::make_unique<StrategyMock>(), 10 };
+    std::unique_ptr<StrategyMock> m_strategy;
+    StrategyMock* m_strategy_ptr;
+    std::unique_ptr<Context> m_context;;
 };
 
 TEST_F(StrategyFixture, TestName)
 {
-    //EXPECT_CALL(*m_strategy, do_something).Times(AtLeast(1));
-    auto original = std::cout.rdbuf();
-    std::stringstream capture;
-    std::cout.rdbuf(capture.rdbuf());
-    
-    m_context.apply_strategy();
+    EXPECT_CALL(*m_strategy_ptr, do_something).Times(AtLeast(1));
 
-    EXPECT_NE( capture.str().find("I'm StrategyMock."), std::string::npos );
-
-    std::cout.rdbuf(original);
+    m_context->apply_strategy();
 }
