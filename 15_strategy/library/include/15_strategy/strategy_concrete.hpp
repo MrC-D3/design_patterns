@@ -10,18 +10,12 @@ namespace Strategy
 class StrategyConcrete final : public StrategyInterface
 {
   public:
-    ~StrategyConcrete() = default;
-    StrategyConcrete() = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    StrategyConcrete(const StrategyConcrete& origin) = default;
-    StrategyConcrete& operator=(const StrategyConcrete& origin) = default;
-
-    StrategyConcrete(StrategyConcrete&& origin) = default;
-    StrategyConcrete& operator=(StrategyConcrete&& origin) = default;
-
-    void do_something(const std::int64_t& data) override;
+    void do_something(const std::int64_t data) override;
 };
 
 } // namespace Strategy
+
 
 #endif // SRATEGY_CONCRETE_HPP
