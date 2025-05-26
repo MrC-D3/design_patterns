@@ -39,6 +39,7 @@ TEST_F(VisitorTestFixture, TestName)
     using ::testing::An;
 
     auto m_visitor = std::make_shared<VisitorMock>();
+
     EXPECT_CALL(*m_visitor, 
       visit( An<const std::shared_ptr<ElementConcreteA>&>() )
     ).Times(AtLeast(1));
@@ -49,6 +50,6 @@ TEST_F(VisitorTestFixture, TestName)
     // Range-based-for automatically calls begin().
     for(auto& i : m_object_structure.get_elements() )
     {
-        i->access( m_visitor );
+        i->accept( m_visitor );
     }
 }

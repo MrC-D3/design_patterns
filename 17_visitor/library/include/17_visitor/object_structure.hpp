@@ -12,14 +12,8 @@ namespace Visitor
 class ObjectStructure
 {
   public:
-    ~ObjectStructure() = default;
     ObjectStructure();
-
-    ObjectStructure(const ObjectStructure& origin) = delete;
-    ObjectStructure& operator=(const ObjectStructure& origin) = delete;
-
-    ObjectStructure(ObjectStructure&& origin) = default;
-    ObjectStructure& operator=(ObjectStructure&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     std::list<std::shared_ptr<ElementInterface>>& get_elements();
 
@@ -28,5 +22,6 @@ class ObjectStructure
 };
 
 } // namespace Visitor
+
 
 #endif // OBJECT_STRUCTURE_HPP

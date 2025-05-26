@@ -5,14 +5,20 @@
 namespace Visitor
 {
 
-void ElementConcreteA::access(const std::shared_ptr<VisitorInterface>& visitor)
+/*
+** ElementConcreteA implementation.
+*/
+void ElementConcreteA::accept(const std::shared_ptr<VisitorInterface>& visitor)
 {
     visitor->visit( shared_from_this() );
 }
 
-void ElementConcreteB::access(const std::shared_ptr<VisitorInterface>& visitor)
+/*
+** ElementConcreteB implementation.
+*/
+void ElementConcreteB::accept(const std::shared_ptr<VisitorInterface>& visitor)
 {
     visitor->visit( shared_from_this() );
 }
 
-}
+} // namespace Visitor
