@@ -10,14 +10,7 @@ namespace Visitor
 class VisitorConcrete1 final : public VisitorInterface
 {
   public:
-    ~VisitorConcrete1() = default;
-    VisitorConcrete1() = default;
-
-    VisitorConcrete1(const VisitorConcrete1& origin) = default;
-    VisitorConcrete1& operator=(const VisitorConcrete1& origin) = default;
-
-    VisitorConcrete1(VisitorConcrete1&& origin) = default;
-    VisitorConcrete1& operator=(VisitorConcrete1&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void visit(const std::shared_ptr<ElementConcreteA>& elementA) override;
     void visit(const std::shared_ptr<ElementConcreteB>& elementB) override;

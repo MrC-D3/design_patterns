@@ -10,38 +10,30 @@ namespace Visitor
 
 class VisitorInterface;
 
+/*
+** ElementConcreteA declarations.
+*/
 class ElementConcreteA final 
   : public ElementInterface, 
     public std::enable_shared_from_this<ElementConcreteA>
 {
   public:
-    ~ElementConcreteA() = default;
-    ElementConcreteA() = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    ElementConcreteA(const ElementConcreteA& origin) = default;
-    ElementConcreteA& operator=(const ElementConcreteA& origin) = default;
-
-    ElementConcreteA(ElementConcreteA&& origin) = default;
-    ElementConcreteA& operator=(ElementConcreteA&& origin) = default;
-
-    void access(const std::shared_ptr<VisitorInterface>& visitor) override;
+    void accept(const std::shared_ptr<VisitorInterface>& visitor) override;
 };
 
+/*
+** ElementConcreteB declarations.
+*/
 class ElementConcreteB final
   : public ElementInterface, 
     public std::enable_shared_from_this<ElementConcreteB>
 {
   public:
-    ~ElementConcreteB() = default;
-    ElementConcreteB() = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    ElementConcreteB(const ElementConcreteB& origin) = default;
-    ElementConcreteB& operator=(const ElementConcreteB& origin) = default;
-
-    ElementConcreteB(ElementConcreteB&& origin) = default;
-    ElementConcreteB& operator=(ElementConcreteB&& origin) = default;
-
-    void access(const std::shared_ptr<VisitorInterface>& visitor) override;
+    void accept(const std::shared_ptr<VisitorInterface>& visitor) override;
 };
 
 } // namespace Visitor
