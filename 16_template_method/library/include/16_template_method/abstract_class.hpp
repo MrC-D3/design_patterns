@@ -9,13 +9,7 @@ class AbstractClass
 {
   public:
     virtual ~AbstractClass() = default;
-    AbstractClass() = default;
-
-    AbstractClass(const AbstractClass& origin) = default;
-    AbstractClass& operator=(const AbstractClass& origin) = default;
-
-    AbstractClass(AbstractClass&& origin) = default;
-    AbstractClass& operator=(AbstractClass&& origin) = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     void template_method();
 

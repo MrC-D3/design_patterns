@@ -17,7 +17,7 @@ class MockClass : public AbstractClass
 
     void hook() override
     {
-        std::cout << "I'm the MockClass. I'm doing the hook." << std::endl;
+        std::cout << "I'm the MockClass. I'm doing the hook.\n";
     }
 
     MOCK_METHOD( void, primitive_operation2, (), (override) );

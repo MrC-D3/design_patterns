@@ -10,14 +10,7 @@ namespace TemplateMethod
 class ConcreteClass final : public AbstractClass
 {
   protected:
-    ~ConcreteClass() = default;
-    ConcreteClass() = default;
-
-    ConcreteClass(const ConcreteClass& origin) = default;
-    ConcreteClass& operator=(const ConcreteClass& origin) = default;
-
-    ConcreteClass(ConcreteClass&& origin) = default;
-    ConcreteClass& operator=(ConcreteClass&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
     
     void primitive_operation1() override;
 
@@ -27,5 +20,6 @@ class ConcreteClass final : public AbstractClass
 };
 
 } // namespace TemplateMethod
+
 
 #endif // CONCRETE_CLASS_HPP
