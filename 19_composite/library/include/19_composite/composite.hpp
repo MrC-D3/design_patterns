@@ -11,14 +11,7 @@ namespace CompositeNS
 class Composite final : public Component
 {
   public:
-    ~Composite() = default;
-    Composite() = default;
-
-    Composite(const Composite& origin) = default;
-    Composite& operator=(const Composite& origin) = default;
-
-    Composite(Composite&& origin) = default;
-    Composite& operator=(Composite&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void act() override;
 

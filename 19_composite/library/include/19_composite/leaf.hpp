@@ -10,14 +10,7 @@ namespace CompositeNS
 class Leaf final : public Component
 {
   public:
-    ~Leaf() = default;
-    Leaf() = default;
-
-    Leaf(const Leaf& origin) = default;
-    Leaf& operator=(const Leaf& origin) = default;
-
-    Leaf(Leaf&& origin) = default;
-    Leaf& operator=(Leaf&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void act() override;
 };
