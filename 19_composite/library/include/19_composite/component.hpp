@@ -11,13 +11,7 @@ class Component
 {
   public:
     ~Component() = default;
-    Component() = default;
-
-    Component(const Component& origin) = default;
-    Component& operator=(const Component& origin) = default;
-
-    Component(Component&& origin) = default;
-    Component& operator=(Component&& origin) = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     virtual void act() = 0;
 
