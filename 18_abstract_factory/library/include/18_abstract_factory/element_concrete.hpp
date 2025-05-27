@@ -10,14 +10,7 @@ namespace AbstractFactoryNS
 class ElementConcreteA1 final : public ElementInterfaceA
 {
   public:
-    ~ElementConcreteA1() = default;
-    ElementConcreteA1() = default;
-
-    ElementConcreteA1(const ElementConcreteA1& origin) = default;
-    ElementConcreteA1& operator=(const ElementConcreteA1& origin) = default;
-
-    ElementConcreteA1(ElementConcreteA1&& origin) = default;
-    ElementConcreteA1& operator=(ElementConcreteA1&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
     
     void doA() override;
 };
@@ -27,5 +20,6 @@ class ElementConcreteA1 final : public ElementInterfaceA
 // Potentially ElementConcreteB1 and other Products' class hieararchies.
 
 } // namespace AbtractFactoryNS
+
 
 #endif // ELEMENT_CONCRETE_HPP

@@ -12,14 +12,7 @@ namespace AbstractFactoryNS
 class ConcreteFactory final : public AbstractFactory
 {
   public:
-    ~ConcreteFactory() = default;
-    ConcreteFactory() = default;
-
-    ConcreteFactory(const ConcreteFactory& origin) = default;
-    ConcreteFactory& operator=(const ConcreteFactory& origin) = default;
-
-    ConcreteFactory(ConcreteFactory&& origin) = default;
-    ConcreteFactory& operator=(ConcreteFactory&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     std::unique_ptr<ElementInterfaceA> factoryElementA() override;
 };

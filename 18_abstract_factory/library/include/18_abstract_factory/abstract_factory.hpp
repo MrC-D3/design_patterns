@@ -12,13 +12,7 @@ class AbstractFactory
 {
   public:
     virtual ~AbstractFactory() = default;
-    AbstractFactory() = default;
-
-    AbstractFactory(const AbstractFactory& origin) = default;
-    AbstractFactory& operator=(const AbstractFactory& origin) = default;
-
-    AbstractFactory(AbstractFactory&& origin) = default;
-    AbstractFactory& operator=(AbstractFactory&& origin) = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     virtual std::unique_ptr<ElementInterfaceA> factoryElementA() = 0;
     // Potentially factoryElementB() and other factory methods.
