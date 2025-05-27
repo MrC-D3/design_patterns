@@ -5,10 +5,11 @@
 namespace CoR
 {
 
-HandlerConcrete::HandlerConcrete(std::unique_ptr<HandlerInterface>&& next, 
+HandlerConcrete::HandlerConcrete(
+  std::unique_ptr<HandlerInterface>&& next, 
   const std::int32_t request)
-  : HandlerInterface(std::move(next), request)
-  // m_request declared in the base class, so can't be initialized here. 
+: HandlerInterface{ std::move(next), request }
+// m_request declared in the base class, so can't be initialized here. 
 {}
 
 void HandlerConcrete::handleRequest(const std::int32_t request) 
@@ -24,7 +25,6 @@ void HandlerConcrete::handleRequest(const std::int32_t request)
         //  you aren't changing the parent definition, you are extending it.
         HandlerInterface::handleRequest(request);
     }
-    
 }
 
 bool HandlerConcrete::canHandle(const std::int32_t request)
