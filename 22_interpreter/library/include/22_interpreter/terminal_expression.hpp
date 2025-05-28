@@ -16,14 +16,8 @@ class TerminalExpression final :
   public std::enable_shared_from_this<TerminalExpression>
 {
   public:
-    ~TerminalExpression() = default;
     TerminalExpression(const std::string& name);
-
-    TerminalExpression(const TerminalExpression& origin) = default;
-    TerminalExpression& operator=(const TerminalExpression& origin) = default;
-
-    TerminalExpression(TerminalExpression&& origin) = default;
-    TerminalExpression& operator=(TerminalExpression&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     bool interpret(const Context& context) const override;
 
@@ -32,5 +26,6 @@ class TerminalExpression final :
 };
 
 } // namespace Interpreter
+
 
 #endif // TERMINAL_EXPRESSION_HPP

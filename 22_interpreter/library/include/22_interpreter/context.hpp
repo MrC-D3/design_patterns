@@ -13,14 +13,8 @@ namespace Interpreter
 class Context
 {
   public:
-    ~Context() = default;
     Context();
-
-    Context(const Context& origin) = default;
-    Context& operator=(const Context& origin) = default;
-
-    Context(Context&& origin) = default;
-    Context& operator=(Context&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
     
     // Using std::shared_ptr<Base>& doesn't work.
     // Becauae a "non-const lvalue reference" requires an exact type match. 
