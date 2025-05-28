@@ -6,7 +6,7 @@ namespace Interpreter
 {
 
 TerminalExpression::TerminalExpression(const std::string& name)
-  : m_name(name)
+: m_name(name)
 {}
 
 bool TerminalExpression::interpret(const Context& context) const

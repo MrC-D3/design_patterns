@@ -10,6 +10,7 @@ using namespace Interpreter;
 
 int main()
 {
+    // Case 1.
     auto expression1 = std::make_shared<TerminalExpression>("X");
     auto expression2 = std::make_shared<TerminalExpression>("Y");
     NonterminalExpression0 sentence(expression1, expression2);
@@ -27,6 +28,7 @@ int main()
         std::cout << "Result is false, wrong!\n";
     }
 
+    // Case 2.
     context.assign(expression1, false);
     result = sentence.interpret(context);
     if(result)

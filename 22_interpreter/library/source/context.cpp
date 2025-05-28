@@ -5,15 +5,14 @@ namespace Interpreter
 {
 
 Context::Context()
-  : m_values()
+: m_values()
 {}
     
-void Context::assign(const std::shared_ptr<AbstractExpression>& key, 
+void Context::assign(
+  const std::shared_ptr<AbstractExpression>& key, 
   const bool value)
 {
-    // Using the pointer as key, because it's unique.
-    // What to in case of smart pointers?
-    // Keeping the raw pointer will expose it and be dangerous.
+    // The pointer is still unique even if smart thanks to comparison operators.
     m_values[key] = value;
 }
 
