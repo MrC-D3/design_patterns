@@ -10,8 +10,7 @@ using namespace Command;
 int main()
 {
     Receiver receiver;
-    auto command = std::make_unique<CommandConcrete>(receiver);
-    Invoker invoker(std::move(command));
+    Invoker invoker{ std::make_unique<CommandConcrete>(receiver) };
 
     invoker.call_command();
 

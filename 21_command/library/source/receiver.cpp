@@ -5,9 +5,9 @@
 namespace Command
 {
 
-void Receiver::operation()
+void Receiver::operation1()
 {
-    std::cout << "I'm the Receiver. I'm doing the operation.\n";
+    std::cout << "I'm the Receiver. I'm transparent for the Invoker.\n";
 }
 
 } // namespace Command
