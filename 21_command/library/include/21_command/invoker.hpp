@@ -13,14 +13,8 @@ namespace Command
 class Invoker
 {
   public:
-    virtual ~Invoker() = default;
     Invoker(std::unique_ptr<CommandInterface>&& command);
-
-    Invoker(const Invoker& origin) = delete;
-    Invoker& operator=(const Invoker& origin) = delete;
-
-    Invoker(Invoker&& origin) = default;
-    Invoker& operator=(Invoker&& origin) = default;
+    // Default d'tor, c'tors and operator= overloads (only move).
 
     void call_command();
 
@@ -29,5 +23,6 @@ class Invoker
 };
 
 } // namespace Command
+
 
 #endif // INVOKER_HPP

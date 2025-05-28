@@ -9,7 +9,7 @@ using namespace Command;
 class MockCommand : public CommandInterface
 {
   public:
-    MOCK_METHOD(void, execute, ());
+    MOCK_METHOD(void, executeA, ());
 };
 
 class CommandTestFixture : public ::testing::Test
@@ -39,7 +39,7 @@ class CommandTestFixture : public ::testing::Test
 
 TEST_F(CommandTestFixture, call_command)
 {
-    EXPECT_CALL(*m_raw_command, execute).Times(::testing::AtLeast(1));
+    EXPECT_CALL(*m_raw_command, executeA).Times(::testing::AtLeast(1));
 
     m_invoker->call_command();
 }
