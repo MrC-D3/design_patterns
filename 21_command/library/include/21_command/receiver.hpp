@@ -8,18 +8,14 @@ namespace Command
 class Receiver
 {
   public:
-    ~Receiver() = default;
-    Receiver() = default;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    Receiver(const Receiver& origin) = default;
-    Receiver& operator=(const Receiver& origin) = default;
+    void operation1();
 
-    Receiver(Receiver&& origin) = default;
-    Receiver& operator=(Receiver&& origin) = default;
-
-    void operation();
+    // Potentially operation2() and so on.
 };
 
 } // namespace Command
+
 
 #endif // RECEIVER_HPP

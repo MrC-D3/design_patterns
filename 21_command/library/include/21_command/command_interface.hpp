@@ -9,17 +9,14 @@ class CommandInterface
 {
   public:
     virtual ~CommandInterface() = default;
-    CommandInterface() = default;
+    // Default c'tors and operator= overloads, both copy and mov.
 
-    CommandInterface(const CommandInterface& origin) = default;
-    CommandInterface& operator=(const CommandInterface& origin) = default;
+    virtual void executeA() = 0;
 
-    CommandInterface(CommandInterface&& origin) = default;
-    CommandInterface& operator=(CommandInterface&& origin) = default;
-
-    virtual void execute() = 0;
+    // Potentially executeB and other possible commands the Invoker can need.
 };
 
 } // namespace Command
+
 
 #endif // COMMAND_INTERFACE_HPP

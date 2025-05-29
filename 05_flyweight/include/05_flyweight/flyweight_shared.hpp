@@ -1,27 +1,31 @@
-// Usually, the behavior of the original object remains in the flyweight class.
-// In this case, whoever calls a flyweight’s method must also pass appropriate
-// bits of the extrinsic state into the method’s parameters. On the other hand,
-// the behavior can be moved to the context class, which would use the linked
-// flyweight merely as a data object.
-
-
 #ifndef FLYWEIGHT_SHARED_HPP
 #define FLYWEIGHT_SHARED_HPP
 
-#include <iostream>
+#include <cstdint>
 
+
+namespace Flyweight
+{
 
 class FlyweightShared
 {
   public:
-    FlyweightShared(uint8_t code);
+    // The input parameter is a basic type, so pass it by value.
+    explicit FlyweightShared(const std::uint8_t code);
 
-    char get_shared_data();
+    // Default d'tor, c'tors and operator= overloads, for both value and move. 
+
+    // Returning a const means the returned valued cannot be modified.
+    // It has sense for references/pointers, but not for values.
+    // For values, you return a copy, so the const qualifier is ignored.
+    char get_shared_data() const;
 
   private:
     // Pretend it's the image of a character.
-    char m_character = 0;
+    char m_character{0};
 };
 
+} // namespace Flyweight
 
-#endif
+
+#endif // FLYWEIGHT_SHARED_HPP

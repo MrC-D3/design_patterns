@@ -1,16 +1,23 @@
-#include "06_moderator/moderator_concrete.hpp"
-#include "06_moderator/colleague_concrete.hpp"
+#include "06_mediator/mediator_concrete.hpp"
+#include "06_mediator/colleague_concrete.hpp"
+
+#include <memory>
 
 
 int main()
 {
-    // *** This part... ***
-    ColleagueConcreteA* colleagueA = new ColleagueConcreteA();
-    ColleagueConcreteB* colleagueB = new ColleagueConcreteB();
+    using namespace Mediator;
 
-    ModeratorConcrete moderator(colleagueA, colleagueB);
-    // *** ... can be managed together with the Builder pattern. ***
+    // *** To avoid having Colleague-s without a Mediator, this part... ***
+    auto mediator = std::make_shared<MediatorConcrete>();
 
+    auto colleagueA = std::make_shared<ColleagueConcreteA>();
+    auto colleagueB = std::make_shared<ColleagueConcreteB>();
+
+    mediator->join(colleagueA);
+    mediator->join(colleagueB);
+    // *** ... can be all managed using the Builder pattern. ***
+    
     colleagueA->operationA1();
 
     return 0;

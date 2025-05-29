@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 add_library(
     ${PROJECT_NAME}
     source/subject_interface.cpp
+    source/observer_interface.cpp
     source/subject.cpp
     source/observer.cpp
 )

@@ -6,41 +6,35 @@
 namespace State
 {
 
-StateConcrete1::StateConcrete1(Context* context)
-  : StateInterface(context)
-{
-}
-
+/*
+*  StateConcrete1 implementation.
+*/
 void StateConcrete1::do_something()
 {
-    std::cout << "I'm State1. This won't change the state." << std::endl;
+    std::cout << "I'm State1. This won't change the state.\n";
 }
 
 void StateConcrete1::do_something_else()
 {
-    std::cout << "I'm State1. This will change the state to State2." << 
-      std::endl;
+    std::cout << "I'm State1. This will change the state to State2.\n";
 
-    m_context->set_state(new StateConcrete2(m_context));
+    // You can "delete this".
+    m_context->set_state( std::make_unique<StateConcrete2>() );
 }
 
-
-StateConcrete2::StateConcrete2(Context* context)
-  : StateInterface(context)
-{
-}
-
+/*
+*  StateConcrete2 implementation.
+*/
 void StateConcrete2::do_something()
 {
-    std::cout << "I'm State2. This will change the state to State2." << std::endl;
+    std::cout << "I'm State2. This will change the state to State1.\n";
 
-    m_context->set_state(new StateConcrete1(m_context));
+    m_context->set_state( std::make_unique<StateConcrete1>() );
 }
 
 void StateConcrete2::do_something_else()
 {
-    std::cout << "I'm State2. This won't change the state." << 
-      std::endl;
+    std::cout << "I'm State2. This won't change the state.\n";
 }
 
 } // namespace State

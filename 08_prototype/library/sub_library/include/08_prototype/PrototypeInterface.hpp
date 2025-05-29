@@ -1,13 +1,24 @@
 #ifndef PROTOTYPE_INTERFACE_HPP
 #define PROTOTYPE_INTERFACE_HPP
 
+#include <memory>
 
+
+namespace Prototype
+{
+  
 class PrototypeInterface
 {
   public:
-    virtual PrototypeInterface* clone() = 0;
+    virtual ~PrototypeInterface() = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
-    virtual void to_string() = 0;
+    virtual std::unique_ptr<PrototypeInterface> clone() const = 0;
+
+    virtual void to_string() const = 0;
 };
 
-#endif
+} // namespace Prototype
+
+
+#endif // PROTOTYPE_INTERFACE_HPP

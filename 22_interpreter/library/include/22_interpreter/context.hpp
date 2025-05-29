@@ -2,6 +2,8 @@
 #define CONTEXT_HPP
 
 #include <map>
+#include <memory>
+
 #include "22_interpreter/abstract_expression.hpp"
 
 
@@ -12,12 +14,15 @@ class Context
 {
   public:
     Context();
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
     
-    void assign(AbstractExpression* key, bool value);
-    bool lookup(const AbstractExpression* key);
+    // Using std::shared_ptr<Base>& doesn't work.
+    // Becauae a "non-const lvalue reference" requires an exact type match. 
+    void assign(const std::shared_ptr<AbstractExpression>& key, bool value);
+    bool lookup(const std::shared_ptr<const AbstractExpression>& key) const;
     
   private:
-    std::map<const AbstractExpression*, bool> m_values;
+    std::map<std::shared_ptr<const AbstractExpression>, bool> m_values;
 };
 
 } // namespace Interpreter

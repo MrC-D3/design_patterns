@@ -1,28 +1,34 @@
-#include <iostream>
-
 #include "07_memento/care_taker.hpp"
 
+#include <iostream>
 
-CareTaker::CareTaker(Originator* originator)
-: m_originator(originator)
+
+namespace Memento
 {
-    std::cout << "I'm the CareTaker. Just born." << std::endl;
+    
+CareTaker::CareTaker(const std::shared_ptr<OriginatorInterface>& originator)
+: m_originator{originator}
+{
+    std::cout << "I'm the CareTaker. Just born.\n";
 }
 
 void CareTaker::backup()
 {
-    std::cout << "I'm the Caretaker. Backing-up the Originator's state." <<
-        std::endl;
+    std::cout << "I'm the Caretaker. Backing-up the Originator's state.\n";
 
-    Memento* new_memento = m_originator->create_memento();
-    m_past_states.push(new_memento);
+    auto new_memento = m_originator->create_memento();
+    m_past_states.push( std::move(new_memento) );
 }
 
 void CareTaker::undo()
 {
-    std::cout << "I'm the Caretaker. Undoing change on Originator's state."
-        << std::endl;
+    std::cout << "I'm the Caretaker. Undoing change on Originator's state.\n";
 
-    Memento* old_memento = m_past_states.top();
-    old_memento->restore();
+    if (!m_past_states.empty())
+    {
+        m_past_states.top()->restore();
+        m_past_states.pop();
+    }
 }
+
+} // namespace Memento

@@ -7,9 +7,11 @@
 namespace CompositeNS
 {
   
-class Leaf : public Component
+class Leaf final : public Component
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
     void act() override;
 };
 

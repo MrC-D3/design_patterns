@@ -9,10 +9,12 @@ class ComponentInterface
 {
   public:
     virtual ~ComponentInterface() = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     virtual void behavior() = 0;
 };
 
-} // namespace DecoratorInterace
+} // namespace Decorator
+
 
 #endif // COMPONENT_INTERFACE_HPP

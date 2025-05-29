@@ -1,9 +1,11 @@
-#include "target_animal.hpp"
 #include "adapter_dog.hpp"
+
+#include <memory>
+
 
 int main()
 {
-    Animal* my_animal = new Dog_Compliant();
+    auto my_animal = std::make_unique<Dog_Compliant>();
 
     my_animal->speak();
 

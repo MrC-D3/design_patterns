@@ -9,6 +9,7 @@ class AbstractClass
 {
   public:
     virtual ~AbstractClass() = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     void template_method();
 

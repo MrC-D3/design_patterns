@@ -7,16 +7,23 @@
 class ColorInterface
 {
   public:
-    virtual void draw() = 0;
+    virtual ~ColorInterface() noexcept = default;
+    // Default c'tors and operator= overloads (both copy and move).
+
+    virtual void draw() const = 0;
 };
 
-class Color1 : public ColorInterface
+class Blue final : public ColorInterface
 {
   public:
-    void draw() override
+    // Default d'tor, c'tors and operator= overloads (both copy and move).
+
+    // Keyword "override" must be at the end.
+    void draw() const override
     {
-        std::cout << "This is a shape drawn in Color1." << std::endl;
+        std::cout << "This is a shape drawn in Blue.\n";
     }
 };
 
-#endif
+
+#endif // IMPLEMENTATION_HIERARCHY_HPP

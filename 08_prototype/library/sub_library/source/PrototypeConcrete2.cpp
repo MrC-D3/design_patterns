@@ -3,16 +3,17 @@
 #include "08_prototype/PrototypeConcrete2.hpp"
 
 
-PrototypeConcrete2::PrototypeConcrete2(int state)
-  : m_state(state)
-{}
-
-PrototypeInterface* PrototypeConcrete2::clone()
+namespace Prototype
 {
-    return new PrototypeConcrete2(m_state);
+
+std::unique_ptr<PrototypeInterface> PrototypeConcrete2::clone() const
+{
+    return std::make_unique<PrototypeConcrete2>();
 }
 
-void PrototypeConcrete2::to_string()
+void PrototypeConcrete2::to_string() const
 {
-    std::cout << "I'm a PrototypeConcrete" << m_state << std::endl;
+    std::cout << "I'm a PrototypeConcrete2. State: 2.\n";
 }
+
+} // namespace Prototype

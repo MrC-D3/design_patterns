@@ -1,10 +1,14 @@
 #include "abstract_hierarchy.hpp"
 #include "implementation_hierarchy.hpp"
 
+#include <memory>
+
+
 int main()
 {
-    ColorInterface* color1 = new Color1();
-    ShapeInterface* triangle = new Triangle(color1);
+    auto triangle =  std::make_unique<Triangle>(
+      std::make_unique<Blue>()
+    );
 
     triangle->draw();
 }

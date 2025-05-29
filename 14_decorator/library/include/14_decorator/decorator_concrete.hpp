@@ -3,7 +3,7 @@
 
 #include "14_decorator/decorator_interface.hpp"
 
-#include <iostream>
+#include <memory>
 
 
 namespace Decorator
@@ -12,7 +12,8 @@ namespace Decorator
 class DecoratorConcrete final : public DecoratorInterface
 {
   public:
-    DecoratorConcrete(ComponentInterface* component);
+    explicit DecoratorConcrete(std::unique_ptr<ComponentInterface>&& component);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void behavior() override;
 };

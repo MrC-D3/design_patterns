@@ -7,9 +7,11 @@
 namespace AbstractFactoryNS
 {
 
-class ElementConcreteA1 : public ElementInterfaceA
+class ElementConcreteA1 final : public ElementInterfaceA
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+    
     void doA() override;
 };
 
@@ -18,5 +20,6 @@ class ElementConcreteA1 : public ElementInterfaceA
 // Potentially ElementConcreteB1 and other Products' class hieararchies.
 
 } // namespace AbtractFactoryNS
+
 
 #endif // ELEMENT_CONCRETE_HPP

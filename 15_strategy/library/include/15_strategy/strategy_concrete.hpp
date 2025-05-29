@@ -10,9 +10,12 @@ namespace Strategy
 class StrategyConcrete final : public StrategyInterface
 {
   public:
-    void do_something(std::int64_t data) override;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    void do_something(const std::int64_t data) override;
 };
 
 } // namespace Strategy
+
 
 #endif // SRATEGY_CONCRETE_HPP

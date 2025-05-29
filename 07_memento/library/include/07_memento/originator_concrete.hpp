@@ -1,24 +1,34 @@
 #ifndef ORIGINATOR_CONCRETE_HPP
 #define ORIGINATOR_CONCRETE_HPP
 
-#include <iostream>
+#include "07_memento/originator_interface.hpp"
 
-#include "07_memento/originator.hpp"
+#include <memory>
+#include <cstdint>
 
 
-class OriginatorConcrete : public Originator
+namespace Memento
+{
+
+class OriginatorConcrete final : 
+  public OriginatorInterface, 
+  public std::enable_shared_from_this<OriginatorConcrete>
 {
   public:
-    OriginatorConcrete(int state = 0);
+    explicit OriginatorConcrete(const std::int64_t state = 0);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    Memento* create_memento() override;
+    std::unique_ptr<MementoInterface> create_memento() const override;
 
-    void set_state(int state);
+    void set_state(const std::int64_t state);
 
-    void show_state();
+    void show_state() const;
 
   private:
-    int m_state = 0;
+    std::int64_t m_state{0};
 };
 
-#endif
+} // namespace Memento
+
+
+#endif // ORIGINATOR_CONCRETE_HPP

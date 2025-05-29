@@ -2,6 +2,7 @@
 #define STATE_CONCRETE_HPP
 
 #include "13_state/state_interface.hpp"
+#include <memory>
 
 
 namespace State
@@ -10,7 +11,7 @@ namespace State
 class StateConcrete1 : public StateInterface
 {
   public:
-    StateConcrete1(Context* context);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void do_something() override;
     void do_something_else() override;
@@ -19,7 +20,7 @@ class StateConcrete1 : public StateInterface
 class StateConcrete2 : public StateInterface
 {
   public:
-    StateConcrete2(Context* context);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
     void do_something() override;
     void do_something_else() override;

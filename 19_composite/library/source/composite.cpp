@@ -7,17 +7,17 @@ namespace CompositeNS
 
 void Composite::act()
 {
-    for(auto i : m_children)
+    std::cout << "I'm a Composite. I'm acting.\n";
+
+    for(auto& i : m_children)
     {
         i->act();
     }
-
-    std::cout << "I'm a Composite. I'm acting." << std::endl;
 }
 
-void Composite::add(Component* child)
+void Composite::add(std::unique_ptr<Component>&& child)
 {
-    m_children.push_back(child);
+    m_children.emplace_back( std::move(child) );
 }
 
 } // namespace CompositeNS

@@ -4,18 +4,20 @@
 #include "12_observer/observer_interface.hpp"
 #include "12_observer/subject.hpp"
 
+#include <memory>
 
-class Observer : public ObserverInterface
+
+namespace ObserverNS
+{
+  
+class Observer final : public ObserverInterface
 {
   public:
-    Observer(Subject* subject);
-    ~Observer();
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
     
     void update() override;
-
-  private:
-    Subject* m_subject;
-    int m_state;
 };
+
+} // namespace ObserverNS
 
 #endif

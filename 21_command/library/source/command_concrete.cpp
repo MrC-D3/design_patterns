@@ -7,14 +7,14 @@ namespace Command
 {
 
 CommandConcrete::CommandConcrete(const Receiver& receiver)
-  : m_receiver(receiver)
+: m_receiver(receiver)
 {}
 
-void CommandConcrete::execute()
+void CommandConcrete::executeA()
 {
-    std::cout << "I'm a ConcreteCommand. I'm forwarding the request to the \
-      Receiver." << std::endl;
-    m_receiver.operation();
+    std::cout << "I'm a ConcreteCommand. I'll handle the request using the \
+      Receiver.\n";
+    m_receiver.operation1();
 }
 
 } // namespace Command

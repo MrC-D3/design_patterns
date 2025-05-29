@@ -3,15 +3,25 @@
 
 #include "12_observer/subject_interface.hpp"
 
+#include <cstdint>
 
-class Subject : public SubjectInterface
+
+namespace ObserverNS
 {
-  public:    
-    void setState(int state);
-    int getState();
+  
+class Subject final : public SubjectInterface
+{
+  public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    void setState(const std::int64_t state);
+    const std::int64_t& getState() const;
 
   private:
-    int m_state;
+    std::int64_t m_state;
 };
 
-#endif
+} // namesapce ObserverNS
+
+
+#endif // SUBJECT_HPP

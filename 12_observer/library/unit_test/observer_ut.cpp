@@ -4,12 +4,15 @@
 #include <gtest/gtest.h>
 
 
+using namespace ObserverNS;
+
 TEST(ObserverTestSuite, SubjectSetState)
-{
-    Subject mySubject;
-    Observer myObserver(&mySubject);
+{  
+    auto mySubject = std::make_shared<Subject>();
+    auto myObserver = std::make_shared<Observer>();
 
-    mySubject.setState(1);
+    mySubject->attach(myObserver);
+    mySubject->setState(1);
 
-    ASSERT_EQ(mySubject.getState(), 1);
+    ASSERT_EQ(mySubject->getState(), 1);
 }

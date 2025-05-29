@@ -3,6 +3,8 @@
 
 #include "21_command/command_interface.hpp"
 
+#include <memory>
+
 
 namespace Command
 {
@@ -11,21 +13,16 @@ namespace Command
 class Invoker
 {
   public:
-    virtual ~Invoker() = default;
-    Invoker(CommandInterface* command);
-
-    Invoker(const Invoker& origin) = default;
-    Invoker& operator=(const Invoker& origin) = default;
-
-    Invoker(Invoker&& origin) = default;
-    Invoker& operator=(Invoker&& origin) = default;
+    Invoker(std::unique_ptr<CommandInterface>&& command);
+    // Default d'tor, c'tors and operator= overloads (only move).
 
     void call_command();
 
   private:
-    CommandInterface* m_command;
+    std::unique_ptr<CommandInterface> m_command;
 };
 
 } // namespace Command
+
 
 #endif // INVOKER_HPP
