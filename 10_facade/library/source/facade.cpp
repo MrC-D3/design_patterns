@@ -4,9 +4,12 @@
 #include <iostream>
 
 
-void Facade::do_everything()
+namespace Facade
 {
-    std::cout << "I'm the Facade. I'll do everythin for you." << std::endl;
+    
+void Facade::do_everything() const
+{
+    std::cout << "I'm the Facade. I'll do everythin for you.\n";
 
     Class1 class1;
     class1.do_something();
@@ -14,3 +17,5 @@ void Facade::do_everything()
     Class2 class2;
     class2.do_something_else();
 }
+
+} // namespace Facade

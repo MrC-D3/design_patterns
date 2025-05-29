@@ -4,9 +4,9 @@
 namespace AbstractFactoryNS
 {
 
-ElementInterfaceA* ConcreteFactory::factoryElementA()
+std::unique_ptr<ElementInterfaceA> ConcreteFactory::factoryElementA()
 {
-    return new ElementConcreteA1();
+    return std::make_unique<ElementConcreteA1>();
 }
 
 } // namespace AbstractFactoryNS

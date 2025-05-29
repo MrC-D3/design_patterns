@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.15)
 
 project(interpreter_lib)
 
+set(CMAKE_BUILD_TYPE Debug)
+
 add_library(
     ${PROJECT_NAME}
     source/terminal_expression.cpp

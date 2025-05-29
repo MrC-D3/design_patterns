@@ -3,15 +3,18 @@
 
 #include "18_abstract_factory/abstract_factory.hpp"
 #include "18_abstract_factory/element_concrete.hpp"
+#include <memory>
 
 
 namespace AbstractFactoryNS
 {
 
-class ConcreteFactory : public AbstractFactory
+class ConcreteFactory final : public AbstractFactory
 {
   public:
-    ElementInterfaceA* factoryElementA() override;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    std::unique_ptr<ElementInterfaceA> factoryElementA() override;
 };
 
 } // namespace AbstractFactoryNS

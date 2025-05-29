@@ -13,9 +13,9 @@ using ::testing::AtLeast;
 class MockFactory : public AbstractFactory
 {
   public:
-    ElementInterfaceA* factoryElementA() override
+    std::unique_ptr<ElementInterfaceA> factoryElementA() override
     {
-        return new ElementConcreteA1();
+        return std::make_unique<ElementConcreteA1>();
     }
 };
 

@@ -1,15 +1,25 @@
 #ifndef AGGREGATE_INTERFACE_HPP
 #define AGGREGATE_INTERFACE_HPP
 
+#include <memory>
 
-template <typename Item>
-class IteratorInterface;
+#include "11_iterator/iterator_interface.hpp"
 
+
+namespace IteratorNS
+{
+  
 template <typename Item>
 class AggregateInterface
 {
   public:
-    virtual IteratorInterface<Item>* createIterator() = 0;
+    virtual ~AggregateInterface() = default;
+    // Default c'tors and operator= overloads, both copy and move.
+    
+    virtual std::unique_ptr<IteratorInterface<Item>> createIterator() = 0;
 };
 
-#endif
+} // namespace IteratorNS
+
+
+#endif // AGGREGATE_INTERFACE_HPP

@@ -6,12 +6,12 @@ namespace Interpreter
 {
 
 TerminalExpression::TerminalExpression(const std::string& name)
-  : m_name(name)
+: m_name(name)
 {}
 
-bool TerminalExpression::interpret(Context& context)
+bool TerminalExpression::interpret(const Context& context) const
 {
-    return context.lookup(this);
+    return context.lookup(shared_from_this());
 }
 
 } // namespace Interpreter

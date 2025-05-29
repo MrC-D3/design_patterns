@@ -6,15 +6,24 @@
 #include "08_prototype/PrototypeInterface.hpp"
 
 
+namespace PrototypeClient
+{
+
+using namespace Prototype;
+
 class PrototypeClient
 {
   public:
     PrototypeClient();
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    std::array<PrototypeInterface*, 2>& get_prototypes();
+    const std::array<std::unique_ptr<PrototypeInterface>, 2>& get_prototypes();
 
   private:
-    std::array<PrototypeInterface*, 2> m_prototypes;
+    std::array<std::unique_ptr<PrototypeInterface>, 2> m_prototypes;
 };
 
-#endif
+} // namespace PrototypeClient
+
+
+#endif // PROTOTYPE_CLIENT_HPP

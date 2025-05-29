@@ -4,12 +4,20 @@
 #include <iostream>
 
 
+namespace Factory
+{
+
 class Product
 {
   public:
     virtual ~Product() = default;
 
-    virtual void operationX() = 0;
+    // Default c'tors and operator= overloads, both copy and move.
+
+    virtual void operationX() const = 0;
 };
 
-#endif
+} // namespace Factory
+
+
+#endif // PRODUCT_HPP

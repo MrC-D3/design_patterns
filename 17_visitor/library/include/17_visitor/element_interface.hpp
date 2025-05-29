@@ -1,7 +1,7 @@
 #ifndef ELEMENT_INTERFACE_HPP
 #define ELEMENT_INTERFACE_HPP
 
-#include "17_visitor/visitor_interface.hpp"
+#include <memory>
 
 
 namespace Visitor
@@ -13,10 +13,14 @@ class ElementInterface
 {
   public:
     virtual ~ElementInterface() = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
-    virtual void access(VisitorInterface* visitor) = 0;
+    // Double Dispatch step 1/2: which concrete access() is resolved at Dynamic 
+    //  Binding with the V-Table.
+    virtual void accept(const std::shared_ptr<VisitorInterface>& visitor) = 0;
 };
 
 } // namespace Visitor
+
 
 #endif

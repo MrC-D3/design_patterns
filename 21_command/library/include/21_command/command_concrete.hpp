@@ -11,21 +11,18 @@ namespace Command
 class CommandConcrete : public CommandInterface
 {
   public:
-    ~CommandConcrete() = default;
-    CommandConcrete(const Receiver& receiver);
+    explicit CommandConcrete(const Receiver& receiver);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    CommandConcrete(const CommandConcrete& origin) = default;
-    CommandConcrete& operator=(const CommandConcrete& origin) = default;
-
-    CommandConcrete(CommandConcrete&& origin) = default;
-    CommandConcrete& operator=(CommandConcrete&& origin) = default;
-
-    void execute() override;
-
+    void executeA() override;
   private:
     Receiver m_receiver;
 };
 
+// Potentially other CommandConcrete-s, for each way the commands {A, B, ...} 
+//  can be implemented.
+
 } // namespace Command
+
 
 #endif // COMMAND_CONCRETE_HPP

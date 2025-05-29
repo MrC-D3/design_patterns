@@ -1,18 +1,24 @@
 #include "07_memento/memento_concrete.hpp"
-#include "07_memento/originator_concrete.hpp"
 
 
-MementoConcrete::MementoConcrete(OriginatorConcrete* originator, int state)
-: m_state(state),
-  m_originator(originator)
+namespace Memento
+{
+
+MementoConcrete::MementoConcrete(
+  const std::shared_ptr<OriginatorConcrete>& originator, 
+  const std::int64_t state)
+: m_state{state},
+  m_originator{originator}
 {}
 
-void MementoConcrete::restore()
+void MementoConcrete::restore() const
 {
     m_originator->set_state(m_state);
 }
 
-int MementoConcrete::get_state()
+std::int64_t MementoConcrete::get_state() const
 {
     return m_state;
 }
+
+} // namespace Memento

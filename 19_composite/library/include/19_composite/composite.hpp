@@ -8,15 +8,17 @@
 namespace CompositeNS
 {
 
-class Composite : public Component
+class Composite final : public Component
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
     void act() override;
 
-    void add(Component* child) override;
+    void add(std::unique_ptr<Component>&& child) override;
 
   private:
-    std::list<Component*> m_children;
+    std::list<std::unique_ptr<Component>> m_children;
 };
 
 } // namespace CompositeNS

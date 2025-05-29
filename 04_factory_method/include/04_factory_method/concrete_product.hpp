@@ -4,12 +4,19 @@
 #include "04_factory_method/product.hpp"
 
 
-class ConcreteProduct : public Product
+namespace Factory
+{
+
+class ConcreteProduct final : public Product
 {
   public:
     ConcreteProduct();
 
-    void operationX() override;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    void operationX() const override;
 };
 
-#endif
+} // namespace Factory
+
+#endif // CONCRETE_PRODUCT_HPP

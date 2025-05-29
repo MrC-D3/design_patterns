@@ -3,15 +3,16 @@
 
 #include "14_decorator/component_interface.hpp"
 
-#include "iostream"
-
 
 namespace Decorator
 {
 
-class ComponentConcrete final : public ComponentInterface
+// Can't be final because DecoratorAdvanced inherits from it.
+class ComponentConcrete : public ComponentInterface
 {
   public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
     void behavior() override;
 };
 

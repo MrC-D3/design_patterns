@@ -3,6 +3,8 @@
 
 #include "22_interpreter/abstract_expression.hpp"
 
+#include <memory>
+
 
 namespace Interpreter
 {
@@ -10,18 +12,21 @@ namespace Interpreter
 class NonterminalExpression0 final : public AbstractExpression
 {
   public:
-    ~NonterminalExpression0() = default;
-    NonterminalExpression0(AbstractExpression* operand1, AbstractExpression* operand2);
+    NonterminalExpression0(
+      const std::shared_ptr<AbstractExpression>& operand1, 
+      const std::shared_ptr<AbstractExpression>& operand2);
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    bool interpret(Context& context) override;
+    bool interpret(const Context& context) const override;
 
   private:
-    AbstractExpression* m_operand1;
-    AbstractExpression* m_operand2;
+    std::shared_ptr<const AbstractExpression> m_operand1;
+    std::shared_ptr<const AbstractExpression> m_operand2;
 };
 
 // NonterminalExpression1, ..., NonterminalExpressionN.
 
 } // namespace Interpreter
+
 
 #endif // NONTERMINAL_EXPRESSION_HPP

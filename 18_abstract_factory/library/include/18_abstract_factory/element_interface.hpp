@@ -9,6 +9,7 @@ class ElementInterfaceA
 {
   public:
     virtual ~ElementInterfaceA() = default;
+    // Default c'tors and operator= overloads, both copy and move.
 
     virtual void doA() = 0;
 };
@@ -16,5 +17,6 @@ class ElementInterfaceA
 // Potentially ElementInterfaceB and other Product interfaces.
 
 } // namesapce AbstractFactoryNS
+
 
 #endif // ELEMENT_INTERFACE_HPP

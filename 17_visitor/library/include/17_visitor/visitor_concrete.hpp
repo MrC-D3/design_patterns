@@ -7,12 +7,13 @@
 namespace Visitor
 {
 
-class VisitorConcrete1 : public VisitorInterface
+class VisitorConcrete1 final : public VisitorInterface
 {
   public:
-    void visitA(ElementConcreteA* elementA) override;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
 
-    void visitB(ElementConcreteB* elementB) override;
+    void visit(const std::shared_ptr<ElementConcreteA>& elementA) override;
+    void visit(const std::shared_ptr<ElementConcreteB>& elementB) override;
 };
 
 } // namespace Visitor

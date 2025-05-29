@@ -17,7 +17,7 @@ class MockClass : public AbstractClass
 
     void hook() override
     {
-        std::cout << "I'm the MockClass. I'm doing the hook." << std::endl;
+        std::cout << "I'm the MockClass. I'm doing the hook.\n";
     }
 
     MOCK_METHOD( void, primitive_operation2, (), (override) );
@@ -46,7 +46,7 @@ class TemplateMethodFixture : public ::testing::Test
 
     MockClass m_object;
     std::stringstream buffer;
-    std::streambuf* oldBuffer = nullptr;
+    std::streambuf* oldBuffer{nullptr};
 };
 
 // Test-s.

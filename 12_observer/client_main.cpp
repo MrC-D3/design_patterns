@@ -6,13 +6,23 @@
 
 int main()
 {
-    Subject mySubject;
-    Observer myObserver(&mySubject);
+    using namespace ObserverNS;
 
-    mySubject.setState(1);
+    // Need shared_ptr<> for shared_from_this() in attach().
+    auto mySubject = std::make_shared<Subject>();
+    {
+      // Need shared_ptr<> for shared_from_this() in d'tor.
+      auto myObserver = std::make_shared<Observer>();
 
-    std::cout << "Observer didn't change Subject's state: " << 
-      mySubject.getState() << std::endl;
+      mySubject->attach(myObserver);
+
+      mySubject->setState(1);
+
+      std::cout << "Observer didn't change Subject's state: " << 
+        mySubject->getState() << ".\n";
+    }
+
+    mySubject->setState(2);
 
     return 0;
 }

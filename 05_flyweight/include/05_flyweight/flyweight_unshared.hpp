@@ -1,23 +1,31 @@
 #ifndef FLYWEIGHT_UNSHARED_HPP
 #define FLYWEIGHT_UNSHARED_HPP
 
-#include <iostream>
-#include <string>
-
 #include "05_flyweight/flyweight_shared.hpp"
 
+#include <cstdint>
+#include <string>
+#include <memory>
+
+
+namespace Flyweight
+{
 
 class FlyweightUnshared
 {
   public:
-    FlyweightUnshared(uint64_t position, FlyweightShared* shared_data);
+    FlyweightUnshared(
+      const uint64_t position, 
+      const std::shared_ptr<FlyweightShared> shared_data);
 
-    void draw(std::string& canvas);
+    void draw(std::string& canvas) const;
 
   private:
-    uint64_t m_position = 0;
-    FlyweightShared* m_shared_data = nullptr;
+    std::uint64_t m_position{0};
+    std::shared_ptr<FlyweightShared> m_shared_data;
 };
 
+} // namespace Flyweight
 
-#endif
+
+#endif // FLYWEIGHT_UNSHARED_HPP

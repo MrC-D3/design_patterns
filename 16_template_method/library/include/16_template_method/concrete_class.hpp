@@ -10,6 +10,8 @@ namespace TemplateMethod
 class ConcreteClass final : public AbstractClass
 {
   protected:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+    
     void primitive_operation1() override;
 
     void hook() override;
@@ -18,5 +20,6 @@ class ConcreteClass final : public AbstractClass
 };
 
 } // namespace TemplateMethod
+
 
 #endif // CONCRETE_CLASS_HPP

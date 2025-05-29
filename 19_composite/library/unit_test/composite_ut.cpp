@@ -22,8 +22,11 @@ class CompositeTestSuite : public ::testing::Test
   protected:
     CompositeTestSuite()
     {
-        m_composite.add(&m_leaf);
-        m_composite.add(&m_mock_leaf);
+        auto mock_leaf = std::make_unique<MockLeaf>();
+        m_mock_leaf = mock_leaf.get();
+
+        m_composite.add( std::make_unique<Leaf>() );
+        m_composite.add( std::move(mock_leaf) );
     }
 
     ~CompositeTestSuite()
@@ -36,15 +39,15 @@ class CompositeTestSuite : public ::testing::Test
     {}
 
     Composite m_composite;
-    Leaf m_leaf;
-    MockLeaf m_mock_leaf;
-
+    MockLeaf* m_mock_leaf;
 };
 
 // Tests.
 TEST_F(CompositeTestSuite, CompositeTest)
 {
-    EXPECT_CALL(m_mock_leaf, act).Times(AtLeast(1));
+    EXPECT_CALL(*m_mock_leaf, act).Times(AtLeast(1));
+
+    testing::Mock::AllowLeak(m_mock_leaf);
     
     m_composite.act();
 }
