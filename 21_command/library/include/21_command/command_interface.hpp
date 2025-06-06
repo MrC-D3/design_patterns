@@ -13,7 +13,8 @@ class CommandInterface
 
     virtual void executeA() = 0;
 
-    // Potentially executeB and other possible commands the Invoker can need.
+    // It's better to let one class to store only one Command, but potentially 
+    //  you can define other virtual methods like executeB etc.
 };
 
 } // namespace Command
