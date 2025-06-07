@@ -1,8 +1,10 @@
-// In this example, the logic (i.d. draw) is part of Unshared that also has a
-//  pointer to Shared; so, the Client just work with Unshared
+// In this example, the logic (i.e. draw) is part of Unshared that has also a
+//  pointer to Shared; so, the Client just work with Unshared.
 // Alternatives are:
 //  - the logic is in Shared and receives Unshared as parameter;
 //  - the logic is in the client and reiceves both Shared and Unshared.
+// You can also be interested only in the Shared, like in a matrix that models
+//  the tiles of a floor: [[&tile1,&tile2], [&tile2, &tile1]].
 
 #ifndef FLYWEIGHT_FACTORY_HPP
 #define FLYWEIGHT_FACTORY_HPP
