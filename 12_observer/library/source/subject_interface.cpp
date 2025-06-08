@@ -55,6 +55,8 @@ void SubjectInterface::notify() const
     {
         if (auto obs = observer.lock()) // std::shared_ptr<ObserverInterface>
         {
+            // The pattern is synchronous: if an update() is slow and blocks
+            //  the Subject, use an event-queue pattern or add multi-threads.
             obs->update();
         }
     }
