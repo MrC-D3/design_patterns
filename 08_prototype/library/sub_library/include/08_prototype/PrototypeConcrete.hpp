@@ -19,6 +19,14 @@ class PrototypeConcrete1 final : public PrototypeInterface
     void to_string() const override;
 };
 
+class PrototypeConcrete2 final : public PrototypeInterface
+{
+  public:    
+    std::unique_ptr<PrototypeInterface> clone() const override;
+
+    void to_string() const override;
+};
+
 } // namespace Prototype
 
 
