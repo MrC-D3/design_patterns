@@ -9,6 +9,7 @@ namespace SingletonNS
 Singleton& Singleton::get_instance(const std::int64_t counter) 
 {
     // Local static variable: thread-safe, lazy initialization.
+    // Still no guarantees the usage is thread-safe.
     static Singleton instance{counter};
 
     instance.m_counter += 1;
