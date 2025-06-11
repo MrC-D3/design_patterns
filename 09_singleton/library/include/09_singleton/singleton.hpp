@@ -7,8 +7,8 @@
 
 namespace SingletonNS
 {
-  
-class Singleton
+
+class Singleton 
 {
   public:
     // Equivalent to "Singleton const&".
@@ -16,12 +16,14 @@ class Singleton
     Singleton& operator=(const Singleton& s) = delete;
     // Default d'tor, c'tors and operator= overload, for move.
 
+    // Static method to make it a class-method, not an instance-method.
     static Singleton& get_instance(const std::int64_t counter);
 
     void print_counter() const;
 
-  // Singleton is not meant to be subclassed, so private not protected.
-  private:
+  // You can potentially subclass: imagine a filesystem class implemented
+  //  differently for each platform.
+  protected:
     explicit Singleton(const std::int64_t counter = 0);
 
     std::int64_t m_counter;
