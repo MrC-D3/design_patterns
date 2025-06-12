@@ -7,7 +7,7 @@ namespace State
 {
 
 /*
-*  StateConcrete1 implementation.
+** StateConcrete1 implementation.
 */
 void StateConcrete1::do_something()
 {
@@ -23,7 +23,7 @@ void StateConcrete1::do_something_else()
 }
 
 /*
-*  StateConcrete2 implementation.
+** StateConcrete2 implementation.
 */
 void StateConcrete2::do_something()
 {
@@ -35,6 +35,45 @@ void StateConcrete2::do_something()
 void StateConcrete2::do_something_else()
 {
     std::cout << "I'm State2. This won't change the state.\n";
+}
+
+
+/*
+** StateConcreteCharacter1 implementation.
+*/
+std::unique_ptr<StateInterfaceCharacter> StateConcreteCharacter1::handle_input
+  (char input)
+{
+    switch(input)
+    {
+        case '1':
+            // Still in State1, don't change state.
+            return nullptr;
+        case '2':
+            return std::make_unique<StateConcreteCharacter2>();
+    }
+
+    // Input not recognized, don't change state.
+    return nullptr;
+}
+
+/*
+** StateConcreteCharacter2 implementation.
+*/
+std::unique_ptr<StateInterfaceCharacter> StateConcreteCharacter2::handle_input
+  (char input)
+{
+    switch(input)
+    {
+        case '1':
+            return std::make_unique<StateConcreteCharacter1>();
+        case '2':
+            // Still in State2, don't change state.
+            return nullptr;
+    }
+
+    // Input not recognized, don't change state.
+    return nullptr;
 }
 
 } // namespace State

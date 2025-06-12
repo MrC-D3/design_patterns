@@ -7,8 +7,10 @@
 namespace State
 {
 
+/*
+** Example 01: classic.
+*/
 class Context;
-
 class StateInterface
 {
   public:
@@ -24,6 +26,19 @@ class StateInterface
 
   protected:
     std::shared_ptr<Context> m_context;
+};
+
+/*
+** Example 02: .
+*/
+class ContextCharacter;
+class StateInterfaceCharacter
+{
+  public:
+    ~StateInterfaceCharacter() = default;
+
+    virtual std::unique_ptr<StateInterfaceCharacter> handle_input(char input) 
+      = 0;
 };
 
 } // namespace State
