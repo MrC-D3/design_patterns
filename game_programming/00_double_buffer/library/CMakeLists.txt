@@ -16,3 +16,17 @@ target_include_directories(
 
 # Unit Test.
 add_subdirectory(unit_test)
+
+# Install.
+install(
+    TARGETS
+        ${PROJECT_NAME}
+    DESTINATION
+        lib/
+)
+install(
+    FILES
+        include/00_double_buffer/double_buffer.hpp
+    DESTINATION
+        include/00_double_buffer/
+)
