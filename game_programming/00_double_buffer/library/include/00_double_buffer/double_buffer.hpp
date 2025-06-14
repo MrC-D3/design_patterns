@@ -3,8 +3,6 @@
 
 #include <vector>
 #include <cstdint>
-#include <mutex>
-#include <condition_variable>
 
 
 namespace DoubleBufferNS
