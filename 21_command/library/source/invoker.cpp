@@ -14,6 +14,9 @@ void Invoker::call_command()
 {
     std::cout << "I'm the Invoker. I'm sending the request.\n";
     m_command->executeA();
+
+    // In case of many Commands, it can decide which one (i.e. based on player's 
+    //  or AI's decision).
 }
 
 } // namespace Command

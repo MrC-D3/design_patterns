@@ -20,6 +20,8 @@ class Invoker
 
   private:
     std::unique_ptr<CommandInterface> m_command;
+    // Potentially other Command pointers, for example for all the buttons of a 
+    //  controller.
 };
 
 } // namespace Command

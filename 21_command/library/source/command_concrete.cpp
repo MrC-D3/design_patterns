@@ -14,6 +14,9 @@ void CommandConcrete::executeA()
 {
     std::cout << "I'm a ConcreteCommand. I'll handle the request using the \
       Receiver.\n";
+
+    // This CommandConcrete can call operation1(), another CommandConcrete can 
+    //  call operation2() and so on.
     m_receiver.operation1();
 }
 

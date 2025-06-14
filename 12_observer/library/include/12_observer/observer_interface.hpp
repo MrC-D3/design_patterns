@@ -19,6 +19,7 @@ class ObserverInterface
     virtual void store_subject(
       const std::shared_ptr<SubjectInterface>& subject);
 
+    // Alternative: pass some data as parameter.
     virtual void update() = 0;
 
   protected:
