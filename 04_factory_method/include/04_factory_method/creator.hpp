@@ -10,6 +10,9 @@
 namespace Factory
 {
 
+/*
+** Classic solution with inheritance.
+*/
 class Creator
 {
   public:
@@ -28,6 +31,36 @@ class Creator
     // Rule of 0: 
     //  manage the memory with STL and don't write any d/c'tor or operator=.
     std::unique_ptr<Product> m_product;
+};
+
+
+/*
+** Performance solution with Template.
+*/
+template <typename ProductT>
+class CreatorT
+{
+  public:
+    // Default d'tor, c'tor and operator= overloads, both copy and move.
+    
+    void do_the_logic()
+    {
+        if( !m_product )
+        {
+            m_product = factoryMethod();
+        }
+
+        // Add a static_assert() to guarantee ProductT::operationX exists.
+        m_product->operationX();
+    }
+
+  private:
+    std::unique_ptr<ProductT> factoryMethod()
+    {
+        return std::make_unique<ProductT>();
+    }
+
+    std::unique_ptr<ProductT> m_product;
 };
 
 } // namespace Factory

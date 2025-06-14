@@ -6,7 +6,8 @@
 
 namespace Prototype
 {
-  
+
+// The Base class is not strictly needed; the Pattern stays in the clone method.
 class PrototypeInterface
 {
   public:
@@ -15,6 +16,7 @@ class PrototypeInterface
 
     virtual std::unique_ptr<PrototypeInterface> clone() const = 0;
 
+    // Added for debug reasons.
     virtual void to_string() const = 0;
 };
 
