@@ -2,6 +2,7 @@
 #include <thread>
 #include <mutex>
 #include <condition_variable>
+#include <chrono>
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -125,7 +126,7 @@ TEST_F(DoubleBufferSuite, sync)
                 }
             }            
             // 24 FPS: 1 frame ogni 41ms.
-            //std::this_thread::sleep_for(41ms);
+            std::this_thread::sleep_for( std::chrono::milliseconds(41) );
         }
     });
 
