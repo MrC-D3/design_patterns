@@ -9,6 +9,7 @@ namespace ObserverNS
   
 class SubjectInterface;
 
+// Instead of a class, the Observer can be a callback, so a callable object.
 class ObserverInterface
 : public std::enable_shared_from_this<ObserverInterface>
 {
@@ -19,7 +20,9 @@ class ObserverInterface
     virtual void store_subject(
       const std::shared_ptr<SubjectInterface>& subject);
 
-    // Alternative: pass some data as parameter.
+    // Alternatives:
+    //  - pass some data as parameter;
+    //  - call it on_notify(), so it's clear it comes after Subject::notify().  
     virtual void update() = 0;
 
   protected:

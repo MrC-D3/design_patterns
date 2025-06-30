@@ -18,6 +18,9 @@ class Observer final : public ObserverInterface
     void update() override;
 };
 
+// Potentially other concrete Observer: one interested in physics events, on in
+//  sound events, etc.
+
 } // namespace ObserverNS
 
 #endif

@@ -9,7 +9,8 @@
 
 namespace ObserverNS
 {
-  
+
+// The Subject can be a state machine and an event can be a state change.
 class SubjectInterface
 : public std::enable_shared_from_this<SubjectInterface>
 {
@@ -24,7 +25,9 @@ class SubjectInterface
     virtual void notify() const;
 
   private:
-    // Classes vector<> and list<> let you remove while iterating, not set<>. 
+    // Classes vector<> and list<> let you remove while iterating, not set<>.
+    // Subject can manage multiple events, each with its Observers list; in such
+    //  case, the event/list must be specified in attach/detach methods.
     std::vector<std::weak_ptr<ObserverInterface>> m_observers;
 };
 
