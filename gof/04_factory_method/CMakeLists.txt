@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.25)
 
 project(factory_method_pattern)
 
+# PROJECT_NAME refers to the last call to project(): ideally the current file.
+# Instead, CMAKE_PROJECT_NAME refers to the top level project.
 add_executable(
     ${PROJECT_NAME}
     client_main.cpp
