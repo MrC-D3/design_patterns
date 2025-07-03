@@ -13,6 +13,20 @@ int main()
         context.apply_strategy();
     }
 
+    // Function-based solution.
+    {
+        Context context{
+          // 1st parameter.
+          [](const std::int64_t data){
+            std::cout << "I'm the strategy lambda. I'll do in my way using: "
+            << data << ".\n";
+          },
+          // 2nd parameter.
+          10
+         };
+        context.apply_strategy();
+    }
+
     // Template solution.
     {
         ContextT<StrategyConcrete> context{ 20 };

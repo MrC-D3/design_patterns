@@ -5,6 +5,7 @@
 
 #include <memory>
 #include <iostream>
+#include <functional>
 
 
 namespace Strategy
@@ -26,8 +27,29 @@ class Context
 
     void apply_strategy();
 
-  protected:
+  private:
     std::unique_ptr<StrategyInterface> m_strategy;
+    std::int64_t m_data;
+};
+
+/*
+** Function-based solution: no need of a Strategy class hierarchy.
+*/
+class ContextF
+{
+  public:
+    // Default c'tor and operator= overloads, both copy and move.
+
+    explicit ContextF(
+      std::function<void(int)>& strategy, 
+      const std::int64_t data = 0);
+
+    void set_strategy(std::function<void(int)>& strategy);
+
+    void apply_strategy();
+
+  private:
+    std::function<void(int)> m_strategy;
     std::int64_t m_data;
 };
 
@@ -55,7 +77,7 @@ class ContextT
         m_strategy.do_something(m_data);
     }
 
-  protected:
+  private:
     StrategyT m_strategy;
     std::int64_t m_data;
 };
