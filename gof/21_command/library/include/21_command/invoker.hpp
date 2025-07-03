@@ -1,15 +1,20 @@
+// A.k.a. Sender.
+
 #ifndef INVOKER_HPP
 #define INVOKER_HPP
 
 #include "21_command/command_interface.hpp"
 
 #include <memory>
+#include <functional>
 
 
 namespace Command
 {
 
-// A.k.a. Sender.
+/*
+** Classic solution: with Command class hierarchy.
+*/
 class Invoker
 {
   public:
@@ -22,6 +27,21 @@ class Invoker
     std::unique_ptr<CommandInterface> m_command;
     // Potentially other Command pointers, for example for all the buttons of a 
     //  controller.
+};
+
+/*
+** Function-based solution.
+*/
+class InvokerF
+{
+  public:
+    InvokerF(std::function<void(void)>& command);
+    // Default d'tor, c'tors and operator= overloads (only move).
+
+    void call_command();
+
+  private:
+    std::function<void(void)> m_command;
 };
 
 } // namespace Command

@@ -13,8 +13,8 @@ class CommandInterface
 
     virtual void executeA() = 0;
 
-    // It's better to let one class to store only one Command, but potentially 
-    //  you can define other virtual methods like executeB etc.
+    // It's better to let one class store only one Command, but potentially you
+    //  can define other virtual methods like executeB etc.
 };
 
 } // namespace Command
