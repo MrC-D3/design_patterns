@@ -12,7 +12,7 @@ namespace CoR
 {
 
 /*
-** Classic solution with inheritance and only 1 handler.
+** Classic solution: inheritance and only 1 handler able to answer the request.
 */
 class HandlerInterface
 {
@@ -33,13 +33,14 @@ class HandlerInterface
 };
 
 /*
-** Alternative solution with C++11 std::function.
+** Function-based solution (still only one handler).
 */
 class HandlerAlternative
 {
   public:
     HandlerAlternative()
     {
+        // Fixed amount of handlers just to keep the example simple.
         chain.push_back(
           [](const std::int32_t request){
             if(request == 0)
