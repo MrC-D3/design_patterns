@@ -48,6 +48,13 @@ class StateConcreteCharacter2 : public StateInterfaceCharacter
     std::unique_ptr<StateInterfaceCharacter> handle_input(char input) override;
 };
 
+/*
+** Example 03: Boost.MSM.
+*/
+#include <boost/msm/back/state_machine.hpp>
+// State Machine Backend Definition
+typedef msm::back::state_machine<StateMachineDefinition> StateMachineT;
+
 } // namespace State
 
 

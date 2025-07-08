@@ -34,6 +34,20 @@ int main()
         character.handle_input('2');
         character.handle_input('1');
     }
+
+    // Example 03: Boost::MSM.
+    {
+        StateMachineT state_machine;
+
+        // Start the state machine (initial state: State1).
+        state_machine.start();
+
+        std::cout << "Switching to State2...\n";
+        state_machine.process_event(S1toS2());
+
+        std::cout << "Switching to State1...\n";
+        state_machine.process_event(S1toS2());
+    }
     
     return 0;
 }
