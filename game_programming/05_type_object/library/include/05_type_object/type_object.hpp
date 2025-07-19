@@ -29,6 +29,7 @@ class TypeObject
     int m_id;
     // In game context, other data members can be: health, attack, etc.
     // Also a pointer to a parent TypeObject to emulate inheritance.
+    // Also behaviors using Bytecode or Interpreter
 };
 
 /*
