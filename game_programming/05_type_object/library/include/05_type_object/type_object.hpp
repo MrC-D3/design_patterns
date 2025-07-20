@@ -25,7 +25,8 @@ class TypeObject
     //  the TypedObject's c'tor.
     TypedObject typedObjectFactory();
 
-    // Not private just to avoid a getter method.
+    // Not private just to avoid a getter method, but kept the m_ prefix that is
+    //  usually associated to private data member only.
     int m_id;
     // In game context, other data members can be: health, attack, etc.
     // Also a pointer to a parent TypeObject to emulate inheritance.
