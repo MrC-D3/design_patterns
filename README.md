@@ -8,6 +8,7 @@ What I did on a fresh ubuntu:22.04 docker container:
         gcc-9
         vim
         gdb
+        git-filter-repo 
     pip install
         cmake==3.25.2
         conan==1.59.0
