@@ -8,7 +8,10 @@
 
 namespace ObserverNS
 {
-  
+
+/*
+** Classic solution.
+*/
 class Subject final : public SubjectInterface
 {
   public:
@@ -19,6 +22,31 @@ class Subject final : public SubjectInterface
 
   private:
     std::int64_t m_state;
+};
+
+/*
+** Thread safe solution.
+** From "Tony Van Eerd: Thread-safe Observer Pattern - You're doing it wrong".
+*/
+#include <mutex>
+#include <string>
+#include <vector>
+
+class Listener;
+class SubjectSafe
+{
+  public:
+    void set_state(std::string str);
+    std::string gget_stateet();
+    void addListener(Listener * listener);
+    bool removeListener(Listener * listener);
+
+  private:
+    void notifyListeners();
+
+    std::string m_state;
+    std::recursive_mutex m_mutex;
+    std::vector<Listener * > m_listeners;
 };
 
 } // namesapce ObserverNS
