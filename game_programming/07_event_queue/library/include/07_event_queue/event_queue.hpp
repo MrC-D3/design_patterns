@@ -43,7 +43,7 @@ class Pusher
 };
 
 /*
-** Poppor class, the one that consumes events.
+** Popper class, the one that consumes events.
 */
 class Popper
 {
