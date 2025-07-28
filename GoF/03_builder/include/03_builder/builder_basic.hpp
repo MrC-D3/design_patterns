@@ -24,6 +24,38 @@ class BuilderBasic
     virtual void build_windows() {};
 };
 
+/*
+** Alternative solution: the Fluent Builder.
+*/
+class BuilderFluent
+{
+  public:
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+
+    BuilderFluent& Walls(const int walls_numer = 0);
+    BuilderFluent& Windows(const int windows_numer = 0);
+    BuilderFluent& Doors(const int doors_numer = 0);
+
+    int walls_count;
+    int windows_count;
+    int doors_count;
+};
+
+class ProductFluent
+{
+  public:
+    ProductFluent(const BuilderFluent& builder)
+    {
+        walls_count = builder.walls_count;
+        windows_count = builder.windows_count;
+        doors_count = builder.doors_count;
+    }
+
+    int walls_count;
+    int windows_count;
+    int doors_count;
+};
+
 } // namespace Builder
 
 #endif
