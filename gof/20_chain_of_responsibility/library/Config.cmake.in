@@ -1,3 +1,0 @@
-@PACKAGE_INIT@
-
-include( ${CMAKE_CURRENT_LIST_DIR}/chain_of_responsibility_lib.cmake )
