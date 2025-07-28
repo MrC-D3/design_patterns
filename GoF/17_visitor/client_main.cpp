@@ -4,7 +4,7 @@
 #include "17_visitor/visitor_interface.hpp"
 #include "17_visitor/element_concrete.hpp"
 
-#include <variant>
+#include <vector>
 
 
 using namespace Visitor;
@@ -24,13 +24,14 @@ int main()
 
     // C++17-features solution: std::variant<> and std::visit().
     {
-        std::variant<
-          std::shared_ptr<ElementConcreteA>, 
-          std::shared_ptr<ElementConcreteB>
-        > element = std::make_shared<ElementConcreteA>();
-        Visitor17 visitor;
+        std::vector<ElementI17> elements;
+        elements.emplace_back( ElementConcreteA{} );
+        elements.emplace_back( ElementConcreteA{} );
         
-        std::visit(visitor, element);
+        for(auto const& element : elements)
+        {
+            std::visit(Visitor17{}, element);
+        }
     }
 
     return 0;
