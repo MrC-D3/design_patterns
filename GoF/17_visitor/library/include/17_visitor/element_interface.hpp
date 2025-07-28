@@ -9,6 +9,9 @@ namespace Visitor
 
 class VisitorInterface;
 
+/*
+** Solution 01: classic.
+*/
 class ElementInterface
 {
   public:
@@ -19,6 +22,21 @@ class ElementInterface
     //  Binding with the V-Table.
     virtual void accept(const std::shared_ptr<VisitorInterface>& visitor) = 0;
 };
+
+/*
+** Solution 03: the accept() method is defined only once in a template instead 
+**  of in every derived implementation of ElementInterface.
+*/
+template <typename ElementC>
+class ElementVisitableInterface : public ElementInterface
+{
+  public:
+    void accept(const VisitorInterface& visitor) override
+    {
+        visitor.visit(static_cast<T>(this));
+    }
+}
+// Each ElementConcrete will inherit from this template not from the base class.
 
 } // namespace Visitor
 
