@@ -13,7 +13,6 @@ GameLoop::GameLoop(std::uint8_t fps)
 : MS_PER_UPDATE{1000.0/fps}
 {}
 
-
 void GameLoop::fixed_time_step_variable_rendering()
 {
     // Init variables.
@@ -115,6 +114,5 @@ void GameLoop::render(double delay)
         screen[pos] = '*';
     std::cout << "\r" << screen << std::flush; // overwrite line
 }
-
 
 } // namespace GameLoopNS

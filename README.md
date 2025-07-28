@@ -14,4 +14,5 @@ What I did on a fresh ubuntu:22.04 docker container:
         conan==1.59.0
     Install from source:
         GTest
-        Boost 
+        Boost
+        Valgrind
