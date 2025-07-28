@@ -1,0 +1,32 @@
+# The name showed in the GitHub Actions tab.
+name: Basic workflow
+
+# When the workflow should run. You can have multiple events.
+on: # Events can be related to repository, time, manual trigger, other.
+  push: # You can limit the event to changes in specific files using "paths".
+    branches: [ master ] # You use regex like release/*.
+
+# The jobs of the workflow, each runs in parallel.
+jobs:
+  # The job id.
+  build-and-test:
+    # The job name showed in GitHub Actions tab.
+    name: Build and Test
+    # The OS to run the job on.
+    runs-on: ubuntu-20.04
+    # Skip the strategy section if interested in only one configuration.
+
+    steps:
+    # Each step of the job has its name and it's executed in sequence.
+    - name: Checkout code
+      # Execute an official GitHub action stored in the homonymous repository.
+      uses: actions/checkout@v4 # It checks out the code, so usually 1st step.
+
+    # 2nd step of the 1st job: build the Mediator pattern example.
+    - name: Create build directory
+      # Option -p: create a directory if it doesn't exist already.
+      run: mkdir -p GoF/behavioral/06_mediator/build
+    - name: Configure CMake
+      run: cmake -S GoF/behavioral/06_mediator -B GoF/behavioral/06_mediator/build
+    - name: Build project
+      run: cmake --build GoF/behavioral/06_mediator/build

@@ -1,4 +1,4 @@
-What I did on a fresh ubuntu:22.04 docker container:
+What to do on a docker container (ubuntu:20.04 or 22.04):
     apt-get update
     apt-get install -y 
         locales
@@ -16,3 +16,8 @@ What I did on a fresh ubuntu:22.04 docker container:
         GTest
         Boost
         Valgrind
+
+What to do to work with GitHub Actions CI/CD.
+1. Create at least one .yml/.yaml file in .github/workflows/. You can name it
+as you want. You can even have more than one (e.g.: main, docs, etc.) and each
+will create an indipendent workflow.
