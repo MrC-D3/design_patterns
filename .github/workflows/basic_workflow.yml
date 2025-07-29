@@ -3,30 +3,58 @@ name: Basic workflow
 
 # When the workflow should run. You can have multiple events.
 on: # Events can be related to repository, time, manual trigger, other.
-  push: # You can limit the event to changes in specific files using "paths".
-    branches: [ master ] # You use regex like release/*.
+  #push: # You can limit the event to changes in specific files using "paths".
+  #  branches: [ master ] # You use regex like release/*.
+  workflow_dispatch: # Manual trigger with no option.
 
-# The jobs of the workflow, each runs in parallel.
+# The jobs of the workflow, that runs in parallel by default.
 jobs:
-  # The job id.
-  build-and-test:
-    # The job name showed in GitHub Actions tab.
-    name: Build and Test
+  # The ID of the 1st job. Here to find all library/ sub-directories.
+  discover:
+    # The name of the job showed in GitHub Actions tab.
+    name: Discover Libraries
     # The OS to run the job on.
-    runs-on: ubuntu-latest # Images removed often: 20.04 already unavailable. 
-    # Skip the strategy section if interested in only one configuration.
-
+    runs-on: ubuntu-latest # Images removed often: 20.04 already unavailable.
+    # This job creates an output other jobs can use.
+    outputs:
+      # Here, "patterns" is the name of the variable that stores the job output. 
+      patterns: ${{ steps.matrix.outputs.patterns }} # Value from step "matrix".
+    # Each job has a sequence of sequential steps.
     steps:
-    # Each step of the job has its name and it's executed in sequence.
-    - name: Checkout code
       # Execute an official GitHub action stored in the homonymous repository.
-      uses: actions/checkout@v4 # It checks out the code, so usually 1st step.
+      - name: "Checkout code"
+        uses: actions/checkout@v4 # Check out the code, so usually done first.
+      # Finally find all the library sub-directories.
+      - name: "Build the strategy matrix"
+        id: matrix
+        # What will be done:
+        # - from GoF/behavioral/, find directories called "library";
+        # - from their paths, removes the prefix "GoF/behavioral/";
+        # - ... then also the suffix "library" (so keep only the pattern name);
+        # - create a json array like ["pattern1", "pattern2", ...].
+        # Finally, make that json the output of this job.
+        run: | # Pipe is used when multiple lines to run.
+          patterns=$(find GoF/behavioral/ -maxdepth 2 -name "library" -type d | sed 's|GoF/behavioral/||' | sed 's|/library||' | jq -R -s -c 'split("\n")[:-1]')
+          echo "patterns=$patterns" >> $GITHUB_OUTPUT
 
-    # 2nd step of the 1st job: build the Mediator pattern example.
-    - name: Create build directory
-      # Option -p: create a directory if it doesn't exist already.
-      run: mkdir -p GoF/behavioral/06_mediator/build
-    - name: Configure CMake
-      run: cmake -S GoF/behavioral/06_mediator -B GoF/behavioral/06_mediator/build
-    - name: Build project
-      run: cmake --build GoF/behavioral/06_mediator/build
+  # Second job.
+  build:
+    # Execute it after the "discover" job, not in parallel as by default.
+    needs: discover
+    runs-on: ubuntu-latest
+    # Strategy allows to define different configurations to run in parallel.
+    strategy:
+      # Here the matrix of configurations is the array coming from previosu job.
+      matrix:
+        # ${{ }} GitHub expression; ${ } shell expresion.
+        pattern: ${{ fromJson(needs.discover.outputs.patterns) }}
+    steps:
+      # Example of step without name or id (they are not mandatory).
+      - uses: actions/checkout@v4
+      # The steps that do the work.
+      - name: Create build directory
+        run: mkdir -p GoF/behavioral/${{ matrix.pattern }}/library/build/
+      - name: Configure CMake
+        run: cmake -S GoF/behavioral/${{ matrix.pattern }}/library/ -B GoF/behavioral/${{ matrix.pattern }}/library/build/
+      - name: Build project
+        run: cmake --build GoF/behavioral/${{ matrix.pattern }}/library/build/
