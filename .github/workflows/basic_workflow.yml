@@ -51,7 +51,15 @@ jobs:
     steps:
       # Example of step without name or id (they are not mandatory).
       - uses: actions/checkout@v4
-      # The steps that do the work.
+      - name: Install GTest from source
+        run: |
+          git clone https://github.com/google/googletest.git
+          cd googletest
+          mkdir build && cd build
+          cmake .. -DBUILD_GMOCK=ON
+          make -j$(nproc)
+          sudo make install
+      # The steps that do the work. New shell, so no need to "cd ..".
       - name: Create build directory
         run: mkdir -p GoF/behavioral/${{ matrix.pattern }}/library/build/
       - name: Configure CMake
