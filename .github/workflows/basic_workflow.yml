@@ -13,7 +13,7 @@ jobs:
     # The job name showed in GitHub Actions tab.
     name: Build and Test
     # The OS to run the job on.
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest # Images removed often: 20.04 already unavailable. 
     # Skip the strategy section if interested in only one configuration.
 
     steps:

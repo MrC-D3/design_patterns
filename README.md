@@ -18,6 +18,8 @@ What to do on a docker container (ubuntu:20.04 or 22.04):
         Valgrind
 
 What to do to work with GitHub Actions CI/CD.
-1. Create at least one .yml/.yaml file in .github/workflows/. You can name it
-as you want. You can even have more than one (e.g.: main, docs, etc.) and each
-will create an indipendent workflow.
+- Create at least one .yml/.yaml file in .github/workflows/. 
+- You can name it as you want. 
+- You can even have more than one (e.g.: main, docs, etc.) and each will create 
+an indipendent workflow.
+- https://github.com/actions/runner-images: available images to run on.
