@@ -20,10 +20,10 @@ add_subdirectory(unit_test)
 # Install.
 install(
     FILES
-        include/16_template_method/abstract_class.hpp
-        include/16_template_method/concrete_class.hpp
+        include/04_template_method/abstract_class.hpp
+        include/04_template_method/concrete_class.hpp
     DESTINATION
-        include/16_template_method/
+        include/04_template_method/
 )
 install(
     TARGETS

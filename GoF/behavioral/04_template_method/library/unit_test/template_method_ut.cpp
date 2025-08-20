@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include "16_template_method/abstract_class.hpp"
-#include "16_template_method/concrete_class.hpp"
+#include "04_template_method/abstract_class.hpp"
+#include "04_template_method/concrete_class.hpp"
 
 
 // Using-s.

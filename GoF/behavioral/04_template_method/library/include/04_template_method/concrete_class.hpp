@@ -1,7 +1,7 @@
 #ifndef CONCRETE_CLASS_HPP
 #define CONCRETE_CLASS_HPP
 
-#include "16_template_method/abstract_class.hpp"
+#include "04_template_method/abstract_class.hpp"
 
 
 namespace TemplateMethod
