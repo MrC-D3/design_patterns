@@ -1,8 +1,8 @@
 #ifndef COMMAND_CONCRETE_HPP
 #define COMMAND_CONCRETE_HPP
 
-#include "21_command/command_interface.hpp"
-#include "21_command/receiver.hpp" // Forward declaration only for pointers.
+#include "01_command/command_interface.hpp"
+#include "01_command/receiver.hpp" // Forward declaration only for pointers.
 
 
 namespace Command

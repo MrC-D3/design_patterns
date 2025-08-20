@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "21_command/command_interface.hpp"
-#include "21_command/invoker.hpp"
+#include "01_command/command_interface.hpp"
+#include "01_command/invoker.hpp"
 
 
 using namespace Command;

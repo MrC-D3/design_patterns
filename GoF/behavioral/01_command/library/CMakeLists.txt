@@ -23,12 +23,12 @@ add_subdirectory(unit_test)
 # Install.
 install(
     FILES
-        include/21_command/command_concrete.hpp
-        include/21_command/command_interface.hpp
-        include/21_command/invoker.hpp
-        include/21_command/receiver.hpp
+        include/01_command/command_concrete.hpp
+        include/01_command/command_interface.hpp
+        include/01_command/invoker.hpp
+        include/01_command/receiver.hpp
     DESTINATION
-        include/21_command/
+        include/01_command/
 )
 install(
     TARGETS

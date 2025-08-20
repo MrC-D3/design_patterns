@@ -1,6 +1,6 @@
-#include "21_command/receiver.hpp"
-#include "21_command/command_concrete.hpp"
-#include "21_command/invoker.hpp"
+#include "01_command/receiver.hpp"
+#include "01_command/command_concrete.hpp"
+#include "01_command/invoker.hpp"
 
 #include <memory>
 #include <iostream>
@@ -20,12 +20,14 @@ int main()
     /*
     ** Function-based solution.
     */
-    InvokerF invokerF{
-      [&receiver](){
-        std::cout << "I'm the Command. Request managed using the Receiver.\n";
-        receiver.operation1();
-      }
+    // If use "auto", it would be a lambda, so not explicitly a std::function.
+    // So, passing it to Invoker(std::function<>&) creates a temporary object.
+    // Since it'd be an rvalue and not an lvalue, the build fails.
+    std::function<void()> f = [&receiver](){
+      std::cout << "I'm the Command. Request managed using the Receiver.\n";
+      receiver.operation1();
     };
+    InvokerF invokerF{f};
 
     return 0;
 }
