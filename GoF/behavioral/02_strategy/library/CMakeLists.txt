@@ -27,11 +27,11 @@ add_subdirectory(unit_test)
 # Install.
 install(
     FILES
-        include/15_strategy/context.hpp
-        include/15_strategy/strategy_concrete.hpp
-        include/15_strategy/strategy_interface.hpp
+        include/02_strategy/context.hpp
+        include/02_strategy/strategy_concrete.hpp
+        include/02_strategy/strategy_interface.hpp
     DESTINATION
-        include/15_strategy/
+        include/02_strategy/
 )
 install(
     TARGETS

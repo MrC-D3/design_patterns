@@ -1,7 +1,7 @@
 #ifndef STRATEGY_CONCRETE_HPP
 #define STRATEGY_CONCRETE_HPP
 
-#include "15_strategy/strategy_interface.hpp"
+#include "02_strategy/strategy_interface.hpp"
 
 
 namespace Strategy

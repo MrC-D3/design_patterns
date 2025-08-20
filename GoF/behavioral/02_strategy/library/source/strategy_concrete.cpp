@@ -1,4 +1,4 @@
-#include "15_strategy/strategy_concrete.hpp"
+#include "02_strategy/strategy_concrete.hpp"
 
 #include <iostream>
 

@@ -1,7 +1,7 @@
 #ifndef CONTEXT_HPP
 #define CONTEXT_HPP
 
-#include "15_strategy/strategy_interface.hpp"
+#include "02_strategy/strategy_interface.hpp"
 
 #include <memory>
 #include <iostream>
