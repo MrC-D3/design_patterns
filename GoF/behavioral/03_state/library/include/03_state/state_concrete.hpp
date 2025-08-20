@@ -1,8 +1,9 @@
 #ifndef STATE_CONCRETE_HPP
 #define STATE_CONCRETE_HPP
 
-#include "13_state/state_interface.hpp"
+#include "03_state/state_interface.hpp"
 #include <memory>
+#include <boost/msm/back/state_machine.hpp>
 
 
 namespace State
@@ -51,7 +52,6 @@ class StateConcreteCharacter2 : public StateInterfaceCharacter
 /*
 ** Example 03: Boost.MSM.
 */
-#include <boost/msm/back/state_machine.hpp>
 // State Machine Backend Definition
 typedef msm::back::state_machine<StateMachineDefinition> StateMachineT;
 

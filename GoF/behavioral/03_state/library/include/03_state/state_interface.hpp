@@ -2,6 +2,9 @@
 #define STATE_INTERFACE
 
 #include <memory>
+#include <iostream>
+#include <boost/msm/front/state_machine_def.hpp>
+#include <boost/msm/front/functor_row.hpp>  // ← Header specifico per Row
 
 
 namespace State
@@ -44,8 +47,6 @@ class StateInterfaceCharacter
 /*
 ** Example 03: Boost::MSM.
 */
-#include <boost/msm/front/state_machine_def.hpp>
-
 namespace msm = boost::msm;
 namespace mpl = boost::mpl;
 
@@ -60,19 +61,31 @@ struct StateMachineDefinition : public msm::front::state_machine_def<StateMachin
     struct State1 : public msm::front::state<> 
     {
         template <class Event, class FSM>
-        void on_entry(Event const&, FSM&);
+        void on_entry(Event const&, FSM&)
+        {
+            std::cout << "State1: on_entry\n";
+        }
 
         template <class Event, class FSM>
-        void on_exit(Event const&, FSM&);
+        void on_exit(Event const&, FSM&)
+        {
+           std::cout << "State1: on_exit\n";
+        }
     };
 
     struct State2 : public msm::front::state<>
     {
         template <class Event, class FSM>
-        void on_entry(Event const&, FSM&);
+        void on_entry(Event const&, FSM&)
+        {
+          std::cout << "State2: on_entry\n";
+        }
 
         template <class Event, class FSM>
-        void on_exit(Event const&, FSM&);
+        void on_exit(Event const&, FSM&)
+        {
+            std::cout << "State2: on_exit\n";
+        }
     };
 
     // Initial State: mandatory typedef.
@@ -91,14 +104,17 @@ struct StateMachineDefinition : public msm::front::state_machine_def<StateMachin
     // Transition Table
     struct TransitionTable : mpl::vector<
         // Row:          Start   Event   Next    Action        Guard
-        msm::front::Row< State1, S1toS2, State2, NotifyS1toS2, msm::none >,
-        msm::front::Row< State2, S2toS1, State1, msm::none,    msm::none >
+        msm::front::Row< State1, S1toS2, State2, NotifyS1toS2, msm::front::none >,
+        msm::front::Row< State2, S2toS1, State1, msm::front::none,    msm::front::none >
     > {};
 
     // No-Transition Handler: when an event in a state doesn't change the state.
     //  E.g.: S1toS2 when already in S2.
     template <class Event, class FSM>
-    void no_transition(Event const& e, FSM&, int state);
+    void no_transition(Event const& e, FSM&, int state)
+    {
+        std::cout << "No transition for event in state " << state << std::endl;
+    }
 };
 
 } // namespace State

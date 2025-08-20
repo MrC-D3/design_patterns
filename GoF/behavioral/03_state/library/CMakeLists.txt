@@ -32,11 +32,11 @@ install(
 )
 install(
     FILES
-        include/13_state/context.hpp
-        include/13_state/state_interface.hpp
-        include/13_state/state_concrete.hpp
+        include/03_state/context.hpp
+        include/03_state/state_interface.hpp
+        include/03_state/state_concrete.hpp
     DESTINATION
-        include/13_state/
+        include/03_state/
 )
 
 # Pack.
