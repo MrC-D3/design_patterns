@@ -1,7 +1,7 @@
-#include "22_interpreter/abstract_expression.hpp"
-#include "22_interpreter/terminal_expression.hpp"
-#include "22_interpreter/nonterminal_expression.hpp"
-#include "22_interpreter/context.hpp"
+#include "09_interpreter/abstract_expression.hpp"
+#include "09_interpreter/terminal_expression.hpp"
+#include "09_interpreter/nonterminal_expression.hpp"
+#include "09_interpreter/context.hpp"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>

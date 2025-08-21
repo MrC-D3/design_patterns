@@ -25,12 +25,12 @@ add_subdirectory(unit_test)
 # Install.
 install(
     FILES
-        include/22_interpreter/abstract_expression.hpp
-        include/22_interpreter/terminal_expression.hpp
-        include/22_interpreter/nonterminal_expression.hpp
-        include/22_interpreter/context.hpp
+        include/09_interpreter/abstract_expression.hpp
+        include/09_interpreter/terminal_expression.hpp
+        include/09_interpreter/nonterminal_expression.hpp
+        include/09_interpreter/context.hpp
     DESTINATION
-        include/22_interpreter/
+        include/09_interpreter/
 )
 install(
     TARGETS

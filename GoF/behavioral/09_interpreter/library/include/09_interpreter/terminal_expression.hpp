@@ -1,7 +1,7 @@
 #ifndef TERMINAL_EXPRESSION_HPP
 #define TERMINAL_EXPRESSION_HPP
 
-#include "22_interpreter/abstract_expression.hpp"
+#include "09_interpreter/abstract_expression.hpp"
 
 #include <string>
 #include <memory>
