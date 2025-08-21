@@ -4,6 +4,9 @@
 #include "05_observer/subject_interface.hpp"
 
 #include <cstdint>
+#include <mutex>
+#include <string>
+#include <vector>
 
 
 namespace ObserverNS
@@ -28,16 +31,12 @@ class Subject final : public SubjectInterface
 ** Thread safe solution.
 ** From "Tony Van Eerd: Thread-safe Observer Pattern - You're doing it wrong".
 */
-#include <mutex>
-#include <string>
-#include <vector>
-
 class Listener;
 class SubjectSafe
 {
   public:
     void set_state(std::string str);
-    std::string gget_stateet();
+    std::string get_state();
     void addListener(Listener * listener);
     bool removeListener(Listener * listener);
 
@@ -46,7 +45,7 @@ class SubjectSafe
 
     std::string m_state;
     std::recursive_mutex m_mutex;
-    std::vector<Listener * > m_listeners;
+    std::vector<Listener*> m_listeners;
 };
 
 } // namesapce ObserverNS

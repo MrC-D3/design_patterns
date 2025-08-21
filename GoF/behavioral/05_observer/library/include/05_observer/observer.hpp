@@ -5,6 +5,10 @@
 #include "05_observer/subject.hpp"
 
 #include <memory>
+#include <string>
+#include <mutex>
+#include <condition_variable>
+#include <atomic>
 
 
 namespace ObserverNS
@@ -24,11 +28,6 @@ class Observer final : public ObserverInterface
 /*
 ** Observer thread safe.
 */
-#include <string>
-#include <mutex>
-#include <condition_variable>
-#include <atomic>
-
 class Listener
 {
   public:

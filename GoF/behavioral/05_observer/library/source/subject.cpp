@@ -48,18 +48,18 @@ std::string SubjectSafe::get_state()
 void SubjectSafe::addListener(Listener * listener) 
 {
     std::lock_guard<std::recursive_mutex> lock(m_mutex);
-    listeners.push_back(listener);
+    m_listeners.push_back(listener);
 }
 
 bool SubjectSafe::removeListener(Listener * listener) 
 {
     std::lock_guard<std::recursive_mutex> lock(m_mutex);
-    for (auto it = listeners.end();  it != listeners.begin();  )
+    for (auto it = m_listeners.end();  it != m_listeners.begin();  )
     {
         it--;
         if (*it == listener) 
         {
-            listeners.erase(it);
+            m_listeners.erase(it);
             return true;
         }
     }
@@ -69,7 +69,7 @@ bool SubjectSafe::removeListener(Listener * listener)
 void SubjectSafe::notifyListeners() 
 {
     std::lock_guard<std::recursive_mutex> lock(m_mutex);
-    for (auto listener : listeners)
+    for (auto listener : m_listeners)
     {
         listener->inform_fooChanged(get_state());
     }
