@@ -1,8 +1,8 @@
 #ifndef MEMENTO_CONCRETE_HPP
 #define MEMENTO_CONCRETE_HPP
 
-#include "07_memento/memento_interface.hpp"
-#include "07_memento/originator_concrete.hpp"
+#include "11_memento/memento_interface.hpp"
+#include "11_memento/originator_concrete.hpp"
 
 #include <memory>
 #include <cstdint>

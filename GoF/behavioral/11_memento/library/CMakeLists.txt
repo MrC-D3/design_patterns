@@ -24,14 +24,14 @@ install(
         lib/
 )
 
-# Go in the default /usr/local/ include/07_memento/.
+# Go in the default /usr/local/ include/11_memento/.
 install(
     FILES
-        include/07_memento/originator_interface.hpp
-        include/07_memento/originator_concrete.hpp
-        include/07_memento/memento_interface.hpp
-        include/07_memento/memento_concrete.hpp
-        include/07_memento/care_taker.hpp
+        include/11_memento/originator_interface.hpp
+        include/11_memento/originator_concrete.hpp
+        include/11_memento/memento_interface.hpp
+        include/11_memento/memento_concrete.hpp
+        include/11_memento/care_taker.hpp
     DESTINATION
-        include/07_memento/
+        include/11_memento/
 )

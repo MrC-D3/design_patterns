@@ -1,7 +1,7 @@
 #ifndef ORIGINATOR_INTERFACE_HPP
 #define ORIGINATOR_INTERFACE_HPP
 
-#include "07_memento/memento_interface.hpp"
+#include "11_memento/memento_interface.hpp"
 
 #include <memory>
 
