@@ -1,7 +1,7 @@
-#include "03_builder/director_house.hpp"
-#include "03_builder/builder_small.hpp"
-#include "03_builder/builder_big.hpp"
-#include "03_builder/product_house.hpp"
+#include "01_builder/director_house.hpp"
+#include "01_builder/builder_small.hpp"
+#include "01_builder/builder_big.hpp"
+#include "01_builder/product_house.hpp"
 
 #include <memory>
 
@@ -35,6 +35,20 @@ int main()
         director.build_house();
 
         auto house = builder_big->get_house();
+        house.show();
+    }
+
+    /*
+    ** Alternative solution: the Fluent Builder.
+    */
+    {
+        auto builder_big = std::make_shared<BuilderFluentBig>();
+
+        // This line can be delegated to a Director.
+        builder_big->Init().Walls().Windows().Doors();
+
+        ProductHouse house = builder_big->get_house();
+
         house.show();
     }
 

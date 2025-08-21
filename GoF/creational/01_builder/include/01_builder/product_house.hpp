@@ -33,7 +33,6 @@ class ProductHouse
           " doors, " << m_windows << " windows.\n";
     }
 
-  private:
     int m_walls{0};
     int m_windows{0};
     int m_doors{0};

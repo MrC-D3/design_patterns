@@ -1,8 +1,8 @@
 #ifndef BUILDER_SMALL_HPP
 #define BUILDER_SMALL_HPP
 
-#include "03_builder/builder_basic.hpp"
-#include "03_builder/product_house.hpp"
+#include "01_builder/builder_basic.hpp"
+#include "01_builder/product_house.hpp"
 
 #include <memory>
 
