@@ -29,12 +29,12 @@ install(
 )
 install(
     FILES
-        include/11_iterator/iterator_interface.hpp
-        include/11_iterator/aggregate_interface.hpp
-        include/11_iterator/iterator.hpp
-        include/11_iterator/aggregate.hpp
+        include/10_iterator/iterator_interface.hpp
+        include/10_iterator/aggregate_interface.hpp
+        include/10_iterator/iterator.hpp
+        include/10_iterator/aggregate.hpp
     DESTINATION
-        include/11_iterator/
+        include/10_iterator/
 )
 
 # ... Pack (even if unuseful for a header-only library).
