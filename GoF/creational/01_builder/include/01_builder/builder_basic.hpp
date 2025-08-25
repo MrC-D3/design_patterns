@@ -25,7 +25,7 @@ class BuilderBasic
 };
 
 /*
-** Alternative solution: the Fluent Builder.
+** Alternative solution 01: the Fluent Builder.
 */
 class BuilderFluent
 {
@@ -38,6 +38,12 @@ class BuilderFluent
     virtual BuilderFluent& Windows() { return *this;}
     virtual BuilderFluent& Doors() { return *this;}
 };
+
+/*
+** Alternative solution 02: Builder + Facade.
+*/
+// One Builder for each part of a class, e.g.: one for the job info and one for 
+//  the address info of a Person class.
 
 } // namespace Builder
 
