@@ -3,9 +3,11 @@
 //  Product-s.
 // The Factory Method pattern allows those programs that know only at run-time 
 //  which objects they need, to be able to create them.
+// Another use-case of the Factory pattern is when you'd have 2 logically 
+// differnt c'tors, but same signature, so you can't use c'tors.
 
-#include "04_factory_method/concrete_creator.hpp"
-#include "04_factory_method/concrete_product.hpp"
+#include "02_factory_method/concrete_creator.hpp"
+#include "02_factory_method/concrete_product.hpp"
 
 
 int main()

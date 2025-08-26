@@ -1,7 +1,7 @@
 #ifndef CONCRETE_CREATOR_HPP
 #define CONCRETE_CREATOR_HPP
 
-#include "04_factory_method/creator.hpp"
+#include "02_factory_method/creator.hpp"
 
 
 namespace Factory

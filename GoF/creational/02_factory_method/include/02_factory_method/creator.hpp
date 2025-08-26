@@ -1,7 +1,7 @@
 #ifndef CREATOR_HPP
 #define CREATOR_HPP
 
-#include "04_factory_method/product.hpp"
+#include "02_factory_method/product.hpp"
 
 #include <iostream>
 #include <memory>

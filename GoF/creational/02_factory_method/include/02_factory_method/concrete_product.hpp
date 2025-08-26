@@ -1,7 +1,7 @@
 #ifndef CONCRETE_PRODUCT_HPP
 #define CONCRETE_PRODUCT_HPP
 
-#include "04_factory_method/product.hpp"
+#include "02_factory_method/product.hpp"
 
 
 namespace Factory

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "04_factory_method/creator.hpp"
+#include "02_factory_method/creator.hpp"
 
 namespace Factory
 {

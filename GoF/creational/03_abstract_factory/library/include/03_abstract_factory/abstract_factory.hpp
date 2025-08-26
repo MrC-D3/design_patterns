@@ -1,7 +1,7 @@
 #ifndef ABSTRACT_FACTORY_HPP
 #define ABSTRACT_FACTORY_HPP
 
-#include "18_abstract_factory/element_interface.hpp"
+#include "03_abstract_factory/element_interface.hpp"
 #include <memory>
 
 
@@ -16,6 +16,8 @@ class AbstractFactory
 
     virtual std::unique_ptr<ElementInterfaceA> factoryElementA() = 0;
     // Potentially factoryElementB() and other factory methods.
+
+    // Alternative: a map with all the factory methods.
 };
 
 } // namesapce AbstractFactoryNS

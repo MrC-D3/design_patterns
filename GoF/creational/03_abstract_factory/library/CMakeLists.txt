@@ -22,12 +22,12 @@ add_subdirectory(unit_test)
 # Install.
 install(
     FILES
-        include/18_abstract_factory/abstract_factory.hpp
-        include/18_abstract_factory/concrete_factory.hpp
-        include/18_abstract_factory/element_interface.hpp
-        include/18_abstract_factory/element_concrete.hpp
+        include/03_abstract_factory/abstract_factory.hpp
+        include/03_abstract_factory/concrete_factory.hpp
+        include/03_abstract_factory/element_interface.hpp
+        include/03_abstract_factory/element_concrete.hpp
     DESTINATION
-        include/18_abstract_factory/
+        include/03_abstract_factory/
 )
 install(
     TARGETS
