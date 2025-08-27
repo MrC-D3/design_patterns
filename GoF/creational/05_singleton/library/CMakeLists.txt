@@ -17,9 +17,9 @@ target_include_directories(
 
 install(
     FILES 
-        include/09_singleton/singleton.hpp
+        include/05_singleton/singleton.hpp
     DESTINATION 
-        include/09_singleton
+        include/05_singleton
 )
 
 # Allow the use of find_package(): create the EXPORT name in install().
@@ -30,7 +30,7 @@ install(
         ${PROJECT_NAME} # How you wanna call the package of the target-s.
     # It'll install it in /usr/local/lib/ even if I delete this last part.
     DESTINATION 
-        lib/09_singleton
+        lib/05_singleton
 )
 
 # Allow the use of find_package(): create the first .cmake files and install it.

@@ -2,11 +2,15 @@
 #define SINGLETON_HPP
 
 #include <memory>
+#include <iostream>
 
 
 namespace SingletonNS
 {
 
+/*
+** Classic solution.
+*/
 class Singleton 
 {
   public:
@@ -28,6 +32,9 @@ class Singleton
     std::int64_t m_counter;
 };
 
+/*
+** Modern solution.
+*/
 // The Singleton design pattern is considered an anti-pattern and one of the
 //  reasons is the difficulty to test it: a function under test that depends on 
 //  a Singleton may get that instance by itself (hidden hard-code dependency) 
@@ -44,10 +51,15 @@ class ClassC
   public:
     // Virtual so it can be used as base class for mocking.
     virtual ~ClassC() = default;
-    explicit ClassC(const std::int64_t counter = 0);
+    explicit ClassC(const std::int64_t counter = 0)
+    : m_counter{counter}
+    {}
     // Default c'tors and operator= overloads, both copy and move.
 
-    virtual void print_counter() const;
+    virtual void print_counter() const
+    {
+        std::cout << m_counter << std::endl;
+    };
 
   protected:
     std::int64_t m_counter;
@@ -58,7 +70,10 @@ struct SingletonWrapper
     ClassC instance;
 };
 
-ClassC& getDefaultClassC()
+// Functions defined in the header must be inlined or the user will include them
+//  twice: from the library .a and from the header.
+// Class methods defined in the header are inlined by default.
+inline ClassC& getDefaultClassC()
 {
     // Lazy initialization.
     static SingletonWrapper wrapper;
@@ -82,7 +97,7 @@ struct Services
     Service2& instanceS2;
 };
 
-Services& getDefaultServices()
+inline Services& getDefaultServices()
 {
     static Service1 serviceS1;
     static Service2 serviceS2;
