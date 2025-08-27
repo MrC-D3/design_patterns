@@ -5,7 +5,8 @@ What to do on a docker container (ubuntu:20.04 or 22.04):
         git
         python-is-python3
         python3-pip
-        gcc-9
+        gcc-10
+        g++-10, for C++20
         vim
         gdb
         wget
