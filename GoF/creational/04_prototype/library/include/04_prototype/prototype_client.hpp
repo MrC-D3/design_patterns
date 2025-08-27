@@ -2,8 +2,9 @@
 #define PROTOTYPE_CLIENT_HPP
 
 #include <array>
+#include <concepts>
 
-#include "08_prototype/PrototypeInterface.hpp"
+#include "04_prototype/PrototypeInterface.hpp"
 
 
 namespace PrototypeClient
@@ -11,6 +12,9 @@ namespace PrototypeClient
 
 using namespace Prototype;
 
+/*
+** Classic solution.
+*/
 class PrototypeClient
 {
   public:
@@ -23,8 +27,11 @@ class PrototypeClient
     std::array<std::unique_ptr<PrototypeInterface>, 2> m_prototypes;
 };
 
-// In game context, the Client can be a Spawner that wraps a Prototype and calls
-//  clone() on it. Here a template-concept implementation in C++20.
+/*
+** Alternative solution 01, in C++20 with template-concept.
+** In game context, the Client can be a Spawner that wraps a Prototype and calls
+**  clone() on it. 
+*/
 template <typename T>
 concept Clonable = requires(T a)
 {
@@ -45,6 +52,14 @@ class PrototypeSpawner
     PrototypeT m_prototype;
 };
 
+/*
+** Alternative solution 02, where the clone is the copy c'tor.
+*/
+
+/*
+** Alternative solution 03, where the clone is the serialization of an object.
+**  E.g. with Boost libraries like: serialization/ and archive/.  
+*/
 
 } // namespace PrototypeClient
 

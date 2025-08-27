@@ -2,8 +2,7 @@ project(prototype_static)
 
 add_library(
     ${PROJECT_NAME}
-    source/PrototypeConcrete1.cpp
-    source/PrototypeConcrete2.cpp
+    source/PrototypeConcrete.cpp
 )
 
 # PIC on, to make this static library included in a shared library.
@@ -30,7 +29,7 @@ install(
 
 install(
     FILES
-        include/08_prototype/PrototypeInterface.hpp
+        include/04_prototype/PrototypeInterface.hpp
     DESTINATION
-        include/08_prototype/
+        include/04_prototype/
 )

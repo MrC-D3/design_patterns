@@ -1,5 +1,5 @@
-#include "08_prototype/prototype_client.hpp"
-#include "08_prototype/PrototypeConcrete.hpp"
+#include "04_prototype/prototype_client.hpp"
+#include "04_prototype/PrototypeConcrete.hpp"
 
 
 namespace PrototypeClient

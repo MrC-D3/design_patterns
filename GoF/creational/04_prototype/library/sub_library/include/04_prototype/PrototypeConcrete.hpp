@@ -1,7 +1,7 @@
 #ifndef PROTOTYPE_CONCRETE1_HPP
 #define PROTOTYPE_CONCRETE1_HPP
 
-#include "08_prototype/PrototypeInterface.hpp"
+#include "04_prototype/PrototypeInterface.hpp"
 
 #include <cstdint>
 

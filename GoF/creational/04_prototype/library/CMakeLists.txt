@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.22)
 
 project(prototype_shared)
 
+set(CMAKE_CXX_STANDARD 20)
+
 add_subdirectory(sub_library)
 
 add_library(
@@ -30,7 +32,7 @@ install(
 
 install(
     FILES
-        include/08_prototype/prototype_client.hpp
+        include/04_prototype/prototype_client.hpp
     DESTINATION
-        include/08_prototype/
+        include/04_prototype/
 )

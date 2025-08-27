@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "08_prototype/PrototypeConcrete.hpp"
+#include "04_prototype/PrototypeConcrete.hpp"
 
 
 namespace Prototype
