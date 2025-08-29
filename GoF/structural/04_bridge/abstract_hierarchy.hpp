@@ -6,6 +6,9 @@
 #include <memory>
 
 
+/*
+** Classic use-case: avoid Cartesian product between 2 class hierarchies.
+*/
 class ShapeInterface
 {
   public:
@@ -46,6 +49,25 @@ class Triangle final : public ShapeInterface
         std::cout << "I'm a Triangle.\n";
         m_color->draw();
     }
+};
+
+/*
+** Alternative use-case: implement the PIMPL idiom.
+*/
+class AbstractClass
+{
+  public:
+    class ImplementationClass;
+    // Default d'tor, c'tors and operator= overloads, both copy and move.
+    AbstractClass(const int data);
+
+    void do_something();
+    
+  private:
+    // Init of data members based on declaration order, so you get a warning if
+    //  the init list in the c'tor has a different order.
+    ImplementationClass* m_pimpl_bridge;
+    int m_data;
 };
 
 
