@@ -1,7 +1,7 @@
 #ifndef COMPOSITE_HPP
 #define COMPOSITE_HPP
 
-#include "19_composite/component.hpp"
+#include "07_composite/component.hpp"
 #include <list>
 
 

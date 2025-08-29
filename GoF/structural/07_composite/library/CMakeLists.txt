@@ -23,11 +23,11 @@ add_subdirectory(unit_test)
 # Install.
 install(
     FILES
-        include/19_composite/component.hpp
-        include/19_composite/leaf.hpp
-        include/19_composite/composite.hpp
+        include/07_composite/component.hpp
+        include/07_composite/leaf.hpp
+        include/07_composite/composite.hpp
     DESTINATION
-        include/19_composite/
+        include/07_composite/
 )
 install(
     TARGETS

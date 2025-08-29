@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include "19_composite/component.hpp"
-#include "19_composite/composite.hpp"
-#include "19_composite/leaf.hpp"
+#include "07_composite/component.hpp"
+#include "07_composite/composite.hpp"
+#include "07_composite/leaf.hpp"
 
 
 using namespace CompositeNS;
