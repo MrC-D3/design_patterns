@@ -30,12 +30,12 @@ install(
 )
 install(
     FILES
-        include/14_decorator/component_concrete.hpp
-        include/14_decorator/component_interface.hpp
-        include/14_decorator/decorator_concrete.hpp
-        include/14_decorator/decorator_interface.hpp
+        include/03_decorator/component_concrete.hpp
+        include/03_decorator/component_interface.hpp
+        include/03_decorator/decorator_concrete.hpp
+        include/03_decorator/decorator_interface.hpp
     DESTINATION
-        include/14_decorator/
+        include/03_decorator/
 )
 
 # Pack.

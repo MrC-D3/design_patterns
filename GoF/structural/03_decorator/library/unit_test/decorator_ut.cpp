@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include "14_decorator/component_interface.hpp"
-#include "14_decorator/decorator_concrete.hpp"
+#include "03_decorator/component_interface.hpp"
+#include "03_decorator/decorator_concrete.hpp"
 #include <memory>
 
 

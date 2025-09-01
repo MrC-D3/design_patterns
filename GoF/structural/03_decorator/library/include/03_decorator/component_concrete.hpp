@@ -1,7 +1,7 @@
 #ifndef COMPONENT_CONCRETE_HPP
 #define COMPONENT_CONCRETE_HPP
 
-#include "14_decorator/component_interface.hpp"
+#include "03_decorator/component_interface.hpp"
 
 
 namespace Decorator
