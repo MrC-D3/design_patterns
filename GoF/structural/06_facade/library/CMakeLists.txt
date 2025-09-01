@@ -35,9 +35,9 @@ install(
 )
 install(
     FILES 
-        include/10_facade/facade.hpp 
+        include/06_facade/facade.hpp 
     DESTINATION 
-        include/10_facade
+        include/06_facade
 )
 
 # Packaging.
