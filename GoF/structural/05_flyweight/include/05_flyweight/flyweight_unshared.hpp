@@ -25,6 +25,8 @@ class FlyweightUnshared
     std::shared_ptr<FlyweightShared> m_shared_data;
 };
 
+// Alternative solution: use boost flyweight.
+
 } // namespace Flyweight
 
 
