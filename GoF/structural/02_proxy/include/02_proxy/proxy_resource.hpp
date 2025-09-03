@@ -46,4 +46,25 @@ class ProxyResource final : public SubjectResource
     std::unique_ptr<RealSubjectResource> m_real_subject_resource;
 };
 
+/*
+** Alternative use-case: property proxy.
+*/
+template <typename T>
+class Property
+{
+  public:
+    Property(T value)
+    : m_value{value}
+    {}
+
+    T operator=(T value)
+    {
+        return m_value = value;
+    }
+  private:
+    T m_value;
+};
+// Instead of define getters/setters, wrap data member in a Property<T> class.
+//  So, you can just do "obj.propertyA = value" and "auto v = obj.property".
+
 #endif // PROXY_RESOURCE_HPP
