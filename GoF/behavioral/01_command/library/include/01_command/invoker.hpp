@@ -27,6 +27,8 @@ class Invoker
     std::unique_ptr<CommandInterface> m_command;
     // Potentially other Command pointers, for example for all the buttons of a 
     //  controller.
+    // Or even a Composite Command (a.k.a. a Macro), that is a set of Commands
+    //  managed as a unique Command.
 };
 
 /*
