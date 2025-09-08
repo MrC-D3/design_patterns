@@ -18,6 +18,8 @@ class IteratorInterface
     virtual Item currentItem() const = 0;
 };
 
+// Alternative: use boost/iterator/iterator_facade.hpp library.
+
 } // namesapce IteratorNS
 
 
