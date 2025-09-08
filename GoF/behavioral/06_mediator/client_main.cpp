@@ -4,6 +4,7 @@
 #include <memory>
 
 
+// Do I really need (smart) pointers or I can use references?
 int main()
 {
     using namespace Mediator;
