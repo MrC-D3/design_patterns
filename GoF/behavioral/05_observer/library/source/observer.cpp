@@ -7,7 +7,7 @@ namespace ObserverNS
 {
 
 /*
-** Implementation of classic Observer.
+** Solution 01: Classic.
 */
 void Observer::update()
 {
@@ -21,7 +21,8 @@ void Observer::update()
 }
 
 /*
-** Implementation of safe Observer.
+** Solution 02: Thread Safe.
+** From "Tony Van Eerd: Thread-safe Observer Pattern - You're doing it wrong".
 */
 Listener::Listener() 
 : m_newData{false}, m_keepGoing{false} 

@@ -13,7 +13,7 @@ namespace ObserverNS
 {
 
 /*
-** Classic solution.
+** Solution 01: Classic.
 */
 class Subject final : public SubjectInterface
 {
@@ -28,7 +28,7 @@ class Subject final : public SubjectInterface
 };
 
 /*
-** Thread safe solution.
+** Solution 02: Thread Safe.
 ** From "Tony Van Eerd: Thread-safe Observer Pattern - You're doing it wrong".
 */
 class Listener;

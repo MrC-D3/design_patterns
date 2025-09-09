@@ -13,7 +13,10 @@
 
 namespace ObserverNS
 {
-  
+
+/*
+** Solution 01: Classic.
+*/
 class Observer final : public ObserverInterface
 {
   public:
@@ -22,11 +25,12 @@ class Observer final : public ObserverInterface
     void update() override;
 };
 
-// Potentially other concrete Observer: one interested in physics events, on in
+// Potentially other concrete Observer: one interested in physics events, one in
 //  sound events, etc.
 
 /*
-** Observer thread safe.
+** Solution 02: Thread Safe.
+** From "Tony Van Eerd: Thread-safe Observer Pattern - You're doing it wrong".
 */
 class Listener
 {

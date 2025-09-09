@@ -8,6 +8,9 @@ int main()
 {
     using namespace ObserverNS;
 
+    /*
+    ** Solution 01: Classic.
+    */
     // Need shared_ptr<> for shared_from_this() in attach().
     auto mySubject = std::make_shared<Subject>();
     {
@@ -23,6 +26,11 @@ int main()
     }
 
     mySubject->setState(2);
+
+    /*
+    ** Solution 02: Thread Safe.
+    ** From "Tony Van Eerd: Thread-safe Observer Pattern - You're doing it wrong".
+    */
 
     return 0;
 }

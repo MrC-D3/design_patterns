@@ -8,7 +8,7 @@ namespace ObserverNS
 {
 
 /*
-** Implementation of Subject.
+** Solution 01: Classic.
 */
 void Subject::setState(const std::int64_t state)
 {
@@ -24,10 +24,12 @@ const std::int64_t& Subject::getState() const
 }
 
 /*
-** Implementation of SubjectSafe.
+** Solution 02: Thread Safe.
+** From "Tony Van Eerd: Thread-safe Observer Pattern - You're doing it wrong".
 */
 void SubjectSafe::set_state(std::string state)
 {
+    // TODO because this "notify" variable is not used...
     bool notify = false;
     {
         std::lock_guard<std::recursive_mutex> lock(m_mutex);
