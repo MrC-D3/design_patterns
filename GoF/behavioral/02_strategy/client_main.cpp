@@ -1,4 +1,4 @@
-// Same problem can be solved using Functional Type (pro: no many classes) too.
+// Same problem can be solved using Functional Type too (pro: no many classes).
 #include "02_strategy/context.hpp"
 #include "02_strategy/strategy_concrete.hpp"
 
