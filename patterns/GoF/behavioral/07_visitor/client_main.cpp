@@ -26,7 +26,7 @@ int main()
     {
         std::vector<ElementI17> elements;
         elements.emplace_back( ElementConcreteA{} );
-        elements.emplace_back( ElementConcreteA{} );
+        elements.emplace_back( ElementConcreteB{} );
         
         for(auto const& element : elements)
         {

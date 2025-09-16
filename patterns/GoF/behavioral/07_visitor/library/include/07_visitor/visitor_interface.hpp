@@ -23,9 +23,9 @@ class ElementConcreteB;
 ** Solution 01 (classic OO): virtual functions that abstract away compiled code.
 ** Bads: 
 ** - performance, because of the V-Tables, so scattered memory access;
-** - it violates the Dependency Inversion Principle because the VisitorI depends
-**  on an implementation, i.e. VisitorInterface -> ElementConcrete. 
-** - it leads to cyclic dependency VisitorI -> ElementC -> ElementI -> VisitorI;
+** - violates the Dependency Inversion Principle because the VisitorI depends
+**  on an implementation (VisitorInterface -> ElementConcrete); 
+** - leads to cyclic dependency (VisitorI -> ElementC -> ElementI -> VisitorI);
 ** - adding new ElementC-s means to update VisitorI and all the VisitorC-s. 
 */
 class VisitorInterface
