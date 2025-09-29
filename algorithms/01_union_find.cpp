@@ -2,7 +2,7 @@
 //  given a list of couples, tell if each couple creates a new connection 
 //  between the elements of the couple or not; e.g.: [(a,b), (b,c)] means there
 //  are connections: a-b, b-c but also a-c, so the couple a-c won't create a new
-//  connection.
+//  connection. It can be used to find the Spanning Tree of a graph.
 // General solution:
 //  every element is part of a group of connected elements, so – for each couple
 //  – first find() the group each element of the couple belongs to and then – if
